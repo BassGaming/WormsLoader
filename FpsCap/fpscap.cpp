@@ -1,4 +1,4 @@
-// FpsCap: limits the frame rate. Waits in WormsLoader's per-frame hook, right before the frame is presented.
+// FpsCap: limits the frame rate. Waits in WormsLoader's per-frame hook, right after a frame is presented (before the game reads input for the next one).
 #include <windows.h>
 #include "wormsloader.h"
 
@@ -12,7 +12,7 @@ static const WL_ModInfo kInfo = {
     "FpsCap", "1.0.0", "WormsLoader",
     "Caps the frame rate. The game runs uncapped (often 1000+ fps in menus) unless VSync is on, "
     "which wastes power and can cause stutter. Drag the slider or type a value.",
-    true, // client-only: frame pacing is local, the match simulation does not depend on it
+    true, "*", // any game (no exe addresses); client-only: frame pacing is local, the match simulation does not depend on it
 };
 
 static void on_frame(void*) {

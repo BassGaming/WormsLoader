@@ -5,18 +5,27 @@
 #include <vector>
 #include "wormsloader.h"
 
-// ---- known exe build (no ASLR, image base 0x400000) -------------------------------
-constexpr DWORD kExeTimeDateStamp = 1403709881; // Steam build 01.83.31.37
-constexpr DWORD kExeSizeOfImage = 0x1730000;
-// Screen stack: depth at kScreenDepth, entries (8 bytes) at kScreenStack + 8*i, i = 1..depth.
-// entry[0] -> screen object, screen hash at object+8. Hash = djb2-xor of the screen name.
-constexpr DWORD kScreenDepth = 0x194f560;
-constexpr DWORD kScreenStack = 0x1956b50;
-// Per-player cursor slots (float x, y in GUI space; found by memory scan): seen in use at 0x195aab0 and 0x195b0a8.
-// shortcut: slot count/start guessed from those two (stride 0x5f8, 5 players); find the array base if one is missed.
-constexpr DWORD kCursorSlot0 = 0x195aab0 - 3 * 0x5f8, kCursorStride = 0x5f8;
-constexpr int kCursorSlots = 5;
-constexpr DWORD kCursorBounds = 0x195b0c0; // floats min x, min y, max x, max y (-512, -288, 512, 288 at 16:9)
+// ---- supported games (no ASLR, image base 0x400000) ---------------------------------
+// One entry per game build. The exe file name picks the game, PE timestamp + image size pick the build;
+// everything game-specific the loader itself touches lives here. To support another game, add an entry
+// and make the code that reads these addresses cope with that game's layout.
+struct Game {
+    const char* id;         // WL_ModInfo.game / WL_Api.game, = exe name without ".exe"
+    const char* build;      // shown in the menu; part of the mod-set hash
+    DWORD timestamp, image_size;
+    // Screen stack: depth at screen_depth, entries (8 bytes) at screen_stack + 8*i, i = 1..depth.
+    // entry[0] -> screen object, screen hash at object+8. Hash = djb2-xor of the screen name.
+    DWORD screen_depth, screen_stack;
+    // Per-player cursor slots: float x, y in GUI space. Bounds: floats min x, min y, max x, max y.
+    DWORD cursor_slot0, cursor_stride, cursor_bounds;
+    int cursor_slots;
+};
+// shortcut: Clan Wars cursor slot count/start guessed from the two seen in use (0x195aab0, 0x195b0a8);
+// find the array base if a player's cursor is missed.
+inline const Game kGames[] = {
+    {"WormsClanWars", "01.83.31.37", 1403709881, 0x1730000, 0x194f560, 0x1956b50, 0x195aab0 - 3 * 0x5f8, 0x5f8, 0x195b0c0, 5},
+};
+constexpr int kCursorSlotsMax = 8;
 
 // ---- settings & hotkeys -----------------------------------------------------------
 enum class SettingType { Bool, Int, Float, Enum };
@@ -43,7 +52,8 @@ struct Mod {
 };
 
 extern std::vector<Mod*> g_mods;
-extern bool g_known_build;
+extern const Game* g_game; // null = unknown game or build: no mods load
+extern bool g_known_build; // == (g_game != nullptr)
 extern std::string g_game_dir;
 extern std::string g_modset;      // human-readable "name@version;..." of net-affecting mods
 extern unsigned g_modset_hash;    // 0 = no net-affecting mods loaded
@@ -86,3 +96,5 @@ double net_last_recv();
 // ui.cpp
 void ui_install();
 void dinput_wrap(void* idirectinput8);
+bool ui_on_screen(const char* name);
+void ui_press_key(int vk);

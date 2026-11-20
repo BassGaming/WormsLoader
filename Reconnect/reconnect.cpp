@@ -23,7 +23,7 @@ static const WL_ModInfo kInfo = {
     "'connection lost' notifications are hidden from the game; the game's own netcode resends what was "
     "lost once the link returns.\n\n"
     "All players in the lobby need this mod (same version).",
-    false,
+    false, "WormsClanWars",
 };
 
 static bool on_steam_callback(int id, void*, void*) {

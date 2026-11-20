@@ -22,7 +22,7 @@ static const WL_ModInfo kInfo = {
     "Borderless", "1.0.0", "WormsLoader",
     "Runs the game as a borderless window covering the whole monitor, with no display mode switch. "
     "Set the game's resolution to your desktop resolution. Takes effect on the next launch.",
-    true, // client-only: window handling only
+    true, "WormsClanWars", // client-only: window handling only
 };
 
 static RECT monitor_rect(HWND h) {
