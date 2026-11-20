@@ -57,19 +57,44 @@ static LRESULT CALLBACK h_WndProc(HWND h, UINT msg, WPARAM wp, LPARAM lp) {
         if (!s_open && !repeat) api_dispatch_hotkey((int)wp);
     }
     if (ImGui::GetCurrentContext()) {
-        ImGui_ImplWin32_WndProcHandler(h, msg, wp, lp);
-        bool input = (msg >= WM_MOUSEFIRST && msg <= WM_MOUSELAST) || (msg >= WM_KEYFIRST && msg <= WM_KEYLAST);
-        if (input && s_capture) return 0;
+        // Mouse position and buttons come from the game's cursor and DirectInput (see h_Swap). Windows mouse
+        // messages carry the Windows cursor position, which is elsewhere, so ImGui never sees them.
+        bool mouse = (msg >= WM_MOUSEFIRST && msg <= WM_MOUSELAST) || msg == WM_MOUSELEAVE ||
+                     (msg >= WM_NCMOUSEMOVE && msg <= WM_NCMBUTTONDBLCLK) || msg == WM_SETCURSOR;
+        if (!mouse) ImGui_ImplWin32_WndProcHandler(h, msg, wp, lp);
+        // Mouse moves always reach the game (it hides the Windows cursor on them); clicks, wheel and keys don't
+        // while the overlay has input.
+        bool blocked = (msg > WM_MOUSEMOVE && msg <= WM_MOUSELAST) || (msg >= WM_KEYFIRST && msg <= WM_KEYLAST);
+        if (blocked && s_capture) return 0;
     }
     return CallWindowProcA((WNDPROC)GetPropA(h, "wl_wndproc"), h, msg, wp, lp);
 }
 
 static void draw_setting(Mod* m, Setting* s) {
-    bool changed = false;
+    bool changed = false, edited = false;
+    // Numbers get a slider plus a typed input box; both save on release.
+    float w = ImGui::CalcItemWidth();
+    ImGui::PushID(s);
     switch (s->type) {
     case SettingType::Bool: changed = ImGui::Checkbox(s->label.c_str(), &s->value.b); break;
-    case SettingType::Int: changed = ImGui::SliderInt(s->label.c_str(), &s->value.i, s->imin, s->imax); break;
-    case SettingType::Float: changed = ImGui::SliderFloat(s->label.c_str(), &s->value.f, s->fmin, s->fmax); break;
+    case SettingType::Int:
+        ImGui::SetNextItemWidth(w * .7f);
+        ImGui::SliderInt("##slider", &s->value.i, s->imin, s->imax);
+        edited = ImGui::IsItemDeactivatedAfterEdit();
+        ImGui::SameLine();
+        ImGui::SetNextItemWidth(w * .3f - ImGui::GetStyle().ItemSpacing.x);
+        ImGui::InputInt(s->label.c_str(), &s->value.i, 0, 0);
+        s->value.i = s->value.i < s->imin ? s->imin : s->value.i > s->imax ? s->imax : s->value.i;
+        break;
+    case SettingType::Float:
+        ImGui::SetNextItemWidth(w * .7f);
+        ImGui::SliderFloat("##slider", &s->value.f, s->fmin, s->fmax);
+        edited = ImGui::IsItemDeactivatedAfterEdit();
+        ImGui::SameLine();
+        ImGui::SetNextItemWidth(w * .3f - ImGui::GetStyle().ItemSpacing.x);
+        ImGui::InputFloat(s->label.c_str(), &s->value.f, 0, 0, "%.2f");
+        s->value.f = s->value.f < s->fmin ? s->fmin : s->value.f > s->fmax ? s->fmax : s->value.f;
+        break;
     case SettingType::Enum: {
         std::vector<const char*> items;
         for (auto& o : s->options) items.push_back(o.c_str());
@@ -78,8 +103,8 @@ static void draw_setting(Mod* m, Setting* s) {
     }
     }
     // Sliders fire every drag step; saving on release keeps the ini writes cheap.
-    if ((changed && s->type != SettingType::Int && s->type != SettingType::Float) || ImGui::IsItemDeactivatedAfterEdit())
-        config_save(m);
+    if (changed || edited || ImGui::IsItemDeactivatedAfterEdit()) config_save(m);
+    ImGui::PopID();
 }
 
 static void draw_loader_page() {
@@ -228,6 +253,30 @@ static void attach(HWND hwnd, HGLRC glrc) {
 // The game may own the mouse through DirectInput, in which case no WM_LBUTTON* arrive:
 // the button state is also taken from the DirectInput hooks below.
 static volatile bool s_di_lmb;
+
+// The game draws its own cursor, moved by DirectInput deltas only, so it drifts away from the Windows cursor.
+// Each local player has a cursor slot (float x, y in GUI space, centre 0,0, Y up). Which slot the mouse drives
+// differs between launches, so the overlay follows the slot that moved last. GUI bounds sit after the slots.
+static bool game_cursor(ImVec2 display, float* x, float* y) {
+    if (!g_known_build) return false;
+    const float* bd = (const float*)kCursorBounds; // min x, min y, max x, max y
+    float w = bd[2] - bd[0], h = bd[3] - bd[1];
+    if (!(w > 1 && h > 1)) return false;
+    static float last[kCursorSlots][2];
+    static int active = -1;
+    for (int k = 0; k < kCursorSlots; k++) {
+        const float* c = (const float*)(kCursorSlot0 + k * kCursorStride);
+        if (c[0] == last[k][0] && c[1] == last[k][1]) continue;
+        bool inside = c[0] >= bd[0] && c[0] <= bd[2] && c[1] >= bd[1] && c[1] <= bd[3];
+        if (inside && (last[k][0] != 0 || last[k][1] != 0)) active = k; // a move, not the first read
+        last[k][0] = c[0]; last[k][1] = c[1];
+    }
+    if (active < 0) return false;
+    *x = (last[active][0] - bd[0]) / w * display.x;
+    *y = (bd[3] - last[active][1]) / h * display.y;
+    return true;
+}
+
 static bool s_lmb_sent;
 
 static BOOL WINAPI h_Swap(HDC dc) {
@@ -235,13 +284,15 @@ static BOOL WINAPI h_Swap(HDC dc) {
     HGLRC glrc = wglGetCurrentContext();
     if (hwnd && glrc && (hwnd != s_hwnd || glrc != s_glrc)) attach(hwnd, glrc);
     if (hwnd && hwnd == s_hwnd) {
+        api_run_frame(); // before t0: mods like FpsCap wait in here, which is not overlay cost
         double t0 = wl_time();
-        api_run_frame();
         ImGui_ImplOpenGL2_NewFrame();
         ImGui_ImplWin32_NewFrame();
         ImGuiIO& io = ImGui::GetIO();
         POINT p;
-        if (GetForegroundWindow() == hwnd && GetCursorPos(&p) && ScreenToClient(hwnd, &p)) io.AddMousePosEvent((float)p.x, (float)p.y);
+        float gx, gy;
+        if (game_cursor(io.DisplaySize, &gx, &gy)) io.AddMousePosEvent(gx, gy);
+        else if (GetForegroundWindow() == hwnd && GetCursorPos(&p) && ScreenToClient(hwnd, &p)) io.AddMousePosEvent((float)p.x, (float)p.y);
         if (s_di_lmb != s_lmb_sent) { io.AddMouseButtonEvent(0, s_di_lmb); s_lmb_sent = s_di_lmb; }
         ImGui::NewFrame();
         draw();
@@ -280,20 +331,31 @@ static GetDeviceData_t o_GetDeviceData;
 static void* s_mouse;
 static const GUID kSysMouse = {0x6F1D2B60, 0xD5A0, 0x11CF, {0xBF, 0xC7, 0x44, 0x45, 0x53, 0x54, 0x00, 0x00}};
 
+// While the overlay has input, the game sees no keys, buttons or wheel. Mouse MOVEMENT still reaches the game,
+// because the game's own cursor (which the overlay follows, see game_cursor) only moves on DirectInput deltas.
 static HRESULT WINAPI h_GetDeviceState(void* self, DWORD n, void* out) {
     HRESULT hr = o_GetDeviceState(self, n, out);
-    if (SUCCEEDED(hr) && (n == 16 || n == 20)) s_di_lmb = ((BYTE*)out)[12] & 0x80; // DIMOUSESTATE(2).rgbButtons[0]
-    if (SUCCEEDED(hr) && s_capture) memset(out, 0, n);
+    if (FAILED(hr) || !out) return hr;
+    if (self == s_mouse && (n == 16 || n == 20)) { // DIMOUSESTATE(2): lX, lY, lZ, rgbButtons[]
+        s_di_lmb = ((BYTE*)out)[12] & 0x80;
+        if (s_capture) memset((BYTE*)out + 8, 0, n - 8);
+    } else if (s_capture) memset(out, 0, n);
     return hr;
 }
 static HRESULT WINAPI h_GetDeviceData(void* self, DWORD sz, void* out, DWORD* count, DWORD flags) {
     HRESULT hr = o_GetDeviceData(self, sz, out, count, flags);
-    if (SUCCEEDED(hr) && self == s_mouse && out && count)
-        for (DWORD i = 0; i < *count; i++) {
-            DWORD* item = (DWORD*)((BYTE*)out + i * sz); // DIDEVICEOBJECTDATA: dwOfs, dwData, ...
-            if (item[0] == 12) s_di_lmb = item[1] & 0x80; // DIMOFS_BUTTON0
-        }
-    if (SUCCEEDED(hr) && s_capture && count) *count = 0;
+    if (FAILED(hr) || !out || !count) return hr;
+    if (self != s_mouse) { if (s_capture) *count = 0; return hr; }
+    DWORD kept = 0;
+    for (DWORD i = 0; i < *count; i++) {
+        BYTE* item = (BYTE*)out + i * sz; // DIDEVICEOBJECTDATA: dwOfs, dwData, ...
+        DWORD ofs = *(DWORD*)item;
+        if (ofs == 12) s_di_lmb = ((DWORD*)item)[1] & 0x80; // DIMOFS_BUTTON0
+        if (s_capture && ofs >= 8) continue;                 // drop wheel and buttons, keep X/Y movement
+        if (kept != i) memmove((BYTE*)out + kept * sz, item, sz);
+        kept++;
+    }
+    *count = kept;
     return hr;
 }
 static HRESULT WINAPI h_CreateDevice(void* self, REFGUID g, void** dev, void* outer) {

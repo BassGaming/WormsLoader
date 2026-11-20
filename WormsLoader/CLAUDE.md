@@ -17,6 +17,7 @@ Output: `build\out\dinput8.dll`. Sources in `src/`, public API in `include/worms
 |---|---|---|
 | Screen stack | depth `0x194f560`, entries `0x1956b50 + 8*i` (i=1..depth), screen object at entry[0], hash at obj+8 | `ScreenMain` = `0x7d25f4c2` (verified live). Every change is logged as `screen -> xxxxxxxx` |
 | Name hash | `0x9c0410` | djb2 with xor, start 5381, signed chars |
+| Game cursor | per-player slots, float x, y; seen in use at `0x195aab0` and `0x195b0a8` (stride `0x5f8`); GUI bounds at `0x195b0c0` (min x/y, max x/y) | GUI space 1024x576 (16:9), centre 0,0, **Y up**. Moved only by DirectInput deltas, so the Windows cursor drifts away from it. Which slot the mouse drives changes between launches, so the overlay follows the slot that moved last (until the first mouse move it falls back to the Windows cursor) |
 | Go-to-screen | `0xa18950` cdecl(hash, float fade, int player) | not hooked yet |
 | Steam imports | `SteamNetworking`, `SteamMatchmaking`, `SteamUser`, ... from steam_api.dll | interface versions: Networking005, MatchMaking009, User017 |
 | P2P use | only slot 0 Send (send types 0/1, channel 0), slot 2 Read (1200 B buffer), slot 3 Accept | the game's own reliability/timeouts run on top; it never asks Steam for session state |
@@ -32,6 +33,6 @@ Frames are `WLR1 | lobby | from | to | payload` over UDP; `to=0` is a 1-second h
 Known gap: the relay trusts the claimed Steam ID (no auth ticket). Fine for friends, not for a public relay.
 
 ## Verified / not verified
-- Verified live (single PC): build check, mod loading, Steam hooks installed, overlay drawing with ReShade present, Mods button only on the main menu, Mods screen + WormsLoader page.
+- Verified live (single PC): build check, mod loading, Steam hooks installed, overlay drawing with ReShade present, Mods button only on the main menu and clickable by hand (user-confirmed), Mods screen + WormsLoader page.
 - Not yet verified: a mod's settings/hotkey page in game, the hotkey rebind, an online match through the hooks, the handshake, the relay transport (only unit-tested).
-- Cosmetic: the game's own cursor freezes while the Mods screen is open (input blocked), and ImGui draws its own.
+- Cosmetic: ImGui draws its own cursor over the Mods window (the game's cursor is drawn underneath it).

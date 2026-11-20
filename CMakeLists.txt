@@ -22,3 +22,6 @@ endfunction()
 
 wl_mod(Reconnect)
 wl_mod(Example)
+wl_mod(Borderless)
+wl_mod(FpsCap)
+wl_mod(SkipIntro)

@@ -9,11 +9,14 @@ Private repo: GitHub `WormsLoader`.
 | `WormsLoader/` | The mod loader (`dinput8.dll` proxy), mod API, overlay Mods menu, network layer, relay server | `WormsLoader/CLAUDE.md` |
 | `Reconnect/` | Mod: survive short connection losses in online matches | `Reconnect/CLAUDE.md` |
 | `Example/` | Mod template: every setting type + one hotkey | `Example/CLAUDE.md` |
+| `Borderless/` | Mod: borderless fullscreen window, no display mode switch | `Borderless/CLAUDE.md` |
+| `FpsCap/` | Mod: frame-rate cap (slider + input box) | `FpsCap/CLAUDE.md` |
+| `SkipIntro/` | Mod: skip the Team17 legal screen and intro movies | `SkipIntro/CLAUDE.md` |
 
 ## How the loader works (summary)
 - The game imports `DINPUT8.dll`; our `dinput8.dll` in the game folder is loaded instead and forwards `DirectInput8Create` to the system DLL. (`opengl32.dll` in the game folder is ReShade — don't touch it.)
 - It checks the exe build (PE timestamp + image size). Unknown build → no mods load, game runs vanilla.
-- It loads `<game>\Mods\<Name>\<Name>.dll` for every folder, sorted by name. Each mod exports `WL_GetModInfo` and `WL_ModInit(const WL_Api*)`. The whole API is `WormsLoader/include/wormsloader.h`.
+- It loads `<game>\Mods\<Name>\<Name>.dll` for every folder, sorted by name. Each mod exports `WL_GetModInfo` and `WL_ModInit(const WL_Api*)`, and optionally `WL_ModEarlyInit` (runs at the exe entry point, before the game reads its options). The whole API is `WormsLoader/include/wormsloader.h`.
 - A **Mods** button (ImGui overlay) shows on the main menu. The Mods screen lists the mods; a mod's page shows its description, settings and rebindable hotkeys. Settings are saved to `Mods\<Name>\settings.ini`.
 - Online: the lobby host publishes its mod-set hash in Steam lobby data. Joiners with a different set are refused, because the game is deterministic lockstep and different mods would desync. Mods flagged `client_only` don't count.
 - Log: `<game>\WormsLoader.log`.
@@ -32,7 +35,11 @@ powershell -File install.ps1 -Uninstall  # remove dinput8.dll -> vanilla game
 ```
 Launch: `steam://rungameid/233840`. The game must be closed while installing.
 
+Display options live in `CommonData\local.cfg` (`/W`, `/H`, `/WIN` = windowed, otherwise exclusive fullscreen); the game rewrites it from Video Settings. The Borderless mod works with either mode.
+
 ## Reverse engineering
 - No ASLR: image base 0x400000, so exe VAs are absolute (`api->exe(va)`).
 - No Ghidra installed. Ad-hoc RE has been done with Python `pefile` + `capstone`; a venv with these gets recreated as needed.
 - Screen names hash with the game's djb2-xor (`djb2x` in `WormsLoader/src/loader.h`).
+- Injected input (SendInput/SetCursorPos) does NOT move the game's cursor; finding cursor-related memory needs the user's real mouse (corner snapshots + F9 worked).
+- Startup options (`/WIN`, `/NOMOVIES`, `/NOPLAYABLEINTRO`, ...) are parsed around `0x9e09aa`; they come from `Default.cfg`, `CommonData\local.cfg` and the command line.

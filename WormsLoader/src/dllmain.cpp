@@ -32,6 +32,7 @@ double wl_time() {
     return double(c.QuadPart) / double(f.QuadPart);
 }
 
+// Phase 1, at the exe entry point (before the game's code runs): load the DLLs, call WL_ModEarlyInit.
 static void load_mods() {
     std::string pattern = g_game_dir + "Mods\\*";
     WIN32_FIND_DATAA fd;
@@ -54,18 +55,29 @@ static void load_mods() {
         HMODULE mod = LoadLibraryExA(dll.c_str(), nullptr, LOAD_WITH_ALTERED_SEARCH_PATH);
         if (!mod) { m->error = "cannot load " + n + ".dll (error " + std::to_string(GetLastError()) + ")"; wl_log("[%s] %s", n.c_str(), m->error.c_str()); continue; }
         auto info_fn = (const WL_ModInfo* (*)())GetProcAddress(mod, "WL_GetModInfo");
-        auto init_fn = (void (*)(const WL_Api*))GetProcAddress(mod, "WL_ModInit");
         const WL_ModInfo* info = info_fn ? info_fn() : nullptr;
-        if (!info || !init_fn) { m->error = "missing WL_GetModInfo/WL_ModInit export"; wl_log("[%s] %s", n.c_str(), m->error.c_str()); continue; }
+        if (!info || !GetProcAddress(mod, "WL_ModInit")) { m->error = "missing WL_GetModInfo/WL_ModInit export"; wl_log("[%s] %s", n.c_str(), m->error.c_str()); continue; }
+        m->module = mod;
         m->version = info->version ? info->version : "?";
         m->author = info->author ? info->author : "";
         m->description = info->description ? info->description : "";
         m->client_only = info->client_only;
+        if (auto early = (void (*)(const WL_Api*))GetProcAddress(mod, "WL_ModEarlyInit")) {
+            g_init_mod = m;
+            early(&g_api);
+            g_init_mod = nullptr;
+        }
+    }
+}
+
+// Phase 2, at SteamAPI_Init / DirectInput8Create: call WL_ModInit (game globals exist by then).
+static void init_mods() {
+    for (Mod* m : g_mods) {
+        if (!m->module) continue;
         g_init_mod = m;
-        init_fn(&g_api);
+        ((void (*)(const WL_Api*))GetProcAddress(m->module, "WL_ModInit"))(&g_api);
         g_init_mod = nullptr;
-        config_load(m);
-        wl_log("[%s] loaded v%s%s", n.c_str(), m->version.c_str(), m->client_only ? " (client only)" : "");
+        wl_log("[%s] loaded v%s%s", m->name.c_str(), m->version.c_str(), m->client_only ? " (client only)" : "");
     }
 
     // Mods are sorted by name, so the string is the same on every machine with the same set.
@@ -75,13 +87,20 @@ static void load_mods() {
     wl_log("mod set: '%s' hash %08x", g_modset.c_str(), g_modset_hash);
 }
 
+typedef int(__cdecl* Entry_t)();
+static Entry_t o_entry;
+static int __cdecl h_entry() { // outside the loader lock, before the CRT and WinMain
+    load_mods();
+    return o_entry();
+}
+
 // Runs once, outside the loader lock: first of SteamAPI_Init / DirectInput8Create.
 void loader_late_init() {
     static bool done = false;
     if (done) return;
     done = true;
     ui_install();
-    if (g_known_build) load_mods();
+    if (g_known_build) init_mods();
 }
 
 typedef HRESULT(WINAPI* DI8Create_t)(HINSTANCE, DWORD, REFIID, LPVOID*, void*);
@@ -117,6 +136,10 @@ BOOL WINAPI DllMain(HINSTANCE self, DWORD reason, LPVOID) {
            nt->OptionalHeader.SizeOfImage, g_known_build ? "known build" : "UNKNOWN BUILD, mods disabled");
 
     MH_Initialize();
-    if (g_known_build) net_install(); // steam_api.dll is a static import of the exe, already mapped
+    if (g_known_build) {
+        net_install(); // steam_api.dll is a static import of the exe, already mapped
+        if (g_api.hook(base + nt->OptionalHeader.AddressOfEntryPoint, (void*)h_entry, (void**)&o_entry))
+            wl_log("cannot hook the exe entry point, WL_ModEarlyInit will not run");
+    }
     return TRUE;
 }

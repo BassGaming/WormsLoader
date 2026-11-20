@@ -2,6 +2,10 @@
 // A mod is a 32-bit DLL at <game>\Mods\<Name>\<Name>.dll exporting:
 //   extern "C" __declspec(dllexport) const WL_ModInfo* WL_GetModInfo();
 //   extern "C" __declspec(dllexport) void WL_ModInit(const WL_Api* api);
+// Optional, for mods that must act before the game reads its options or opens its window:
+//   extern "C" __declspec(dllexport) void WL_ModEarlyInit(const WL_Api* api);
+// WL_ModEarlyInit runs at the exe entry point, before the game's code; game globals are not set up yet.
+// WL_ModInit runs later (at SteamAPI_Init). A setting's pointer already holds the saved value when returned.
 #pragma once
 #include <stdbool.h>
 
@@ -39,7 +43,7 @@ typedef struct WL_Api {
     void (*log)(const char* fmt, ...); // -> <game>\WormsLoader.log
     double (*time)(void);              // seconds, monotonic
 
-    // --- settings & hotkeys (call ONLY inside WL_ModInit) -------------------------
+    // --- settings & hotkeys (call ONLY inside WL_ModEarlyInit / WL_ModInit) -------------------------
     // Return a pointer to the live value. The loader draws the widget in the Mods menu
     // and persists it to Mods\<Name>\settings.ini.
     bool*  (*setting_bool)(const char* id, const char* label, bool def);

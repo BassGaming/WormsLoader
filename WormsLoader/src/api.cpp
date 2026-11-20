@@ -37,29 +37,31 @@ static void api_log(const char* fmt, ...) {
 }
 
 static Setting* add_setting(const char* id, const char* label, SettingType t) {
-    if (!g_init_mod) { wl_log("setting '%s' registered outside WL_ModInit, ignored", id); static Setting dummy; return &dummy; }
+    if (!g_init_mod) { wl_log("setting '%s' registered outside WL_ModEarlyInit/WL_ModInit, ignored", id); static Setting dummy; return &dummy; }
     Setting* s = new Setting();
     s->id = id; s->label = label; s->type = t;
     g_init_mod->settings.push_back(s);
     return s;
 }
 static bool* api_setting_bool(const char* id, const char* label, bool def) {
-    Setting* s = add_setting(id, label, SettingType::Bool); s->value.b = def; return &s->value.b;
+    Setting* s = add_setting(id, label, SettingType::Bool); s->value.b = def; config_load(g_init_mod); return &s->value.b;
 }
 static int* api_setting_int(const char* id, const char* label, int def, int mn, int mx) {
-    Setting* s = add_setting(id, label, SettingType::Int); s->value.i = def; s->imin = mn; s->imax = mx; return &s->value.i;
+    Setting* s = add_setting(id, label, SettingType::Int); s->value.i = def; s->imin = mn; s->imax = mx; config_load(g_init_mod); return &s->value.i;
 }
 static float* api_setting_float(const char* id, const char* label, float def, float mn, float mx) {
-    Setting* s = add_setting(id, label, SettingType::Float); s->value.f = def; s->fmin = mn; s->fmax = mx; return &s->value.f;
+    Setting* s = add_setting(id, label, SettingType::Float); s->value.f = def; s->fmin = mn; s->fmax = mx; config_load(g_init_mod); return &s->value.f;
 }
 static int* api_setting_enum(const char* id, const char* label, int def, const char* const* opts, int n) {
     Setting* s = add_setting(id, label, SettingType::Enum); s->value.i = def; s->imin = 0; s->imax = n - 1;
     for (int i = 0; i < n; i++) s->options.push_back(opts[i]);
+    config_load(g_init_mod);
     return &s->value.i;
 }
 static void api_hotkey(const char* id, const char* label, int vk, WL_HotkeyFn fn, void* user) {
-    if (!g_init_mod) { wl_log("hotkey '%s' registered outside WL_ModInit, ignored", id); return; }
+    if (!g_init_mod) { wl_log("hotkey '%s' registered outside WL_ModEarlyInit/WL_ModInit, ignored", id); return; }
     g_init_mod->hotkeys.push_back({id, label, vk, fn, user});
+    config_load(g_init_mod);
 }
 
 static void api_on_frame(WL_FrameFn f, void* u) { s_frame.push_back({f, u}); }

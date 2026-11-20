@@ -12,6 +12,11 @@ constexpr DWORD kExeSizeOfImage = 0x1730000;
 // entry[0] -> screen object, screen hash at object+8. Hash = djb2-xor of the screen name.
 constexpr DWORD kScreenDepth = 0x194f560;
 constexpr DWORD kScreenStack = 0x1956b50;
+// Per-player cursor slots (float x, y in GUI space; found by memory scan): seen in use at 0x195aab0 and 0x195b0a8.
+// shortcut: slot count/start guessed from those two (stride 0x5f8, 5 players); find the array base if one is missed.
+constexpr DWORD kCursorSlot0 = 0x195aab0 - 3 * 0x5f8, kCursorStride = 0x5f8;
+constexpr int kCursorSlots = 5;
+constexpr DWORD kCursorBounds = 0x195b0c0; // floats min x, min y, max x, max y (-512, -288, 512, 288 at 16:9)
 
 // ---- settings & hotkeys -----------------------------------------------------------
 enum class SettingType { Bool, Int, Float, Enum };
@@ -34,6 +39,7 @@ struct Mod {
     bool client_only = false;
     std::vector<Setting*> settings; // pointers stay stable: values are handed to mods
     std::vector<Hotkey> hotkeys;
+    HMODULE module = nullptr;
 };
 
 extern std::vector<Mod*> g_mods;
@@ -64,7 +70,7 @@ void loader_ini_set(const char* key, const std::string& v);
 
 // api.cpp
 extern const WL_Api g_api;
-extern Mod* g_init_mod; // mod currently inside WL_ModInit
+extern Mod* g_init_mod; // mod currently inside WL_ModEarlyInit/WL_ModInit
 void api_run_frame();
 void api_dispatch_hotkey(int vk);
 bool api_filter_send(WL_SteamID to, const void* d, unsigned n, int type);
