@@ -10,7 +10,7 @@ add_library(imgui STATIC
 target_include_directories(imgui PUBLIC ${TP}/imgui)
 
 # Output name dinput8.dll: the game imports DINPUT8.dll, so Windows loads this from the game folder.
-add_library(WormsLoader SHARED src/dllmain.cpp src/api.cpp src/config.cpp src/net.cpp src/ui.cpp src/dinput8.def)
+add_library(WormsLoader SHARED src/dllmain.cpp src/api.cpp src/config.cpp src/net.cpp src/ui.cpp src/assets.cpp src/dinput8.def)
 target_include_directories(WormsLoader PRIVATE include)
 target_link_libraries(WormsLoader PRIVATE minhook imgui opengl32 ws2_32)
 set_target_properties(WormsLoader PROPERTIES OUTPUT_NAME dinput8

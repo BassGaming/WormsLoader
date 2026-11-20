@@ -30,6 +30,11 @@ add_custom_command(TARGET Example POST_BUILD
 wl_mod(Borderless)
 wl_mod(FpsCap)
 wl_mod(SkipIntro)
+wl_mod(CustomItems)
+# Data the loader serves: bundles\*.bdl (loaded with Weapons.bdl) and files\<mount>\... (script overrides).
+add_custom_command(TARGET CustomItems POST_BUILD
+  COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_CURRENT_SOURCE_DIR}/CustomItems/bundles ${CMAKE_BINARY_DIR}/out/Mods/CustomItems/bundles
+  COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_CURRENT_SOURCE_DIR}/CustomItems/files ${CMAKE_BINARY_DIR}/out/Mods/CustomItems/files)
 # Developer tool (call counter for RE); links its own MinHook copy.
 wl_mod(Trace)
 target_link_libraries(Trace PRIVATE minhook)

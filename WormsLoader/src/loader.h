@@ -19,11 +19,17 @@ struct Game {
     // Per-player cursor slots: float x, y in GUI space. Bounds: floats min x, min y, max x, max y.
     DWORD cursor_slot0, cursor_stride, cursor_bounds;
     int cursor_slots;
+    // Bundles (assets.cpp): resource manager pointer, GUID of its bundle service, XString ctor,
+    // and the game bundle whose load/unload mod bundles follow.
+    DWORD resource_mgr, bundle_svc_guid, xstring_ctor;
+    const char* bundle_anchor;
+    DWORD fs_open; // file system Open (vtable 0xe055cc slot 5): stdcall(fs, path, mode, IXStream**) -> HRESULT
 };
 // shortcut: Clan Wars cursor slot count/start guessed from the two seen in use (0x195aab0, 0x195b0a8);
 // find the array base if a player's cursor is missed.
 inline const Game kGames[] = {
-    {"WormsClanWars", "01.83.31.37", 1403709881, 0x1730000, 0x194f560, 0x1956b50, 0x195aab0 - 3 * 0x5f8, 0x5f8, 0x195b0c0, 5},
+    {"WormsClanWars", "01.83.31.37", 1403709881, 0x1730000, 0x194f560, 0x1956b50, 0x195aab0 - 3 * 0x5f8, 0x5f8, 0x195b0c0, 5,
+     0x1947a10, 0xca91b0, 0x556ac0, "/Weapons.bdl", 0x57d590},
 };
 constexpr int kCursorSlotsMax = 8;
 
@@ -92,6 +98,10 @@ void net_install();              // after steam_api.dll is loaded
 extern std::string g_net_status; // shown in the Mods menu
 extern std::string g_block_reason; // non-empty = current lobby refused (mod-set mismatch)
 double net_last_recv();
+
+// assets.cpp
+void assets_init();  // at the exe entry point, after the mod DLLs are loaded
+void assets_frame(); // game thread, every frame
 
 // ui.cpp
 void ui_install();

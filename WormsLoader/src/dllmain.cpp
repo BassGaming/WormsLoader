@@ -97,6 +97,7 @@ typedef int(__cdecl* Entry_t)();
 static Entry_t o_entry;
 static int __cdecl h_entry() { // outside the loader lock, before the CRT and WinMain
     load_mods();
+    assets_init();
     return o_entry();
 }
 
@@ -106,7 +107,9 @@ void loader_late_init() {
     if (done) return;
     done = true;
     ui_install();
-    if (g_known_build) init_mods();
+    if (g_known_build) {
+        init_mods();
+    }
 }
 
 typedef HRESULT(WINAPI* DI8Create_t)(HINSTANCE, DWORD, REFIID, LPVOID*, void*);

@@ -202,7 +202,25 @@ static void calllog_init() {
     api->log("[Call] logging %d of %d functions", ok, (int)n);
 }
 
+
+// ---- Script dump: the game's .rpg script archives are AES-CTR; 0x6a4a80 decrypts a range ---------------------
+// stdcall(key, offset_lo, offset_hi, in, out, len). Every decrypted range is appended to Mods\Trace\scripts.dump
+// as "@@ <offset> <len>\n" + bytes.
+typedef void(__stdcall* Ctr_t)(void* key, DWORD lo, DWORD hi, const BYTE* in, BYTE* out, DWORD len);
+static Ctr_t o_Ctr;
+static FILE* s_dump;
+static void __stdcall h_Ctr(void* key, DWORD lo, DWORD hi, const BYTE* in, BYTE* out, DWORD len) {
+    o_Ctr(key, lo, hi, in, out, len);
+    if (!s_dump) {
+        char path[MAX_PATH];
+        sprintf_s(path, "%s\\scripts.dump", s_dir);
+        s_dump = fopen(path, "wb");
+    }
+    if (s_dump) { fprintf(s_dump, "\n@@ %u %u\n", lo, len); fwrite(out, 1, len, s_dump); fflush(s_dump); }
+}
+
 static void probe_init() {
+    api->hook(api->exe(0x6a4a80), (void*)h_Ctr, (void**)&o_Ctr);
     AddVectoredExceptionHandler(1, veh);
     api->hook(api->exe(0x7da080), (void*)h_SetEquip, (void**)&o_SetEquip);
     CreateThread(nullptr, 0, watcher, nullptr, 0, nullptr);
@@ -211,14 +229,47 @@ static void probe_init() {
 
 extern "C" __declspec(dllexport) const WL_ModInfo* WL_GetModInfo() { return &kInfo; }
 
-extern "C" __declspec(dllexport) void WL_ModInit(const WL_Api* a) {
-    api = a;
+static void init_dir() {
     HMODULE self;
     GetModuleHandleExA(GET_MODULE_HANDLE_EX_FLAG_FROM_ADDRESS | GET_MODULE_HANDLE_EX_FLAG_UNCHANGED_REFCOUNT, (LPCSTR)&kInfo, &self);
     GetModuleFileNameA(self, s_dir, MAX_PATH);
     *strrchr(s_dir, '\\') = 0;
+}
+
+// ---- File opens: the global file system *0x1a0074c, vtable slot 5 = Open(fs, path, mode, IXStream** out) -------
+typedef long(__stdcall* FsOpen_t)(void* fs, const char* path, int mode, void** out);
+static FsOpen_t o_FsOpen;
+static long __stdcall h_FsOpen(void* fs, const char* path, int mode, void** out) {
+    long hr = o_FsOpen(fs, path, mode, out);
+    api->log("[Fs] open %s mode=%d hr=%lx stream=%p vt=%x", path ? path : "(null)", mode, hr, out ? *out : 0,
+             out && *out ? **(DWORD**)out : 0);
+    return hr;
+}
+static void fs_hook_frame(void*) {
+    static bool done;
+    void* fs = *(void**)0x1a0074c;
+    if (done || !fs) return;
+    done = true;
+    void** vt = *(void***)fs;
+    api->log("[Fs] file system %p vtable %p slot5 %p", fs, vt, vt[5]);
+    api->hook(vt[5], (void*)h_FsOpen, (void**)&o_FsOpen);
+}
+
+// Script archives are decrypted before WL_ModInit, so the dump hook goes in at the exe entry point.
+extern "C" __declspec(dllexport) void WL_ModEarlyInit(const WL_Api* a) {
+    api = a;
+    init_dir();
+    api->hook(api->exe(0x6a4a80), (void*)h_Ctr, (void**)&o_Ctr);
+    if (*(void**)0x1a0074c) fs_hook_frame(nullptr);
+}
+
+extern "C" __declspec(dllexport) void WL_ModInit(const WL_Api* a) {
+    api = a;
+    init_dir();
     api->hotkey("arm", "Arm: hook all functions in targets.txt", VK_PAUSE, arm, nullptr);
     api->hotkey("mark", "Mark: write call counts since the last mark", VK_SCROLL, mark, nullptr);
     probe_init();
     calllog_init();
+    fs_hook_frame(nullptr);
+    api->on_frame(fs_hook_frame, nullptr);
 }

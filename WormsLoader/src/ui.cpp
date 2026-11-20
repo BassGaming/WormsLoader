@@ -331,6 +331,7 @@ static BOOL WINAPI h_Swap(HDC dc) {
     // Mod frame callbacks run AFTER the present: a frame limiter (FpsCap) then waits before the game reads
     // input for the next frame, not between reading input and showing it (which adds a frame of lag).
     release_key();
+    assets_frame();
     api_run_frame();
     perf_frame(wl_time(), overlay);
     return r;

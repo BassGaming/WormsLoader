@@ -12,6 +12,8 @@ Private repo: GitHub `WormsLoader`.
 | `Borderless/` | Mod: borderless fullscreen window, no display mode switch | `Borderless/CLAUDE.md` |
 | `FpsCap/` | Mod: frame-rate cap (slider + input box) | `FpsCap/CLAUDE.md` |
 | `SkipIntro/` | Mod: skip the Team17 legal screen, intro movies and title screen | `SkipIntro/CLAUDE.md` |
+| `CustomItems/` | Mod: new weapons (stock-crash bazooka; so far the chart model + asset pipeline) | `CustomItems/CLAUDE.md` |
+| `tools/` | `xom.py`: read/write the game's XOM bundles (.bdl/.xom) | docstring in the file |
 | `Trace/` | Dev tool: call counter over every exe function, for RE | `Trace/CLAUDE.md` |
 
 ## How the loader works (summary)

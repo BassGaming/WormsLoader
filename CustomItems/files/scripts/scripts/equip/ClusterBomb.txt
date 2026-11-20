@@ -1,0 +1,151 @@
+Equip =
+{
+	CanHoldInCave = true;
+	CanHoldOnPack = true;
+	CanHoldOnRope = true;
+	CanHoldOnPara = true;
+	
+	RequiresAim			= true;
+	RequiresPowerBar	= true;
+
+	Poser =
+	{
+		ResourceMesh			= "3DClusterGrenade";
+		AttachmentPoint			= "WeaponLocator";
+		DrawAnim			= "DrawClusterbomb";
+		HoldAnim			= "HoldClusterbomb";
+		AimAnim				= "AimClusterbomb";
+		PreFireAnim			= "PrefireClusterbomb";
+		FireAnim			= "FireClusterbomb";
+		ShowResourceMeshDuringFire	= false;
+	}
+	
+	Gadget =
+	{
+		StoryName			= "ClusterBomb";
+		SuggestedReplayCam		= "kReplayCamera_ZoomOut"; // "kReplayCamera_Tracking", "kReplayCamera_Landscape", "kReplayCamera_ZoomIn", "kReplayCamera_ZoomOut", "kReplayCamera_Vertigo", "kReplayCamera_StaticPos",
+		ResourceMesh			= "3DClusterGrenade";
+		AttachmentPoint			= "WeaponLocator";
+		DrawAnim			= "DrawClusterbomb";
+		HoldAnim			= "HoldClusterbomb";
+		AimAnim				= "AimClusterbomb";
+		PreFireAnim			= "PrefireClusterbomb";
+		FireAnim			= "FireClusterbomb";
+		DeploymentTime			= 0.0;
+		ShowResourceMeshDuringFire	= false;
+		
+		MinShotPower 			= 10.000000;
+		MaxShotPower 			= 415.000000;
+		PowerUpTime 			= 1.500000;
+		LaunchDelay 			= 0.000000;
+		RoundDelay 			= 0.000000;
+
+		SecondaryDropVelocityScale = 1.0;
+
+		FuseTimeHelper =
+		{
+			Fuse0 = 3000;
+			Fuse1 = 4000;
+			Fuse2 = 5000;
+			Fuse3 = 1000;
+			Fuse4 = 2000;
+		}
+		
+		AimAngleHelper =
+		{
+			Style				= "Press"; // "Click" or "Press"
+			Speed				= 2.0;
+			UseFacing			= "true";
+			ShowReticle			= true;
+						
+			Wedges =
+			{
+				Wedge0 =
+				{	
+					Dir = "MaxToMin";
+					Min = 0.0;
+					Max = 180.0;
+				}
+			}
+		}
+
+		// AI scoring values
+		// AI scoring values
+		AIUnpredictabilityMultiplier	= 0.4;	// range of 0..1 where 1 is predictable
+		AICloseRangeDanger		= 5.0;	// 0.0 is acceptable danger
+		
+		SoldierManualDetonate = true;			
+	}
+	
+	Payload =
+	{
+		PayloadID			= "kPayload_ClusterBomb";
+		StoryName			= "ClusterBombletRound";
+		
+		PayloadMesh			= "3DClusterGrenade";
+		PayloadAnim			= "";
+		TrailEffect			= "";
+		BlastEffect			= "";
+		ExplosionEffect			= "FireSmallFX";
+
+		LaunchSound			= "WormsNext/Weapons/DefaultThrow";
+		BounceSound			= "WormsNext/Weapons/GrenadeImpact";
+		PreEmptSpeech		= "GrenadeLanded";
+			
+		FlightBehaviour		= "Tumbling";	// "Fixed", "Facing" or "Tumbling"
+		StaticAspects		= "<ClusterBomb> <Magnetic> <NotBlastable> <Payload>";
+			
+		CollisionRadius		= 2.0;
+		CollisionWidth		= 2.0;
+		CollisionHeight		= 2.0;
+		CollisionShape		= "Circle"; // "Circle", "Box", or "SpanArray"
+		
+		Mass			= 1.0;
+		Restitution		= 0.5;
+		GravityFactor		= 0.93;
+		Friction		= 0.75;
+		Spin			= 0.2;
+		AffectedByMagnets	= 1.0;
+		BounceAttenuation	= 0.0;
+			
+		ChainedPayloads		= 5;
+		ChainedMinSpeed		= 110.0;
+		ChainedMaxSpeed		= 160.0;
+		ChainedMinAngle		= -35.0;
+		ChainedMaxAngle		= +35.0;
+
+		SoldierManualDetonate = true;
+	}
+
+	Payload =
+	{
+		PayloadID		= "kPayload_ClusterBomb";
+		StoryName		= "ClusterBombletRound";
+		
+		PayloadMesh		= "StockChart_Bomb";
+		PayloadAnim		= "";
+		TrailEffect		= "SmokeTrailFX";
+		BlastEffect		= "";
+		ExplosionEffect		= "BlastSmallFX";
+			
+		FlightBehaviour		= "Tumbling";	// "Fixed", "Facing" or "Tumbling"
+		ImpactBehaviour		= "Explode"; // "Bounce" or "Explode"
+		StaticAspects		= "<ClusterBomblet> <ClusterBomb> <Magnetic> <NotBlastable> <Payload>";
+        
+        OnDeploymentWormSays = "TimedWeapon";
+			
+		CollisionRadius		= 2.0;
+		CollisionWidth		= 2.0;
+		CollisionHeight		= 2.0;
+		CollisionShape		= "Circle"; // "Circle", "Box", or "SpanArray"
+		
+		Mass			= 1.0;
+		Restitution		= 0.4;
+		GravityFactor		= 0.93;
+		Friction		= 0.75;
+		Spin			= 0.2;
+		AffectedByMagnets	= 1.0;
+		BounceAttenuation	= 0.0;
+		WaterPushForceCap	= 0.1;
+	}
+}
