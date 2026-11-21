@@ -1,9 +1,19 @@
 # CustomItems mod
 
 Gameplay mod (`client_only = false`): new weapons. Goal: the stock-crash bazooka (bouncing shell, harmless
-blast, 8 red chart fragments, 10-69 damage per chart hit), in crates and the weapon panel. **Status: asset
-pipeline done; the weapon itself is not.** Right now it only overrides `ClusterBomb.txt` so cluster
-fragments use the chart model (test; remove when the real weapon exists).
+blast, 8 red chart fragments, 10-69 damage per chart hit), in crates and the weapon panel.
+
+**Status (2026-11-20, paused for an online test with the other mods):** weapon slot 17 (PADDING1) patched in,
+script `files/.../StockCrash.txt`, damage override verified (shell 0, chart random 10-69), crates verified,
+panel pages (Page Down) work after the first turn. Aiming was broken because `WeaponCache.aim` (precomputed
+launch points) has no entries for the free slots: now rebuilt in memory per match (`h_cache_load`), built OK
+in game but aiming not re-tested yet. Open:
+- Selecting TestBazooka (slot 18, temporary test weapon) crashed the game after the cache rebuild: analyse
+  the newest `.mdmp`. Remove TestBazooka when done.
+- Page Down does nothing in the first turn; the test key Page Up (give weapons) needs several presses.
+- Page 2: unused cells show clickable green bazookas (reset via `set_button(id 0)` is wrong; hide them).
+- Panel icon for the new weapon (icons are per weapon id in the `WeaponsPanelIcons` atlas in `Gui.bdl`).
+- Weapon name/prompt text (no translation entry).
 
 ## Files
 - `customitems.cpp` - the DLL (no code yet).

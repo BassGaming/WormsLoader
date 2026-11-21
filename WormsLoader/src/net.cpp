@@ -36,7 +36,7 @@ typedef bool(__thiscall* SetLobbyData_t)(void*, u64 lobby, const char* key, cons
 typedef bool(__thiscall* SendP2P_t)(void*, u64 to, const void* d, unsigned n, int type, int ch); // [0]
 typedef bool(__thiscall* ReadP2P_t)(void*, void* d, unsigned cap, unsigned* n, u64* from, int ch); // [2]
 
-static Accessor_t SteamNetworking_, SteamMatchmaking_, SteamUser_;
+static Accessor_t SteamNetworking_, SteamMatchmaking_, SteamUser_, SteamHTTP_;
 static SteamAPI_Init_t o_Init;
 static RegisterCallback_t o_Register;
 static UnregisterCallback_t o_Unregister;
@@ -120,12 +120,27 @@ static bool relay_read(void* d, unsigned cap, unsigned* n, u64* from) {
     }
 }
 
+// ---- diagnostics: P2P traffic summary every 2 s while there is traffic ------------------------
+static unsigned s_n_sent, s_n_fail, s_n_recv;
+static double s_stat_at;
+static void stat_tick() {
+    double now = wl_time();
+    if (now - s_stat_at < 2) return;
+    if (s_n_sent || s_n_recv) wl_log("p2p: sent %u (%u failed), received %u", s_n_sent, s_n_fail, s_n_recv);
+    s_n_sent = s_n_fail = s_n_recv = 0;
+    s_stat_at = now;
+}
+
 // ---- ISteamNetworking hooks -------------------------------------------------------
 static bool __fastcall h_Send(void* self, void*, u64 to, const void* d, unsigned n, int type, int ch) {
     if (!g_block_reason.empty()) return true; // refused lobby: swallow, game times out on its own
     if (!api_filter_send(to, d, n, type)) return true;
+    stat_tick();
+    s_n_sent++;
     if (s_sock != INVALID_SOCKET) { relay_tick(); relay_frame(to, d, n); return true; }
-    return o_Send(self, to, d, n, type, ch);
+    bool ok = o_Send(self, to, d, n, type, ch);
+    if (!ok) s_n_fail++;
+    return ok;
 }
 
 static bool __fastcall h_Read(void* self, void*, void* d, unsigned cap, unsigned* n, u64* from, int ch) {
@@ -137,6 +152,8 @@ static bool __fastcall h_Read(void* self, void*, void* d, unsigned cap, unsigned
         if (!g_block_reason.empty()) continue;           // drain and drop
         if (!api_filter_recv(*from, d, *n)) continue;    // a mod dropped it
         s_last_recv = wl_time();
+        s_n_recv++;
+        stat_tick();
         return true;
     }
 }
@@ -144,34 +161,135 @@ static bool __fastcall h_Read(void* self, void*, void* d, unsigned cap, unsigned
 // ---- Steam callbacks --------------------------------------------------------------
 // Every callback object the game registers is replaced by a proxy, so mods can hide
 // callbacks (e.g. SteamServersDisconnected) from the game.
+static bool cb_pass(int id, void* p) {
+    static int logged;
+    bool pass = api_filter_steam_callback(id, p);
+    if (id != 703 && logged < 400) { // 703 = API call completed, very frequent
+        logged++; wl_log("steam callback %d%s", id, pass ? "" : " (hidden from game)"); }
+    return pass;
+}
 struct CbProxy : CCallbackBase {
     CCallbackBase* game;
-    void Run(void* p) override { if (api_filter_steam_callback(m_iCallback, p)) game->Run(p); }
-    void Run(void* p, bool io, u64 c) override { if (api_filter_steam_callback(m_iCallback, p)) game->Run(p, io, c); }
+    void Run(void* p) override { if (cb_pass(m_iCallback, p)) game->Run(p); }
+    void Run(void* p, bool io, u64 c) override { if (cb_pass(m_iCallback, p)) game->Run(p, io, c); }
     int GetCallbackSizeBytes() override { return game->GetCallbackSizeBytes(); }
 };
 static std::vector<CbProxy*> s_proxies;
 
+// One proxy per game callback object, reused when the game registers the same object again (it registers
+// every callback before AND after SteamAPI_Init). Steam then sees the same pointer twice, exactly as in vanilla;
+// a new proxy per call made Steam deliver every callback to the game twice. Proxies are never freed because
+// Steam may still hold a second registration of one (shortcut: leaks ~70 small objects, fine for a game process).
+static CbProxy* proxy_for(CCallbackBase* cb) {
+    for (CbProxy* p : s_proxies) if (p->game == cb) return p;
+    return nullptr;
+}
+
 static void __cdecl h_Register(CCallbackBase* cb, int id) {
-    CbProxy* p = new CbProxy();
-    p->game = cb;
-    p->m_iCallback = id;
-    s_proxies.push_back(p);
+    CbProxy* p = proxy_for(cb);
+    if (!p) { p = new CbProxy(); p->game = cb; s_proxies.push_back(p); }
+    p->m_iCallback = id; // the address may have been reused by another callback object
     o_Register(p, id);
     cb->m_iCallback = id;
     cb->m_nCallbackFlags |= 1; // so the game's destructor still calls Unregister
 }
 
 static void __cdecl h_Unregister(CCallbackBase* cb) {
-    for (size_t i = 0; i < s_proxies.size(); i++) {
-        if (s_proxies[i]->game != cb) continue;
-        o_Unregister(s_proxies[i]);
-        delete s_proxies[i];
-        s_proxies.erase(s_proxies.begin() + i);
-        cb->m_nCallbackFlags &= ~1;
-        return;
+    CbProxy* p = proxy_for(cb);
+    o_Unregister(p ? (CCallbackBase*)p : cb); // not ours = registered before our hook
+    cb->m_nCallbackFlags &= ~1;
+}
+
+// ---- diagnostics: the game's HTTP traffic (ISteamHTTP002) to the Team17 backend ----------------
+// Logs method + URL, header NAMES (Authorization carries the login), POST bodies, response status and bodies.
+typedef unsigned(__thiscall* HttpCreate_t)(void*, int method, const char* url);                         // [0]
+typedef bool(__thiscall* HttpHeader_t)(void*, unsigned h, const char* name, const char* value);          // [3]
+typedef bool(__thiscall* HttpParam_t)(void*, unsigned h, const char* name, const char* value);           // [4]
+typedef bool(__thiscall* HttpBody_t)(void*, unsigned h, unsigned char* buf, unsigned size);              // [12]
+typedef bool(__thiscall* HttpRawPost_t)(void*, unsigned h, const char* type, unsigned char* body, unsigned n); // [16]
+static HttpCreate_t o_HttpCreate;
+static HttpHeader_t o_HttpHeader;
+static HttpParam_t o_HttpParam;
+static HttpBody_t o_HttpBody;
+static HttpRawPost_t o_HttpRawPost;
+
+static void log_text(const char* what, unsigned h, const void* d, unsigned n) {
+    std::string t((const char*)d, n > 1500 ? 1500 : n);
+    for (char& c : t) if (c == 13 || c == 10) c = ' ';
+    wl_log("http #%u %s (%u bytes): %s", h, what, n, t.c_str());
+}
+static unsigned __fastcall h_HttpCreate(void* self, void*, int method, const char* url) {
+    static const char* kM[] = {"INVALID", "GET", "HEAD", "POST", "PUT", "DELETE", "OPTIONS"};
+    unsigned h = o_HttpCreate(self, method, url);
+    wl_log("http #%u %s %s", h, method >= 0 && method < 7 ? kM[method] : "?", url ? url : "(null)");
+    return h;
+}
+static bool __fastcall h_HttpHeader(void* self, void*, unsigned h, const char* name, const char* value) {
+    bool secret = name && !_stricmp(name, "Authorization");
+    wl_log("http #%u header %s: %s", h, name ? name : "?", secret ? "(hidden)" : value ? value : "");
+    return o_HttpHeader(self, h, name, value);
+}
+static bool __fastcall h_HttpParam(void* self, void*, unsigned h, const char* name, const char* value) {
+    wl_log("http #%u param %s=%s", h, name ? name : "?", value ? value : "");
+    return o_HttpParam(self, h, name, value);
+}
+static bool __fastcall h_HttpBody(void* self, void*, unsigned h, unsigned char* buf, unsigned size) {
+    bool ok = o_HttpBody(self, h, buf, size);
+    if (ok) log_text("response body", h, buf, size);
+    return ok;
+}
+static bool __fastcall h_HttpRawPost(void* self, void*, unsigned h, const char* type, unsigned char* body, unsigned n) {
+    log_text(type ? type : "post body", h, body, n);
+    return o_HttpRawPost(self, h, type, body, n);
+}
+// Swap one entry of an interface's vtable. NOT an inline hook: steamclient's interface methods are tiny thunks
+// that the linker folds across interfaces, so patching the code also caught other interfaces' calls (crashed
+// on lobby creation).
+static void vt_hook(void** vt, int i, void* fn, void** orig) {
+    DWORD old;
+    if (!VirtualProtect(&vt[i], sizeof(void*), PAGE_READWRITE, &old)) { wl_log("vt_hook %d failed", i); return; }
+    *orig = vt[i];
+    vt[i] = fn;
+    VirtualProtect(&vt[i], sizeof(void*), old, &old);
+}
+
+static void http_install() {
+    void* http = SteamHTTP_ ? SteamHTTP_() : nullptr;
+    if (!http) { wl_log("SteamHTTP not available"); return; }
+    void** vt = vtbl(http);
+    vt_hook(vt, 0, (void*)h_HttpCreate, (void**)&o_HttpCreate);
+    vt_hook(vt, 3, (void*)h_HttpHeader, (void**)&o_HttpHeader);
+    vt_hook(vt, 4, (void*)h_HttpParam, (void**)&o_HttpParam);
+    vt_hook(vt, 12, (void*)h_HttpBody, (void**)&o_HttpBody);
+    vt_hook(vt, 16, (void*)h_HttpRawPost, (void**)&o_HttpRawPost);
+}
+
+// Call results: HTTPRequestCompleted_t (2101) carries the status code. Each 2101 call result the game registers
+// is wrapped in a one-shot proxy that logs it and forwards; the game sees the same Run calls as before.
+typedef void(__cdecl* RegisterCR_t)(CCallbackBase*, u64);
+static RegisterCR_t o_RegisterCR, o_UnregisterCR;
+struct HttpCompleted_t { unsigned handle; u64 context; bool ok; int status; };
+struct CrProxy : CCallbackBase {
+    CCallbackBase* game; u64 call;
+    void Run(void* p) override { Run(p, false, call); }
+    void Run(void* p, bool io, u64 c) override {
+        HttpCompleted_t* r = (HttpCompleted_t*)p;
+        wl_log("http #%u completed: %s, status %d%s", r->handle, r->ok ? "ok" : "FAILED", r->status, io ? " (io failure)" : "");
+        game->Run(p, io, c);
     }
-    o_Unregister(cb); // not ours (registered before our hook)
+    int GetCallbackSizeBytes() override { return game->GetCallbackSizeBytes(); }
+};
+static std::vector<CrProxy*> s_cr; // shortcut: completed proxies are never freed (a few per request), diagnostic only
+static void __cdecl h_RegisterCR(CCallbackBase* cb, u64 call) {
+    if (cb->m_iCallback != 2101) { o_RegisterCR(cb, call); return; }
+    CrProxy* p = new CrProxy();
+    p->game = cb; p->call = call; p->m_iCallback = 2101;
+    s_cr.push_back(p);
+    o_RegisterCR(p, call);
+}
+static void __cdecl h_UnregisterCR(CCallbackBase* cb, u64 call) {
+    for (CrProxy* p : s_cr) if (p->game == cb && p->call == call) { o_UnregisterCR(p, call); return; }
+    o_UnregisterCR(cb, call);
 }
 
 // ---- mod-set handshake ------------------------------------------------------------
@@ -224,8 +342,9 @@ static bool __cdecl h_Init() {
     void* user = SteamUser_();
     ((GetSteamID_t)vtbl(user)[2])(user, &s_me);
     void* net = SteamNetworking_();
-    g_api.hook(vtbl(net)[0], (void*)h_Send, (void**)&o_Send);
-    g_api.hook(vtbl(net)[2], (void*)h_Read, (void**)&o_Read);
+    vt_hook(vtbl(net), 0, (void*)h_Send, (void**)&o_Send);
+    vt_hook(vtbl(net), 2, (void*)h_Read, (void**)&o_Read);
+    http_install();
     s_lobby_cb.m_iCallback = 504; // LobbyEnter_t
     o_Register(&s_lobby_cb, 504);
     wl_log("network layer ready, local steam id %llx", s_me);
@@ -238,6 +357,9 @@ void net_install() {
     SteamNetworking_ = (Accessor_t)GetProcAddress(s, "SteamNetworking");
     SteamMatchmaking_ = (Accessor_t)GetProcAddress(s, "SteamMatchmaking");
     SteamUser_ = (Accessor_t)GetProcAddress(s, "SteamUser");
+    SteamHTTP_ = (Accessor_t)GetProcAddress(s, "SteamHTTP");
+    g_api.hook(GetProcAddress(s, "SteamAPI_RegisterCallResult"), (void*)h_RegisterCR, (void**)&o_RegisterCR);
+    g_api.hook(GetProcAddress(s, "SteamAPI_UnregisterCallResult"), (void*)h_UnregisterCR, (void**)&o_UnregisterCR);
     g_api.hook(GetProcAddress(s, "SteamAPI_Init"), (void*)h_Init, (void**)&o_Init);
     g_api.hook(GetProcAddress(s, "SteamAPI_RegisterCallback"), (void*)h_Register, (void**)&o_Register);
     g_api.hook(GetProcAddress(s, "SteamAPI_UnregisterCallback"), (void*)h_Unregister, (void**)&o_Unregister);

@@ -3,9 +3,10 @@
 Goal: an online match survives a short connection loss instead of returning to the frontend
 ("Online disconnection occurred, returning to frontend", string only, no xref).
 
-## What v0.1.0 does
+## What v0.2.0 does
 - Settings: `enabled`, `max_outage_seconds` (10–600, default 120), `diagnose` (default on).
 - Hides Steam callbacks 102 (SteamServerConnectFailure), 103 (SteamServersDisconnected) and 1203 (P2PSessionConnectFail) from the game while a match packet arrived within `max_outage_seconds`.
+- Hides callback 506 (LobbyChatUpdate) with state Disconnected (0x4) for a player who sent a match packet within `max_outage_seconds`, and logs every 506 with its state. Test 2026-11-20: the friend lost internet ~10 s; P2P recovered, but when their Steam client logged back on, the host got a 506 and destroyed the peer link in the same millisecond (game reacts to lobby leave, stack 0x4DFA7C). Peer-side game timeout seen: 25 s without packets.
 - The game sends unreliable packets with its own reliability on top, so lost packets are resent by the game once Steam P2P comes back. The mod adds no resend layer.
 - `diagnose`: hooks the peer-link destructor `0x523750` and logs the call stack plus the seconds since the last packet from that peer. That pinpoints the game's own drop/timeout code.
 

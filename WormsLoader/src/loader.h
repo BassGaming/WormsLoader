@@ -24,12 +24,13 @@ struct Game {
     DWORD resource_mgr, bundle_svc_guid, xstring_ctor;
     const char* bundle_anchor;
     DWORD fs_open; // file system Open (vtable 0xe055cc slot 5): stdcall(fs, path, mode, IXStream**) -> HRESULT
+    DWORD server_request; // ServerAccess::Request, stdcall 8 args (matchfix.cpp)
 };
 // shortcut: Clan Wars cursor slot count/start guessed from the two seen in use (0x195aab0, 0x195b0a8);
 // find the array base if a player's cursor is missed.
 inline const Game kGames[] = {
     {"WormsClanWars", "01.83.31.37", 1403709881, 0x1730000, 0x194f560, 0x1956b50, 0x195aab0 - 3 * 0x5f8, 0x5f8, 0x195b0c0, 5,
-     0x1947a10, 0xca91b0, 0x556ac0, "/Weapons.bdl", 0x57d590},
+     0x1947a10, 0xca91b0, 0x556ac0, "/Weapons.bdl", 0x57d590, 0xa3a0a0},
 };
 constexpr int kCursorSlotsMax = 8;
 
@@ -102,6 +103,9 @@ double net_last_recv();
 // assets.cpp
 void assets_init();  // at the exe entry point, after the mod DLLs are loaded
 void assets_frame(); // game thread, every frame
+
+// matchfix.cpp
+void matchfix_init(); // at the exe entry point, after the mod DLLs are loaded
 
 // ui.cpp
 void ui_install();

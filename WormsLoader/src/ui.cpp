@@ -3,6 +3,7 @@
 // input (window messages + DirectInput) while the overlay has focus.
 #include "loader.h"
 #include <MinHook.h>
+#include <GL/gl.h>
 #define IMGUI_DEFINE_MATH_OPERATORS
 #include <imgui.h>
 #include <backends/imgui_impl_opengl2.h>
@@ -307,6 +308,62 @@ static void perf_frame(double now, double overlay) {
     spent = 0; frames = 0; since = now;
 }
 
+// The ImGui GL2 backend draws with whatever program/FBO/VBO/texture unit is bound. The game leaves its own
+// bound at swap time (ReShade happens to reset them, so without ReShade the overlay was invisible): unbind them
+// around our draw, then restore.
+typedef void(APIENTRY* GlBind_t)(GLenum, GLuint);
+typedef void(APIENTRY* GlUse_t)(GLuint);
+typedef void(APIENTRY* GlUnit_t)(GLenum);
+static void render_overlay() {
+    static HGLRC loaded;
+    static GlBind_t bind_fbo, bind_buf;
+    static GlUse_t use_prog;
+    static GlUnit_t active_tex, client_tex, disable_attrib;
+    if (loaded != s_glrc) { // extension pointers are per context
+        bind_fbo = (GlBind_t)wglGetProcAddress("glBindFramebufferEXT");
+        bind_buf = (GlBind_t)wglGetProcAddress("glBindBufferARB");
+        use_prog = (GlUse_t)wglGetProcAddress("glUseProgramObjectARB");
+        active_tex = (GlUnit_t)wglGetProcAddress("glActiveTextureARB");
+        client_tex = (GlUnit_t)wglGetProcAddress("glClientActiveTextureARB");
+        disable_attrib = (GlUnit_t)wglGetProcAddress("glDisableVertexAttribArrayARB");
+        loaded = s_glrc;
+    }
+    GLint fbo = 0, prog = 0, vbo = 0, ibo = 0, unit = 0x84C0 /*TEXTURE0*/, cunit = 0x84C0 /*TEXTURE0*/;
+    glGetIntegerv(0x8CA6 /*FRAMEBUFFER_BINDING*/, &fbo);
+    glGetIntegerv(0x8B8D /*CURRENT_PROGRAM*/, &prog);
+    glGetIntegerv(0x8894 /*ARRAY_BUFFER_BINDING*/, &vbo);
+    glGetIntegerv(0x8895 /*ELEMENT_ARRAY_BUFFER_BINDING*/, &ibo);
+    glGetIntegerv(0x84E0 /*ACTIVE_TEXTURE*/, &unit);
+    glGetIntegerv(0x84E1 /*CLIENT_ACTIVE_TEXTURE*/, &cunit);
+    if (bind_fbo) bind_fbo(0x8D40 /*FRAMEBUFFER*/, 0);
+    if (use_prog) use_prog(0);
+    if (bind_buf) { bind_buf(0x8892 /*ARRAY_BUFFER*/, 0); bind_buf(0x8893 /*ELEMENT_ARRAY_BUFFER*/, 0); }
+    if (active_tex) active_tex(0x84C0 /*TEXTURE0*/);
+    if (client_tex) client_tex(0x84C0 /*TEXTURE0*/);
+    // Everything else the game may leave set that the GL2 backend doesn't touch. Push/pop restores it for the game.
+    glPushAttrib(GL_ALL_ATTRIB_BITS);
+    glPushClientAttrib(GL_CLIENT_ALL_ATTRIB_BITS);
+    glColorMask(1, 1, 1, 1);
+    glDrawBuffer(GL_BACK);
+    glDisable(GL_ALPHA_TEST);
+    glDisable(GL_FOG);
+    glDisable(GL_TEXTURE_GEN_S); glDisable(GL_TEXTURE_GEN_T);
+    if (active_tex)
+        for (int u = 1; u < 4; u++) { active_tex(0x84C0 + u); glDisable(GL_TEXTURE_2D); glDisable(GL_TEXTURE_1D); }
+    if (active_tex) active_tex(0x84C0);
+    if (disable_attrib) for (unsigned a = 0; a < 16; a++) disable_attrib(a);
+    glMatrixMode(GL_TEXTURE); glPushMatrix(); glLoadIdentity();
+    ImGui_ImplOpenGL2_RenderDrawData(ImGui::GetDrawData());
+    glMatrixMode(GL_TEXTURE); glPopMatrix();
+    glPopClientAttrib();
+    glPopAttrib();
+    if (client_tex) client_tex(cunit);
+    if (active_tex) active_tex(unit);
+    if (bind_buf) { bind_buf(0x8892, vbo); bind_buf(0x8893, ibo); }
+    if (use_prog) use_prog(prog);
+    if (bind_fbo) bind_fbo(0x8D40, fbo);
+}
+
 static BOOL WINAPI h_Swap(HDC dc) {
     HWND hwnd = WindowFromDC(dc);
     HGLRC glrc = wglGetCurrentContext();
@@ -325,7 +382,7 @@ static BOOL WINAPI h_Swap(HDC dc) {
     draw();
     ImGui::Render();
     // Nothing visible (e.g. in a match): skip the GL state save/restore, whose glGet calls can stall the driver.
-    if (ImGui::GetDrawData()->TotalVtxCount) ImGui_ImplOpenGL2_RenderDrawData(ImGui::GetDrawData());
+    if (ImGui::GetDrawData()->TotalVtxCount) render_overlay();
     double overlay = wl_time() - t0;
     BOOL r = o_Swap(dc);
     // Mod frame callbacks run AFTER the present: a frame limiter (FpsCap) then waits before the game reads

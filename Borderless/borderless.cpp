@@ -92,7 +92,7 @@ extern "C" __declspec(dllexport) const WL_ModInfo* WL_GetModInfo() { return &kIn
 
 extern "C" __declspec(dllexport) void WL_ModEarlyInit(const WL_Api* a) {
     api = a;
-    bool* on = api->setting_bool("enabled", "Borderless fullscreen", true);
+    bool* on = api->setting_bool("enabled", "Borderless fullscreen", false);
     if (!*on) return;
     api->hook(api->exe(0x6965e0), (void*)h_DisplayOption, (void**)&o_DisplayOption);
     HMODULE u = LoadLibraryW(L"user32.dll");

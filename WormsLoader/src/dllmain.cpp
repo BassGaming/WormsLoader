@@ -98,6 +98,7 @@ static Entry_t o_entry;
 static int __cdecl h_entry() { // outside the loader lock, before the CRT and WinMain
     load_mods();
     assets_init();
+    matchfix_init();
     return o_entry();
 }
 
