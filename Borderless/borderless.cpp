@@ -22,7 +22,7 @@ static const WL_ModInfo kInfo = {
     "Borderless", "1.0.0", "WormsLoader",
     "Runs the game as a borderless window covering the whole monitor, with no display mode switch. "
     "Set the game's resolution to your desktop resolution. Takes effect on the next launch.",
-    true, // client-only: window handling only
+    true, "WormsClanWars", // client-only: window handling only
 };
 
 static RECT monitor_rect(HWND h) {
@@ -92,7 +92,7 @@ extern "C" __declspec(dllexport) const WL_ModInfo* WL_GetModInfo() { return &kIn
 
 extern "C" __declspec(dllexport) void WL_ModEarlyInit(const WL_Api* a) {
     api = a;
-    bool* on = api->setting_bool("enabled", "Borderless fullscreen", true);
+    bool* on = api->setting_bool("enabled", "Borderless fullscreen", false);
     if (!*on) return;
     api->hook(api->exe(0x6965e0), (void*)h_DisplayOption, (void**)&o_DisplayOption);
     HMODULE u = LoadLibraryW(L"user32.dll");

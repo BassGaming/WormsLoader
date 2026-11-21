@@ -8,6 +8,7 @@
 #include <mutex>
 
 std::vector<Mod*> g_mods;
+const Game* g_game;
 bool g_known_build = false;
 std::string g_game_dir;
 std::string g_modset;
@@ -57,6 +58,11 @@ static void load_mods() {
         auto info_fn = (const WL_ModInfo* (*)())GetProcAddress(mod, "WL_GetModInfo");
         const WL_ModInfo* info = info_fn ? info_fn() : nullptr;
         if (!info || !GetProcAddress(mod, "WL_ModInit")) { m->error = "missing WL_GetModInfo/WL_ModInit export"; wl_log("[%s] %s", n.c_str(), m->error.c_str()); continue; }
+        if (!info->game || (strcmp(info->game, "*") && _stricmp(info->game, g_game->id))) {
+            m->error = std::string("made for ") + (info->game ? info->game : "an older WormsLoader") + ", not " + g_game->id;
+            wl_log("[%s] %s", n.c_str(), m->error.c_str());
+            continue;
+        }
         m->module = mod;
         m->version = info->version ? info->version : "?";
         m->author = info->author ? info->author : "";
@@ -83,7 +89,7 @@ static void init_mods() {
     // Mods are sorted by name, so the string is the same on every machine with the same set.
     for (Mod* m : g_mods)
         if (m->error.empty() && !m->client_only) g_modset += m->name + "@" + m->version + ";";
-    g_modset_hash = g_modset.empty() ? 0 : fnv1a("01.83.31.37|" + g_modset);
+    g_modset_hash = g_modset.empty() ? 0 : fnv1a(std::string(g_game->build) + "|" + g_modset);
     wl_log("mod set: '%s' hash %08x", g_modset.c_str(), g_modset_hash);
 }
 
@@ -91,6 +97,8 @@ typedef int(__cdecl* Entry_t)();
 static Entry_t o_entry;
 static int __cdecl h_entry() { // outside the loader lock, before the CRT and WinMain
     load_mods();
+    assets_init();
+    matchfix_init();
     return o_entry();
 }
 
@@ -100,7 +108,9 @@ void loader_late_init() {
     if (done) return;
     done = true;
     ui_install();
-    if (g_known_build) init_mods();
+    if (g_known_build) {
+        init_mods();
+    }
 }
 
 typedef HRESULT(WINAPI* DI8Create_t)(HINSTANCE, DWORD, REFIID, LPVOID*, void*);
@@ -131,9 +141,15 @@ BOOL WINAPI DllMain(HINSTANCE self, DWORD reason, LPVOID) {
     // shortcut: build identified by PE timestamp + image size, not a file hash; good enough for Steam builds.
     auto base = (BYTE*)GetModuleHandleA(nullptr);
     auto nt = (IMAGE_NT_HEADERS*)(base + ((IMAGE_DOS_HEADER*)base)->e_lfanew);
-    g_known_build = nt->FileHeader.TimeDateStamp == kExeTimeDateStamp && nt->OptionalHeader.SizeOfImage == kExeSizeOfImage;
-    wl_log("WormsLoader starting. exe timestamp %u size %x -> %s", nt->FileHeader.TimeDateStamp,
-           nt->OptionalHeader.SizeOfImage, g_known_build ? "known build" : "UNKNOWN BUILD, mods disabled");
+    std::string exe_name = std::string(exe).substr(g_game_dir.size());
+    const Game* game = nullptr;
+    for (const Game& g : kGames)
+        if (!_stricmp((std::string(g.id) + ".exe").c_str(), exe_name.c_str())) game = &g;
+    if (game && nt->FileHeader.TimeDateStamp == game->timestamp && nt->OptionalHeader.SizeOfImage == game->image_size) g_game = game;
+    g_known_build = g_game != nullptr;
+    wl_log("WormsLoader starting. %s timestamp %u size %x -> %s %s", exe_name.c_str(), nt->FileHeader.TimeDateStamp,
+           nt->OptionalHeader.SizeOfImage, game ? game->id : "unsupported game,",
+           g_game ? g_game->build : game ? "UNKNOWN BUILD, mods disabled" : "mods disabled");
 
     MH_Initialize();
     if (g_known_build) {

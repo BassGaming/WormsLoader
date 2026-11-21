@@ -1,0 +1,499 @@
+ResourceGroups =
+{
+	Header = 
+	{	
+		Translations="";			//if any of the resource groups in this file require text then the translation file that holds that should be here
+
+		Version=20120202;
+	}
+	
+	AirStrike= 
+	{
+		Type = "EquipEnabled";
+		Enabled = true;
+	}
+
+	BananaBomb= 
+	{
+		Type = "EquipEnabled";
+		Enabled = true;
+	}
+
+	Barrel= 
+	{
+		Type = "EquipEnabled";
+		Enabled = true;
+	}
+
+	BaseballBat= 
+	{
+		Type = "EquipEnabled";
+		Enabled = true;
+	}
+
+	Bazooka= 
+	{
+		Type = "EquipEnabled";
+		Enabled = true;
+	}
+
+	BlowTorch= 
+	{
+		Type = "EquipEnabled";
+		Enabled = true;
+	}
+
+	BoggyB= 
+	{
+		Type = "EquipEnabled";
+		Enabled = true;
+	}
+
+	BunkerBuster= 
+	{
+		Type = "EquipEnabled";
+		Enabled = true;
+	}
+
+	ClusterBomb= 
+	{
+		Type = "EquipEnabled";
+		Enabled = true;
+	}
+
+	CoinCrate= 
+	{
+		Type = "EquipEnabled";
+		Enabled = true;
+	}
+
+	ConcreteDonkey= 
+	{
+		Type = "EquipEnabled";
+		Enabled = true;
+	}
+
+	DragonBall= 
+	{
+		Type = "EquipEnabled";
+		Enabled = true;
+	}
+
+	Dynamite= 
+	{
+		Type = "EquipEnabled";
+		Enabled = true;
+	}
+
+	Electromagnet= 
+	{
+		Type = "EquipEnabled";
+		Enabled = true;
+	}
+
+	ExplosionTool= 
+	{
+		Type = "EquipEnabled";
+		Enabled = true;
+	}
+
+	FirePunch= 
+	{
+		Type = "EquipEnabled";
+		Enabled = true;
+	}
+
+	FlameThrower= 
+	{
+		Type = "EquipEnabled";
+		Enabled = true;
+	}
+
+	Girder= 
+	{
+		Type = "EquipEnabled";
+		Enabled = true;
+	}
+
+	Grenade= 
+	{
+		Type = "EquipEnabled";
+		Enabled = true;
+	}
+
+	Hammer= 
+	{
+		Type = "EquipEnabled";
+		Enabled = true;
+	}
+
+	HealthCrate= 
+	{
+		Type = "EquipEnabled";
+		Enabled = true;
+	}
+
+	HolyHandGrenade= 
+	{
+		Type = "EquipEnabled";
+		Enabled = true;
+	}
+
+	HomingMissile= 
+	{
+		Type = "EquipEnabled";
+		Enabled = true;
+	}
+
+	Jetpack= 
+	{
+		Type = "EquipEnabled";
+		Enabled = true;
+	}
+
+	Kamikaze= 
+	{
+		Type = "EquipEnabled";
+		Enabled = true;
+	}
+
+	Mine= 
+	{
+		Type = "EquipEnabled";
+		Enabled = true;
+	}
+
+	Mole= 
+	{
+		Type = "EquipEnabled";
+		Enabled = true;
+	}
+
+	NinjaRope= 
+	{
+		Type = "EquipEnabled";
+		Enabled = true;
+	}
+
+	Nothing= 
+	{
+		Type = "EquipEnabled";
+		Enabled = true;
+	}
+
+	OldLady= 
+	{
+		Type = "EquipEnabled";
+		Enabled = true;
+	}
+
+	OldWoman= 
+	{
+		Type = "EquipEnabled";
+		Enabled = true;
+	}
+
+	Parachute= 
+	{
+		Type = "EquipEnabled";
+		Enabled = true;
+	}
+
+	PetrolBomb= 
+	{
+		Type = "EquipEnabled";
+		Enabled = true;
+	}
+
+	PlugHole= 
+	{
+		Type = "EquipEnabled";
+		Enabled = true;
+	}
+
+	PneumaticDrill= 
+	{
+		Type = "EquipEnabled";
+		Enabled = true;
+	}
+
+	Prod= 
+	{
+		Type = "EquipEnabled";
+		Enabled = true;
+	}
+
+	SecondaryDrop= 
+	{
+		Type = "EquipEnabled";
+		Enabled = true;
+	}
+
+	SentryGun= 
+	{
+		Type = "EquipEnabled";
+		Enabled = true;
+	}
+
+	Sheep= 
+	{
+		Type = "EquipEnabled";
+		Enabled = true;
+	}
+
+	Shotgun= 
+	{
+		Type = "EquipEnabled";
+		Enabled = true;
+	}
+
+	SkipGo= 
+	{
+		Type = "EquipEnabled";
+		Enabled = true;
+	}
+
+	StickUp= 
+	{
+		Type = "EquipEnabled";
+		Enabled = true;
+	}
+
+	SuperSheep= 
+	{
+		Type = "EquipEnabled";
+		Enabled = true;
+	}
+
+	Surrender= 
+	{
+		Type = "EquipEnabled";
+		Enabled = true;
+	}
+
+	Telekinesis= 
+	{
+		Type = "EquipEnabled";
+		Enabled = true;
+	}
+
+	Teleport= 
+	{
+		Type = "EquipEnabled";
+		Enabled = true;
+	}
+
+	TeleShield= 
+	{
+		Type = "EquipEnabled";
+		Enabled = true;
+	}
+
+	TeleSwap= 
+	{
+		Type = "EquipEnabled";
+		Enabled = true;
+	}
+
+	Ufo= 
+	{
+		Type = "EquipEnabled";
+		Enabled = true;
+	}
+
+	UtilityCrate= 
+	{
+		Type = "EquipEnabled";
+		Enabled = true;
+	}
+
+	Uzi= 
+	{
+		Type = "EquipEnabled";
+		Enabled = true;
+	}
+
+	WaterBomb= 
+	{
+		Type = "EquipEnabled";
+		Enabled = true;
+	}
+
+	WaterPistol= 
+	{
+		Type = "EquipEnabled";
+		Enabled = true;
+	}
+
+	WaterStrike= 
+	{
+		Type = "EquipEnabled";
+		Enabled = true;
+	}
+
+	WeaponCrate= 
+	{
+		Type = "EquipEnabled";
+		Enabled = true;
+	}
+
+	WormSelect= 
+	{
+		Type = "EquipEnabled";
+		Enabled = true;
+	}
+
+	Wrench= 
+	{
+		Type = "EquipEnabled";
+		Enabled = true;
+	}
+
+	// Rev 2 weapons
+
+	TeleportGun= 
+	{
+		Type = "EquipEnabled";
+		Enabled = true;
+	}
+
+	PoisonBomb= 
+	{
+		Type = "EquipEnabled";
+		Enabled = true;
+	}
+
+	MegaMortar= 
+	{
+		Type = "EquipEnabled";
+		Enabled = true;
+	}
+	
+	ControlledStrike= 
+	{
+		Type = "EquipEnabled";
+		Enabled = true;
+	}
+
+	HealthSplitter= 
+	{
+		Type = "EquipEnabled";
+		Enabled = true;
+	}
+
+	WaterJetpack= 
+	{
+		Type = "EquipEnabled";
+		Enabled = true;
+	}
+
+	TeleportGun= 
+	{
+		Type = "EquipEnabled";
+		Enabled = true;
+	}
+
+	PoisonBomb= 
+	{
+		Type = "EquipEnabled";
+		Enabled = true;
+	}
+
+	MegaMortar= 
+	{
+		Type = "EquipEnabled";
+		Enabled = true;
+	}
+
+	ControlledStrike= 
+	{
+		Type = "EquipEnabled";
+		Enabled = true;
+	}
+
+	WormCharm= 
+	{
+		Type = "EquipEnabled";
+		Enabled = true;
+	}
+
+	GraveDigger= 
+	{
+		Type = "EquipEnabled";
+		Enabled = true;
+	}
+
+	Snorkel= 
+	{
+		Type = "EquipEnabled";
+		Enabled = true;
+	}
+
+	PobjectSpawner= 
+	{
+		Type = "EquipEnabled";
+		Enabled = true;
+	}	
+
+	BuffaloOfLies= 
+	{
+		Type = "EquipEnabled";
+		Enabled = true;
+	}		
+
+	Skunk= 
+	{
+		Type = "EquipEnabled";
+		Enabled = true;
+	}		
+
+	PoisonGun= 
+	{
+		Type = "EquipEnabled";
+		Enabled = true;
+	}		
+
+	NapalmStrike= 
+	{
+		Type = "EquipEnabled";
+		Enabled = true;
+	}		
+
+	CrateStrike= 
+	{
+		Type = "EquipEnabled";
+		Enabled = true;
+	}		
+
+	Armageddon= 
+	{
+		Type = "EquipEnabled";
+		Enabled = true;
+	}		
+
+	LightningStrike= 
+	{
+		Type = "EquipEnabled";
+		Enabled = true;
+	}		
+
+	Knockout= 
+	{
+		Type = "EquipEnabled";
+		Enabled = true;
+	}		
+
+	StockCrash= 
+	{
+		Type = "EquipEnabled";
+		Enabled = true;
+	}
+
+	TestBazooka= 
+	{
+		Type = "EquipEnabled";
+		Enabled = true;
+	}
+
+}
+

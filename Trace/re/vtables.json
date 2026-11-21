@@ -1,0 +1,5045 @@
+{
+"type_info": [
+"0xc9b570"
+],
+"Anchor": [
+"0xde5eac"
+],
+"BaseBackMesh": [
+"0xde5f8c"
+],
+"BasePCTextChatDialog": [
+"0xde607c"
+],
+"bad_alloc@std": [
+"0xde606c"
+],
+"BattleReview": [
+"0xde631c"
+],
+"BovineStrikePayload": [
+"0xde63b4"
+],
+"ClanInsignia": [
+"0xde66e8"
+],
+"ControlledStrikeGadget": [
+"0xde69e4"
+],
+"CrateVital": [
+"0xde6aec"
+],
+"DynamicWaterDrainMan": [
+"0xde6d64"
+],
+"DynamicWaterEmitterMan": [
+"0xde6dc4"
+],
+"EnterWormNetChannelDialog": [
+"0xde6e80"
+],
+"XomAutoObject": [
+"0xde6e74"
+],
+"FeBaseScreen": [
+"0xde6fc4"
+],
+"FeBaseScreenHandler": [
+"0xde6ff4"
+],
+"FeClanInsigniaItemImpl": [
+"0xde7000"
+],
+"FeClanScreenHandler": [
+"0xde7030"
+],
+"FeHelpDialog": [
+"0xde7044"
+],
+"FeNewsTicker": [
+"0xde70b4"
+],
+"FePCTextChatDialog": [
+"0xde710c"
+],
+"FeScrollGadgetItem": [
+"0xde715c"
+],
+"FeStandardDialog": [
+"0xde71b0"
+],
+"FeUGCDownloadDialog": [
+"0xde726c"
+],
+"FeWeaponPanelScreen": [
+"0xde7274"
+],
+"FeWormOpButtonImpl": [
+"0xde72a4"
+],
+"RendererOptions@GFXRendererOptions": [
+"0xde7304"
+],
+"GraveDiggerGadget": [
+"0xde74b4"
+],
+"HealthSplitterGadget": [
+"0xde7644"
+],
+"HudPCTextChatDialog": [
+"0xde77d4"
+],
+"LandscapeLights": [
+"0xde7854"
+],
+"LeaderboardGameModeHandler": [
+"0xde78ac"
+],
+"MegaMortarPayload": [
+"0xde78bc"
+],
+"OnlineUGCManager": [
+"0xde7a3c"
+],
+"PhysicsChain": [
+"0xde7bcc"
+],
+"TargetCallback@PobjectSpawnerGadget": [
+"0xde7d3c"
+],
+"PobjectSpawnerGadget": [
+"0xde7c44"
+],
+"TargetHelperCallback": [
+"0xde7c3c"
+],
+"PoisonBombGadget": [
+"0xde7d44"
+],
+"PoisonBombPayload": [
+"0xde7e7c"
+],
+"ScreenAudioSettingsHandler": [
+"0xde7fac"
+],
+"ScreenBattlegroundClanEmblemHandler": [
+"0xde7fb8"
+],
+"ScreenBattlegroundCustomisationHandler": [
+"0xde7fc8"
+],
+"ScreenBattlegroundLeagueHandler": [
+"0xde7fd8"
+],
+"ScreenBattlegroundMainHandler": [
+"0xde7ff4"
+],
+"ScreenBattlegroundNewsletterHandler": [
+"0xde8004"
+],
+"ScreenBattlegroundSelectGameTypeHandler": [
+"0xde8014"
+],
+"ScreenBattlegroundUserOptionsHandler": [
+"0xde8020"
+],
+"ScreenCampaignHandler": [
+"0xde8030"
+],
+"ScreenCampaignSelectionHandler": [
+"0xde803c"
+],
+"ScreenChannelLobbyHandler": [
+"0xde805c"
+],
+"?$ValueMap@E": [
+"0xde8080"
+],
+"ScreenClanLeaderboardHandler": [
+"0xde8068"
+],
+"ScreenClanLeaderboardInfoHandler": [
+"0xde8094"
+],
+"ScreenClanRosterHandler": [
+"0xde80a4"
+],
+"ScreenClanRankedGameHandler": [
+"0xde80bc"
+],
+"ScreenClanSearchHandler": [
+"0xde80c8"
+],
+"ScreenClanSearchOrCreateOptionsHandler": [
+"0xde80e0"
+],
+"ScreenClanStatsHandler": [
+"0xde80ec"
+],
+"ScreenClansTestHandler": [
+"0xde80fc"
+],
+"ScreenClanTitleHandler": [
+"0xde8108"
+],
+"ScreenClanUnrankedGameHandler": [
+"0xde8120"
+],
+"ScreenControlsHandler": [
+"0xde8138"
+],
+"ScreenCreateMatchHandler": [
+"0xde8144"
+],
+"ScreenCreditsHandler": [
+"0xde8150"
+],
+"ScreenCustomiseHandler": [
+"0xde815c"
+],
+"ScreenDonKeystoneHandler": [
+"0xde8168"
+],
+"ScreenEditTeamHandler": [
+"0xde8174"
+],
+"ScreenFriendListHandler": [
+"0xde8188"
+],
+"ScreenGameSearchHandler": [
+"0xde81a0"
+],
+"ScreenGameSettingsHandler": [
+"0xde81b4"
+],
+"ScreenHelpandOptionsHandler": [
+"0xde81c0"
+],
+"ScreenHowToPlayHandler": [
+"0xde81cc"
+],
+"ScreenHowToPlayTemplateHandler": [
+"0xde81e0"
+],
+"ScreenHTPWeaponPanelHandler": [
+"0xde81ec"
+],
+"ScreenLandscapeEditorHandler": [
+"0xde81f8"
+],
+"ScreenLeaderboardsHandler": [
+"0xde8204"
+],
+"ScreenMainHandler": [
+"0xde8210"
+],
+"ScreenMouseHandler": [
+"0xde821c"
+],
+"ScreenMuteListHandler": [
+"0xde8228"
+],
+"ScreenNetworkLobbyHandler": [
+"0xde8238"
+],
+"ScreenPCControlsHandler": [
+"0xde8244"
+],
+"ScreenQuickGameHandler": [
+"0xde8250"
+],
+"ScreenRandomLandscapeHandler": [
+"0xde8498"
+],
+"PreviewLandData": [
+"0xde837c"
+],
+"LandData": [
+"0xde825c"
+],
+"ScreenRankedGameHandler": [
+"0xde84a4"
+],
+"ScreenReplaysHandler": [
+"0xde84b0"
+],
+"ScreenSchemeHandler": [
+"0xde84bc"
+],
+"ScreenSinglePlayerHandler": [
+"0xde84d0"
+],
+"ScreenSpeechbankHandler": [
+"0xde8528"
+],
+"ScreenTeamUniformFortHandler": [
+"0xde8534"
+],
+"ScreenTeamUniformGravestoneHandler": [
+"0xde8540"
+],
+"ScreenTeamUniformHandler": [
+"0xde854c"
+],
+"ScreenTeamUniformHelmetHandler": [
+"0xde8558"
+],
+"ScreenTeamUniformTrinketHandler": [
+"0xde8564"
+],
+"ScreenTeamUniformVDanceHandler": [
+"0xde8570"
+],
+"ScreenTitleHandler": [
+"0xde857c"
+],
+"ScreenUnrankedGameHandler": [
+"0xde8588"
+],
+"ScreenUserStatsHandler": [
+"0xde8594"
+],
+"?$ValueMap@_N": [
+"0xde85b8"
+],
+"ScreenVideoSettingsHandler": [
+"0xde85a4"
+],
+"ScreenVsGameSetupHandler": [
+"0xde85cc"
+],
+"ScreenWorkshopHandler": [
+"0xde8608"
+],
+"ScreenWormNamesHandler": [
+"0xde861c"
+],
+"ScreenWormNetLobbyHandler": [
+"0xde8640"
+],
+"ScreenXboxLiveHandler": [
+"0xde864c"
+],
+"ScriptTrigger": [
+"0xde8674"
+],
+"ScriptTriggerMan": [
+"0xde8724"
+],
+"ServerAccess": [
+"0xde877c"
+],
+"ServerDataCache": [
+"0xde87b4"
+],
+"SnorkelGadget": [
+"0xde890c"
+],
+"?$CCallResult@VUGCDownloadHandler@@URemoteStorageDownloadUGCResult_t@Steam@@@Steam": [
+"0xde8a5c"
+],
+"?$CCallResult@VUGCDownloadHandler@@URemoteStorageGetPublishedFileDetailsResult_t@Steam@@@Steam": [
+"0xde8a4c"
+],
+"CCallbackBase@Steam": [
+"0xde8a3c"
+],
+"?$CCallResult@VUGCManager@@URemoteStorageUpdatePublishedFileResult_t@Steam@@@Steam": [
+"0xde8aac"
+],
+"?$CCallResult@VUGCManager@@URemoteStorageEnumerateUserPublishedFilesResult_t@Steam@@@Steam": [
+"0xde8a9c"
+],
+"?$CCallResult@VUGCManager@@URemoteStorageEnumerateUserSubscribedFilesResult_t@Steam@@@Steam": [
+"0xde8a8c"
+],
+"?$CCallResult@VUGCManager@@URemoteStoragePublishFileResult_t@Steam@@@Steam": [
+"0xde8a7c"
+],
+"?$CCallResult@VUGCManager@@URemoteStorageFileShareResult_t@Steam@@@Steam": [
+"0xde8a6c"
+],
+"TargetCallback@TeleportGunGadget": [
+"0xde8bbc"
+],
+"TeleportGunGadget": [
+"0xde8acc"
+],
+"WaterJetpackGadget": [
+"0xde8c04"
+],
+"WormCharmPayload": [
+"0xde8d0c"
+],
+"WormCharmTossGadget": [
+"0xde8e24"
+],
+"FePickList": [
+"0xde8f38"
+],
+"FePickListDpad": [
+"0xde8f44"
+],
+"FePickListImpl": [
+"0xde8f60"
+],
+"FePickListPointer": [
+"0xde8f7c"
+],
+"FeAudioButton": [
+"0xde8f9c"
+],
+"FeBaseButtonImpl": [
+"0xde900c"
+],
+"FeButtonItemImpl": [
+"0xde906c"
+],
+"FeItemButton": [
+"0xde90dc"
+],
+"FeMultiStateButton": [
+"0xde913c"
+],
+"FeReplayButton": [
+"0xde91ac"
+],
+"FeTeamButton": [
+"0xde9224"
+],
+"FeTextButton": [
+"0xde9294"
+],
+"GadgetButton": [
+"0xde92fc"
+],
+"ToyBase": [
+"0xde936c"
+],
+"ToyCamera": [
+"0xde93f4"
+],
+"ToyCursor": [
+"0xde94c4"
+],
+"ToyLight": [
+"0xde9564"
+],
+"ToyLocator": [
+"0xde9634"
+],
+"ToyMan": [
+"0xde97f4"
+],
+"ToyMesh": [
+"0xde984c"
+],
+"ToyMoody": [
+"0xde991c"
+],
+"ToyParticle": [
+"0xde99ec"
+],
+"ToyPositioned": [
+"0xde9abc"
+],
+"ToyWorm": [
+"0xde9b5c"
+],
+"ToyWormPoser": [
+"0xde9da4"
+],
+"FeAnimMeshImpl": [
+"0xde9e28"
+],
+"FeGlobalAnimImpl": [
+"0xde9e64"
+],
+"FeListControl": [
+"0xde9e6c"
+],
+"FeWormItemImpl": [
+"0xde9e74"
+],
+"FeCredits": [
+"0xde9ea4"
+],
+"FeMenuUniformItem": [
+"0xde9ed4"
+],
+"FeScrollChildImpl": [
+"0xde9f24"
+],
+"FeScrollParent": [
+"0xde9f74"
+],
+"FeScrollSpeechbankItem": [
+"0xde9fac"
+],
+"FeScrollUniformItem": [
+"0xde9ffc"
+],
+"?$ValueMap@W4_eEquipPanelType@@": [
+"0xdea0c4"
+],
+"?$ValueMap@W4eTimeScale@ScreenLeaderboardsHandler@@": [
+"0xdea0b0"
+],
+"?$ValueMap@W4eCategory@ScreenLeaderboardsHandler@@": [
+"0xdea09c"
+],
+"?$ValueMap@W4eFilter@ScreenLeaderboardsHandler@@": [
+"0xdea088"
+],
+"?$ValueMap@PBD": [
+"0xdea074"
+],
+"?$ValueMap@W4eRoundType@@": [
+"0xdea060"
+],
+"?$ValueMap@K": [
+"0xdea04c"
+],
+"Leaf@?$XBptree@KK$0BA@": [
+"0xdea1b8"
+],
+"Core@?$XBptree@KK$0BA@": [
+"0xdea19c"
+],
+"Node@?$XBptree@KK$0BA@": [
+"0xdea180"
+],
+"?$XBptree@KK$0BA@": [
+"0xdea178"
+],
+"DebugKeyboard": [
+"0xdea16c"
+],
+"InputBinder": [
+"0xdea21c"
+],
+"InputDevice": [
+"0xdea228"
+],
+"InputMapGet": [
+"0xdea234"
+],
+"InputMapMap": [
+"0xdea258"
+],
+"InputMapper": [
+"0xdea27c"
+],
+"InputMapXor": [
+"0xdea2a0"
+],
+"InputSource": [
+"0xdea2c4"
+],
+"InputTarget": [
+"0xdea2d0"
+],
+"LocalSource@RawInputTranslator": [
+"0xdea3a0"
+],
+"RawInputTranslator": [
+"0xdea364"
+],
+"DefaultXomAppInit_t": [
+"0xdea3bc"
+],
+"GameApp": [
+"0xdea494"
+],
+"FileEventHandler": [
+"0xdea464"
+],
+"BaseParticleEffect": [
+"0xdea5b4"
+],
+"CustomDraw": [
+"0xdea634"
+],
+"EffectsHelper": [
+"0xdea6b4"
+],
+"FadeMan": [
+"0xdea6f0"
+],
+"ParticleMan": [
+"0xdea724"
+],
+"SceneScriptMan": [
+"0xdea760"
+],
+"ShadowMan": [
+"0xdea794"
+],
+"TransientParticleEffect": [
+"0xdea7cc"
+],
+"BaseEntity": [
+"0xdea824"
+],
+"BaseManager": [
+"0xdea8a4"
+],
+"BaseMesh": [
+"0xdea94c"
+],
+"GameFlow": [
+"0xdea9e4"
+],
+"TaskMan": [
+"0xdeaa3c"
+],
+"TaskObject": [
+"0xdeaab4"
+],
+"?$XomObject@UIXSerializable@@UOnHeap@XOM@@": [
+"0xdeaa90"
+],
+"BaseSound": [
+"0xdeab0c"
+],
+"SoundMan": [
+"0xdeac04"
+],
+"SoundResourceMan": [
+"0xdeac5c"
+],
+"ObjectImpl@Gui": [
+"0xdeac98"
+],
+"Leaf@?$XBptree@VHash@Gui@@V?$XtsVector@PAVTreeItemImpl@Gui@@@@$06": [
+"0xdeadd4"
+],
+"Core@?$XBptree@VHash@Gui@@V?$XtsVector@PAVTreeItemImpl@Gui@@@@$06": [
+"0xdeadb8"
+],
+"Node@?$XBptree@VHash@Gui@@V?$XtsVector@PAVTreeItemImpl@Gui@@@@$06": [
+"0xdead9c"
+],
+"Leaf@?$XBptree@PAVTreeItemImpl@Gui@@V?$XtsVector@VHash@Gui@@@@$06": [
+"0xdead80"
+],
+"Core@?$XBptree@PAVTreeItemImpl@Gui@@V?$XtsVector@VHash@Gui@@@@$06": [
+"0xdead64"
+],
+"Node@?$XBptree@PAVTreeItemImpl@Gui@@V?$XtsVector@VHash@Gui@@@@$06": [
+"0xdead48"
+],
+"?$XBptree@VHash@Gui@@V?$XtsVector@PAVTreeItemImpl@Gui@@@@$06": [
+"0xdead40"
+],
+"?$XBptree@PAVTreeItemImpl@Gui@@V?$XtsVector@VHash@Gui@@@@$06": [
+"0xdead38"
+],
+"BaseItemImpl@Gui": [
+"0xdeadf0"
+],
+"TextItemImpl@Gui": [
+"0xdeae20"
+],
+"IconItemImpl@Gui": [
+"0xdeae50"
+],
+"MeshItemImpl@Gui": [
+"0xdeae80"
+],
+"ListItemImpl@Gui": [
+"0xdeaeb0"
+],
+"GridItemImpl@Gui": [
+"0xdeaee0"
+],
+"TestItemImpl@Gui": [
+"0xdeaf10"
+],
+"FlowItemImpl@Gui": [
+"0xdeaf40"
+],
+"BaseEventImpl@Gui": [
+"0xdeaf70"
+],
+"ChatEventImpl@Gui": [
+"0xdeaf84"
+],
+"DataEventImpl@Gui": [
+"0xdeaf98"
+],
+"InputEventImpl@Gui": [
+"0xdeafac"
+],
+"ItemEventImpl@Gui": [
+"0xdeafc0"
+],
+"PositionalEventImpl@Gui": [
+"0xdeafd4"
+],
+"UserEventImpl@Gui": [
+"0xdeafe8"
+],
+"FormItemImpl@Gui": [
+"0xdeaffc"
+],
+"TreeItemImpl@Gui": [
+"0xdeb02c"
+],
+"VideoItemImpl@Gui": [
+"0xdeb044"
+],
+"TextEditItemImpl@Gui": [
+"0xdeb074"
+],
+"View@Audit": [
+"0xdeb12c"
+],
+"Buff@Audit": [
+"0xdeb118"
+],
+"ScriptEditorMan": [
+"0xdeb1c8"
+],
+"ResourceGroupMan": [
+"0xdeb1fc"
+],
+"LocalSource@UserMan": [
+"0xdeb230"
+],
+"LocalTarget@ReplayMan": [
+"0xdeb2d4"
+],
+"LocalSource@ReplayMan": [
+"0xdeb2c8"
+],
+"ReplayMan": [
+"0xdeb28c"
+],
+"ReplaySeg": [
+"0xdeb2e4"
+],
+"ReplaySet": [
+"0xdeb2f0"
+],
+"Leaf@?$XBptree@_KUGamerInfo@SaveData@@$03": [
+"0xdeb390"
+],
+"Core@?$XBptree@_KUGamerInfo@SaveData@@$03": [
+"0xdeb374"
+],
+"Node@?$XBptree@_KUGamerInfo@SaveData@@$03": [
+"0xdeb358"
+],
+"?$XBptree@_KUGamerInfo@SaveData@@$03": [
+"0xdeb350"
+],
+"SaveGameMan": [
+"0xdeb3bc"
+],
+"FileEnum@XomPlatform": [
+"0xdeb3b4"
+],
+"FileList@XomPlatform": [
+"0xdeb3ac"
+],
+"ProgressTrackerImpl@ProgressTracking": [
+"0xdeb41c"
+],
+"ProgressTracker@ProgressTracking": [
+"0xdeb3f8"
+],
+"Leaf@?$XBptree@VXString@@K$0BE@": [
+"0xdeb588"
+],
+"Core@?$XBptree@VXString@@K$0BE@": [
+"0xdeb56c"
+],
+"Node@?$XBptree@VXString@@K$0BE@": [
+"0xdeb550"
+],
+"Leaf@?$XBptree@_KV?$XomPtr@VProgressTracker@ProgressTracking@@@@$03": [
+"0xdeb534"
+],
+"Core@?$XBptree@_KV?$XomPtr@VProgressTracker@ProgressTracking@@@@$03": [
+"0xdeb518"
+],
+"Node@?$XBptree@_KV?$XomPtr@VProgressTracker@ProgressTracking@@@@$03": [
+"0xdeb4fc"
+],
+"?$XBptree@_KV?$XomPtr@VProgressTracker@ProgressTracking@@@@$03": [
+"0xdeb4f4"
+],
+"?$XBptree@VXString@@K$0BE@": [
+"0xdeb4ec"
+],
+"YesTracker@ProgressTracking": [
+"0xdeb4c8"
+],
+"NullTracker@ProgressTracking": [
+"0xdeb4a4"
+],
+"BaseMatchStats": [
+"0xdeb5a4"
+],
+"BaseRoundStats": [
+"0xdeb624"
+],
+"BaseTurnStats": [
+"0xdeb6a4"
+],
+"StatsMan": [
+"0xdeb724"
+],
+"StoryArchive": [
+"0xdeb77c"
+],
+"StoryHelper": [
+"0xdeb788"
+],
+"Leaf@?$XBptree@KPAUFastIndex@StoryReader@@$0BL@": [
+"0xdeb7d0"
+],
+"Core@?$XBptree@KPAUFastIndex@StoryReader@@$0BL@": [
+"0xdeb7b4"
+],
+"Node@?$XBptree@KPAUFastIndex@StoryReader@@$0BL@": [
+"0xdeb798"
+],
+"?$XBptree@KPAUFastIndex@StoryReader@@$0BL@": [
+"0xdeb790"
+],
+"StorySieve": [
+"0xdeb7ec"
+],
+"PhysicalEntity": [
+"0xdeb94c"
+],
+"PhysicsMan": [
+"0xdebaa4"
+],
+"PhysicsObject": [
+"0xdebc3c"
+],
+"Postmaster": [
+"0xdebd0c"
+],
+"PhysicsBench": [
+"0xdebd8c"
+],
+"WormNetJoinMatchDialog": [
+"0xdebf6c"
+],
+"BarrelDestructionBot": [
+"0xdebfb4"
+],
+"CrateCollectionBot": [
+"0xdec064"
+],
+"CrateDestructionBot": [
+"0xdec114"
+],
+"CrateInteractionBot": [
+"0xdec1c4"
+],
+"GadgetInteractionBot": [
+"0xdec274"
+],
+"Watcher@BaseGadget": [
+"0xdec3f4"
+],
+"BaseGadget": [
+"0xdec304"
+],
+"PayloadWatcher": [
+"0xdec2f0"
+],
+"BasePayload": [
+"0xdec40c"
+],
+"?$XTrie@VEquipNameMapping@@$1??$GetName@VEquipNameMapping@@@xtl@@YAPBDPAV1@@Z@xtl": [
+"0xdec76c"
+],
+"GadgetMan": [
+"0xdec78c"
+],
+"PayloadMan": [
+"0xdec7ec"
+],
+"Leaf@?$XBptree@PAVPayloadWatcher@@K$07": [
+"0xdec8f8"
+],
+"Core@?$XBptree@PAVPayloadWatcher@@K$07": [
+"0xdec8dc"
+],
+"Node@?$XBptree@PAVPayloadWatcher@@K$07": [
+"0xdec8c0"
+],
+"Leaf@?$XBptree@KPAVPayloadWatcher@@$07": [
+"0xdec8a4"
+],
+"Core@?$XBptree@KPAVPayloadWatcher@@$07": [
+"0xdec888"
+],
+"Node@?$XBptree@KPAVPayloadWatcher@@$07": [
+"0xdec86c"
+],
+"?$XBptree@PAVPayloadWatcher@@K$07": [
+"0xdec864"
+],
+"?$XBptree@KPAVPayloadWatcher@@$07": [
+"0xdec85c"
+],
+"Leaf@?$XBptree@V?$XomPtr@$$CBVDatum@XomScript@@@@K$07": [
+"0xdec9c8"
+],
+"Core@?$XBptree@V?$XomPtr@$$CBVDatum@XomScript@@@@K$07": [
+"0xdec9ac"
+],
+"Node@?$XBptree@V?$XomPtr@$$CBVDatum@XomScript@@@@K$07": [
+"0xdec990"
+],
+"Leaf@?$XBptree@KV?$XomPtr@$$CBVDatum@XomScript@@@@$07": [
+"0xdec974"
+],
+"Core@?$XBptree@KV?$XomPtr@$$CBVDatum@XomScript@@@@$07": [
+"0xdec958"
+],
+"Node@?$XBptree@KV?$XomPtr@$$CBVDatum@XomScript@@@@$07": [
+"0xdec93c"
+],
+"?$XBptree@V?$XomPtr@$$CBVDatum@XomScript@@@@K$07": [
+"0xdec934"
+],
+"?$XBptree@KV?$XomPtr@$$CBVDatum@XomScript@@@@$07": [
+"0xdec92c"
+],
+"AngledGadget": [
+"0xdec9e4"
+],
+"AutomaticFireGadget": [
+"0xdecb0c"
+],
+"BaseballBatGadget": [
+"0xdecc3c"
+],
+"Sieve@BlowTorchGadget": [
+"0xdecea0"
+],
+"BlowTorchGadget": [
+"0xdecd6c"
+],
+"TargetCallback@BoggyBGadget": [
+"0xdecfb4"
+],
+"BoggyBGadget": [
+"0xdecebc"
+],
+"TargetCallback@BombDropGadget": [
+"0xded0c4"
+],
+"BombDropGadget": [
+"0xdecfbc"
+],
+"CrateStrikeGadget": [
+"0xded0cc"
+],
+"DirectFireGadget": [
+"0xded1d4"
+],
+"DrillGadget": [
+"0xded304"
+],
+"FirePunchGadget": [
+"0xded3f4"
+],
+"TargetCallback@GirderGadget": [
+"0xded62c"
+],
+"GirderGadget": [
+"0xded52c"
+],
+"HammerGadget": [
+"0xded634"
+],
+"TargetCallback@HomingGadget": [
+"0xded89c"
+],
+"HomingGadget": [
+"0xded764"
+],
+"JetpackGadget": [
+"0xded8a4"
+],
+"KamikazeGadget": [
+"0xded994"
+],
+"KnockoutGadget": [
+"0xdeda84"
+],
+"TargetCallback@LightningStrikeGadget": [
+"0xdedcac"
+],
+"LightningStrikeGadget": [
+"0xdedbb4"
+],
+"MagnetTossGadget": [
+"0xdedcb4"
+],
+"MeleeGadget": [
+"0xdeddcc"
+],
+"MoleTossGadget": [
+"0xdedefc"
+],
+"NinjaRopeGadget": [
+"0xdee014"
+],
+"NullGadget": [
+"0xdee10c"
+],
+"ParachuteGadget": [
+"0xdee1fc"
+],
+"PlugHoleTossGadget": [
+"0xdee2ec"
+],
+"PoisonGunGadget": [
+"0xdee404"
+],
+"ProdGadget": [
+"0xdee53c"
+],
+"ProjectileGadget": [
+"0xdee66c"
+],
+"RandomStrikeGadget": [
+"0xdee7a4"
+],
+"SecondaryDropGadget": [
+"0xdee89c"
+],
+"ShotgunGadget": [
+"0xdee98c"
+],
+"SkipGoGadget": [
+"0xdeeabc"
+],
+"StickUpGadget": [
+"0xdeebac"
+],
+"SurrenderGadget": [
+"0xdeecdc"
+],
+"TargetCallback@TelekinesisGadget": [
+"0xdeeebc"
+],
+"TelekinesisGadget": [
+"0xdeedcc"
+],
+"TargetCallback@TeleportGadget": [
+"0xdeefbc"
+],
+"TeleportGadget": [
+"0xdeeec4"
+],
+"TeleShieldGadget": [
+"0xdeefc4"
+],
+"TeleSwapGadget": [
+"0xdef0bc"
+],
+"TossGadget": [
+"0xdef1b4"
+],
+"TargetCallback@UFOGadget": [
+"0xdef3ec"
+],
+"UFOGadget": [
+"0xdef2f4"
+],
+"UnpoweredProjectileGadget": [
+"0xdef3f4"
+],
+"WaterPistolGadget": [
+"0xdef52c"
+],
+"WormSelectGadget": [
+"0xdef65c"
+],
+"WrenchGadget": [
+"0xdef74c"
+],
+"AimAngleHelper": [
+"0xdef884"
+],
+"FuseTimeHelper": [
+"0xdef904"
+],
+"TargetHelper": [
+"0xdef984"
+],
+"WormSelectHelper": [
+"0xdefa04"
+],
+"TargetCallback@ExplosionToolGadget": [
+"0xdefb7c"
+],
+"ExplosionToolGadget": [
+"0xdefa8c"
+],
+"AirStrikePayload": [
+"0xdefb84"
+],
+"AnimalPayload": [
+"0xdefc9c"
+],
+"ArmageddonPayload": [
+"0xdefdfc"
+],
+"BananaBombPayload": [
+"0xdeff14"
+],
+"BazookaPayload": [
+"0xdf002c"
+],
+"BuffaloPayload": [
+"0xdf0144"
+],
+"BunkerBusterPayload": [
+"0xdf02b4"
+],
+"ClusterBombPayload": [
+"0xdf03cc"
+],
+"ConcreteDonkeyPayload": [
+"0xdf0504"
+],
+"CratePayload": [
+"0xdf061c"
+],
+"DragonBallPayload": [
+"0xdf0744"
+],
+"DynamitePayload": [
+"0xdf085c"
+],
+"ElectromagnetPayload": [
+"0xdf098c"
+],
+"EmpPayload": [
+"0xdf0aa4"
+],
+"ExplosionPayload": [
+"0xdf0bbc"
+],
+"FlameThrowerPayload": [
+"0xdf0d24"
+],
+"GrenadePayload": [
+"0xdf0e3c"
+],
+"HolyHandGrenadePayload": [
+"0xdf0f54"
+],
+"HomingPayload": [
+"0xdf106c"
+],
+"MinePayload": [
+"0xdf1184"
+],
+"MolePayload": [
+"0xdf129c"
+],
+"NapalmStrikePayload": [
+"0xdf1414"
+],
+"OldLadyPayload": [
+"0xdf152c"
+],
+"PetrolBombPayload": [
+"0xdf1694"
+],
+"PlugHolePayload": [
+"0xdf17ac"
+],
+"PoisonPayload": [
+"0x7fda9e",
+"0xdf18c4"
+],
+"ProjectilePayload": [
+"0xdf19dc"
+],
+"SentryGunPayload": [
+"0xdf1af4"
+],
+"SheepPayload": [
+"0xdf1c0c"
+],
+"SkunkPayload": [
+"0xdf1d74"
+],
+"SuperSheepPayload": [
+"0xdf1edc"
+],
+"TimeBombPayload": [
+"0xdf2044"
+],
+"WaterBombPayload": [
+"0x8c3694",
+"0xdf215c"
+],
+"WaterStrikePayload": [
+"0xdf2274"
+],
+"ActivityMan": [
+"0xdf238c"
+],
+"DynamicWaterMan": [
+"0xdf23ec"
+],
+"DynamicWaterPC": [
+"0xdf244c"
+],
+"EffectsMan": [
+"0xdf24a4"
+],
+"ExitPointMan": [
+"0xdf252c"
+],
+"ExplosionMan": [
+"0xdf2584"
+],
+"FlameMan": [
+"0xca2ee8",
+"0xdf25ec"
+],
+"SceneryMan": [
+"0xdf2644"
+],
+"WormGroupMan": [
+"0xdf269c"
+],
+"CampaignRoundEndScreen": [
+"0xdf26f4"
+],
+"KnockOutHelper": [
+"0xdf277c"
+],
+"Leaf@?$XBptree@_KULink@LogicalGuiInput@@$0P@": [
+"0xdf2844"
+],
+"Core@?$XBptree@_KULink@LogicalGuiInput@@$0P@": [
+"0xdf2828"
+],
+"Node@?$XBptree@_KULink@LogicalGuiInput@@$0P@": [
+"0xdf280c"
+],
+"?$XBptree@_KULink@LogicalGuiInput@@$0P@": [
+"0xdf2804"
+],
+"PCTextChat": [
+"0xdf2860"
+],
+"PuzzleRoundEndScreen": [
+"0xdf2894"
+],
+"RoundEndScreen": [
+"0xdf291c"
+],
+"RoundEndScreenWithTally": [
+"0xdf29a4"
+],
+"TeamLogic": [
+"0xdf2b24"
+],
+"Trackable": [
+"0xdf2ba0"
+],
+"HudBase": [
+"0xdf2bac"
+],
+"HudCommentary": [
+"0xdf2bec"
+],
+"HudCrateCollect": [
+"0xdf2c2c"
+],
+"HudDamageNumbers": [
+"0xdf2c6c"
+],
+"HudEfmvBars": [
+"0xdf2cac"
+],
+"HudEquipNumbers": [
+"0xdf2cec"
+],
+"HudEquipPanel": [
+"0xdf2d2c"
+],
+"HudFuseTime": [
+"0xdf2db4"
+],
+"HudGadgetIcon": [
+"0xdf2df4"
+],
+"HudGeneralArrow": [
+"0xdf2e34"
+],
+"HudHotSeat": [
+"0xdf2e74"
+],
+"HudMan": [
+"0xdf2ecc"
+],
+"HudPowerBar": [
+"0xdf2f24"
+],
+"HudProxy": [
+"0xdf2f64"
+],
+"HudReplay": [
+"0xdf2fe4"
+],
+"HudReticle": [
+"0xdf3024"
+],
+"HudSpeechBubbles": [
+"0xdf3064"
+],
+"HudSubtitle": [
+"0xdf30a4"
+],
+"HudTeamHealth": [
+"0xdf30e4"
+],
+"HudTimer": [
+"0xdf3124"
+],
+"HudTrackerArrows": [
+"0xdf3164"
+],
+"HudWind": [
+"0xdf31a4"
+],
+"HudWormArrow": [
+"0xdf31e4"
+],
+"HudWormHealth": [
+"0xdf3224"
+],
+"HudWormName": [
+"0xdf3264"
+],
+"HudWormSelect": [
+"0xdf32a4"
+],
+"SoundInteractionBot": [
+"0xdf32fc"
+],
+"BaseTurnEnder": [
+"0xdf33ac"
+],
+"RoundEnderCrates": [
+"0xdf342c"
+],
+"RoundEnderFastest": [
+"0xdf34ac"
+],
+"TurnLogic": [
+"0xdf352c"
+],
+"UISettings": [
+"0xdf35b4"
+],
+"BaseBriefLogic": [
+"0xdf3634"
+],
+"BaseFlowEnder": [
+"0xdf36bc"
+],
+"BaseFlowLogic": [
+"0xdf373c"
+],
+"BaseMatchEnder": [
+"0xdf37c4"
+],
+"BaseMatchLogic": [
+"0xdf3844"
+],
+"BaseRoundEnder": [
+"0xdf38cc"
+],
+"BaseRoundLogic": [
+"0xdf394c"
+],
+"BaseTurnLogic": [
+"0xdf39d4"
+],
+"LandEditorObject": [
+"0xdf3a5c"
+],
+"LandscapeEditor": [
+"0xdf3c14"
+],
+"LandEditorData": [
+"0xdf3af4"
+],
+"UserLandscapeFinishLine": [
+"0xdf3d3c"
+],
+"UserLandscapeSwitch": [
+"0xdf3d28"
+],
+"UserLandscapeCheckpoint": [
+"0xdf3d14"
+],
+"UserLandscapePlugHole": [
+"0xdf3d00"
+],
+"UserLandscapeBarrel": [
+"0xdf3cec"
+],
+"UserLandscapeMine": [
+"0xdf3cd8"
+],
+"UserLandscapeSentryGun": [
+"0xdf3cc4"
+],
+"UserLandscapeWorm": [
+"0xdf3cb0"
+],
+"UserLandscapeCrate": [
+"0xdf3ddc"
+],
+"UserLandscapeContraption": [
+"0xdf3dc8"
+],
+"UserLandscapeWaterEmitter": [
+"0xdf3db4"
+],
+"UserLandscapePhysicsLink": [
+"0xdf3da0"
+],
+"UserLandscapePhysicsObject": [
+"0xdf3d8c"
+],
+"UserLandscapeElectromagnet": [
+"0xdf3d78"
+],
+"UserLandscapeAlliedObject": [
+"0xdf3d64"
+],
+"UserLandscapeObject": [
+"0xdf3d50"
+],
+"BadCameraMan": [
+"0xdf3e94"
+],
+"BaseCamera": [
+"0xdf3eec"
+],
+"CameraMan": [
+"0xdf408c"
+],
+"CropToFitCamera": [
+"0xdf40e4"
+],
+"FreeViewCam": [
+"0xdf4204"
+],
+"IntroCam": [
+"0xdf4324"
+],
+"LocalCamera": [
+"0xdf4444"
+],
+"LocalSpectatorCam": [
+"0xdf4564"
+],
+"LogicalCamera": [
+"0xdf4684"
+],
+"ReplayCamera": [
+"0xdf47a4"
+],
+"ReplayLandscapeCam": [
+"0xdf48d4"
+],
+"ReplayStaticPosCam": [
+"0xdf4a04"
+],
+"ReplayZoomCam": [
+"0xdf4b34"
+],
+"TargetCam": [
+"0xdf4c64"
+],
+"TrackingCamera": [
+"0xdf4d84"
+],
+"?$ValueMap@W4eSuddenDeathType@@": [
+"0xdf4eb4"
+],
+"?$ValueMap@M": [
+"0xdf4ea0"
+],
+"ValueMapBase": [
+"0xdf4ec8"
+],
+"DirectorService": [
+"0xdf509c"
+],
+"TallyMan": [
+"0xdf5104"
+],
+"BackgroundMan": [
+"0xdf515c"
+],
+"BackgroundParticleEffectManager": [
+"0xdf51b4"
+],
+"BaseBackground": [
+"0xdf5234"
+],
+"Flame": [
+"0xdf52cc"
+],
+"RandomLandObjectMan": [
+"0xdf5374"
+],
+"Barrel": [
+"0xdf53cc"
+],
+"CrateCoin": [
+"0xdf54e4"
+],
+"CrateHealth": [
+"0xdf560c"
+],
+"CrateUtility": [
+"0xdf5734"
+],
+"CrateWeapon": [
+"0xdf585c"
+],
+"Girder": [
+"0xdf5984"
+],
+"GirderMan": [
+"0xdf5a54"
+],
+"AIAStarMan": [
+"0xdf5b30"
+],
+"AIPathPlanner": [
+"0xdf5b20"
+],
+"AIInfluenceMap": [
+"0xdf5b44"
+],
+"AIInfluenceMapCell": [
+"0xdf5b9c"
+],
+"AIMan": [
+"0xdf5c18"
+],
+"AIPayloadMan": [
+"0xdf5c54"
+],
+"RealtimeAIWatcher@AIProcessor": [
+"0xdf5cbc"
+],
+"GadgetWatcher": [
+"0xdf5cac"
+],
+"AIRopeMan": [
+"0xdf5ccc"
+],
+"SimulationWatcher@AIShotMan": [
+"0xdf5d04"
+],
+"LocalSource@AIWormMan": [
+"0xdf5d7c"
+],
+"TargetCallback@BaseWormPlacerLogic": [
+"0xdf5e08"
+],
+"BaseWormPlacerLogic": [
+"0xdf5d8c"
+],
+"Worm": [
+"0xdf5e14"
+],
+"WormMan": [
+"0xdf5ebc"
+],
+"WormNameGenerator": [
+"0xdf5f14"
+],
+"WormPoser": [
+"0xdf5f3c"
+],
+"WormPoserCore": [
+"0xdf5fc4"
+],
+"WormStats": [
+"0xdf604c"
+],
+"WormTracker": [
+"0xdf60cc"
+],
+"XCustomDraw": [
+"0xdf6148"
+],
+"GeneralTestEntity": [
+"0xdf616c"
+],
+"RichardsTestEntity": [
+"0xdf61ec"
+],
+"LocalTarget@NetGame": [
+"0xdf6274"
+],
+"LocalSource@NetGame": [
+"0xdf6268"
+],
+"LandGenData": [
+"0xdf6284"
+],
+"LandscapeMan": [
+"0xdf63a0"
+],
+"RandomLandscape": [
+"0xdf65d4"
+],
+"RandomLandscapeObjectMap": [
+"0xdf6610"
+],
+"RandomStereoSound": [
+"0xdf66b4"
+],
+"RandomSound": [
+"0xdf661c"
+],
+"AchvCheckNullFactory@Achievements": [
+"0xdf673c"
+],
+"AchvCheckerFactory@Achievements": [
+"0xdf6730"
+],
+"ShowOff_Checker@Achievements": [
+"0xdf692c"
+],
+"SittingPretty_Checker@Achievements": [
+"0xdf691c"
+],
+"ConfidenceBoost_Checker@Achievements": [
+"0xdf690c"
+],
+"BestClanEver_Checker@Achievements": [
+"0xdf68fc"
+],
+"ManVsWorms_Checker@Achievements": [
+"0xdf68e8"
+],
+"VeryMoreish_Checker@Achievements": [
+"0xdf68d4"
+],
+"LikingTheTaste_Checker@Achievements": [
+"0xdf68c0"
+],
+"WormForTheJob_Checker@Achievements": [
+"0xdf68b0"
+],
+"Mesmerised_Checker@Achievements": [
+"0xdf68a0"
+],
+"TempleTerror_Checker@Achievements": [
+"0xdf6890"
+],
+"NotAgain_Checker@Achievements": [
+"0xdf6880"
+],
+"HighAndDry_Checker@Achievements": [
+"0xdf6870"
+],
+"GroupUp_Checker@Achievements": [
+"0xdf6860"
+],
+"TarasInAPinkle_Checker@Achievements": [
+"0xdf6850"
+],
+"SumChecker@Achievements": [
+"0xdf683c"
+],
+"NullAchvChecker@Achievements": [
+"0xdf682c"
+],
+"AchvChecker@Achievements": [
+"0xdf681c"
+],
+"AchvManImpl@Achievements": [
+"0xdf694c"
+],
+"AchvManager@Achievements": [
+"0xdf693c"
+],
+"BaseFileEventHandler": [
+"0xdf695c"
+],
+"HudWorldTextItems": [
+"0xdf698c"
+],
+"OglGameRenderEventHandler": [
+"0xdf69cc"
+],
+"FileLoad@XomPlatform": [
+"0xdf7254"
+],
+"FileSave@XomPlatform": [
+"0xdf7358"
+],
+"PortalImpl@XomPlatform": [
+"0xdf7a60"
+],
+"ObjectImpl@XomPlatform": [
+"0xdf7ac8"
+],
+"GamerImpl@XomPlatform": [
+"0xdf7c84"
+],
+"MethodImpl@XomPlatform": [
+"0xdf7e48"
+],
+"ConfabImpl@XomPlatform": [
+"0xdf8890"
+],
+"RivalImpl@XomPlatform": [
+"0xdf8ba0"
+],
+"DataDescImpl@XomPlatform": [
+"0xdf8ccc"
+],
+"DataFormImpl@XomPlatform": [
+"0xdf8d88"
+],
+"DataPageImpl@XomPlatform": [
+"0xdf8e20"
+],
+"MatchImpl@XomPlatform": [
+"0xdf8e50"
+],
+"MatronImpl@XomPlatform": [
+"0xdf9128"
+],
+"FinderImpl@XomPlatform": [
+"0xdf9364"
+],
+"GopherImpl@XomPlatform": [
+"0xdf9418"
+],
+"OskImpl@XomPlatform": [
+"0xdf9584"
+],
+"StorageImpl@XomPlatform": [
+"0xdf9a10"
+],
+"VideoRecordingImpl@XomPlatform": [
+"0xdf9b2c"
+],
+"GameLiveStreamingImpl@XomPlatform": [
+"0xdf9c34"
+],
+"BridgeImpl@XomPlatform": [
+"0xdf9ed8"
+],
+"LoginImpl@XomPlatform": [
+"0xdf9f10"
+],
+"AwarderImpl@XomPlatform": [
+"0xdf9ff0"
+],
+"Leaf@?$XBptree@_KV?$Handle@VDataPageImpl@XomPlatform@@@XomPlatform@@$03": [
+"0xdfa18c"
+],
+"Core@?$XBptree@_KV?$Handle@VDataPageImpl@XomPlatform@@@XomPlatform@@$03": [
+"0xdfa170"
+],
+"Node@?$XBptree@_KV?$Handle@VDataPageImpl@XomPlatform@@@XomPlatform@@$03": [
+"0xdfa154"
+],
+"?$XBptree@_KV?$Handle@VDataPageImpl@XomPlatform@@@XomPlatform@@$03": [
+"0xdfa14c"
+],
+"UmpireImpl@XomPlatform": [
+"0xdfa128"
+],
+"BuddyImpl@XomPlatform": [
+"0xdfa1bc"
+],
+"DataDictImpl@XomPlatform": [
+"0xdfa2b0"
+],
+"BlockImpl@XomPlatform": [
+"0xdfa40c"
+],
+"DataSizeImpl@XomPlatform": [
+"0xdfa554"
+],
+"SwitchImpl@XomPlatform": [
+"0xdfab74"
+],
+"SwitchMsWin@XomPlatform": [
+"0xdfada4"
+],
+"FileDataImpl@XomPlatform": [
+"0xdfae00"
+],
+"StreamImpl@XomPlatform": [
+"0xdfae30"
+],
+"TargetImpl@XomPlatform": [
+"0xdfaed4"
+],
+"TargetSteam@XomPlatform": [
+"0xdfaf00"
+],
+"OnlineImpl@XomPlatform": [
+"0xdfaf38"
+],
+"CommonImpl@XomPlatform": [
+"0xdfb35c"
+],
+"?$CCallback@VOnlineSteam@XomPlatform@@UGlobalStatsReceived_t@Steam@@$0A@@Steam": [
+"0xdfdd20"
+],
+"?$CCallback@VOnlineSteam@XomPlatform@@UPS3TrophiesInstalled_t@Steam@@$0A@@Steam": [
+"0xdfdd10"
+],
+"?$CCallback@VOnlineSteam@XomPlatform@@ULeaderboardUGCSet_t@Steam@@$0A@@Steam": [
+"0xdfdd00"
+],
+"?$CCallback@VOnlineSteam@XomPlatform@@UGlobalAchievementPercentagesReady_t@Steam@@$0A@@Steam": [
+"0xdfdcf0"
+],
+"?$CCallback@VOnlineSteam@XomPlatform@@UUserAchievementIconFetched_t@Steam@@$0A@@Steam": [
+"0xdfdce0"
+],
+"?$CCallback@VOnlineSteam@XomPlatform@@UUserStatsUnloaded_t@Steam@@$0A@@Steam": [
+"0xdfdcd0"
+],
+"?$CCallback@VOnlineSteam@XomPlatform@@UNumberOfCurrentPlayers_t@Steam@@$0A@@Steam": [
+"0xdfdcc0"
+],
+"?$CCallback@VOnlineSteam@XomPlatform@@UUserAchievementStored_t@Steam@@$0A@@Steam": [
+"0xdfdcb0"
+],
+"?$CCallback@VOnlineSteam@XomPlatform@@UUserStatsStored_t@Steam@@$0A@@Steam": [
+"0xdfdca0"
+],
+"?$CCallback@VOnlineSteam@XomPlatform@@UUserStatsReceived_t@Steam@@$0A@@Steam": [
+"0xdfdc90"
+],
+"?$CCallback@VOnlineSteam@XomPlatform@@UScreenshotRequested_t@Steam@@$0A@@Steam": [
+"0xdfdc80"
+],
+"?$CCallback@VOnlineSteam@XomPlatform@@UScreenshotReady_t@Steam@@$0A@@Steam": [
+"0xdfdc70"
+],
+"?$CCallback@VOnlineSteam@XomPlatform@@URemoteStorageDownloadUGCResult_t@Steam@@$0A@@Steam": [
+"0xdfdc60"
+],
+"?$CCallback@VOnlineSteam@XomPlatform@@URemoteStorageFileShareResult_t@Steam@@$0A@@Steam": [
+"0xdfdc50"
+],
+"?$CCallback@VOnlineSteam@XomPlatform@@URemoteStorageConflictResolution_t@Steam@@$0A@@Steam": [
+"0xdfdc40"
+],
+"?$CCallback@VOnlineSteam@XomPlatform@@URemoteStorageAppSyncStatusCheck_t@Steam@@$0A@@Steam": [
+"0xdfdc30"
+],
+"?$CCallback@VOnlineSteam@XomPlatform@@URemoteStorageAppSyncProgress_t@Steam@@$0A@@Steam": [
+"0xdfdc20"
+],
+"?$CCallback@VOnlineSteam@XomPlatform@@URemoteStorageAppSyncedServer_t@Steam@@$0A@@Steam": [
+"0xdfdc10"
+],
+"?$CCallback@VOnlineSteam@XomPlatform@@URemoteStorageAppSyncedClient_t@Steam@@$0A@@Steam": [
+"0xdfdc00"
+],
+"?$CCallback@VOnlineSteam@XomPlatform@@USocketStatusCallback_t@Steam@@$0A@@Steam": [
+"0xdfdbf0"
+],
+"?$CCallback@VOnlineSteam@XomPlatform@@UP2PSessionConnectFail_t@Steam@@$0A@@Steam": [
+"0xdfdbe0"
+],
+"?$CCallback@VOnlineSteam@XomPlatform@@UP2PSessionRequest_t@Steam@@$0A@@Steam": [
+"0xdfdbd0"
+],
+"?$CCallback@VOnlineSteam@XomPlatform@@UGameStatsSessionClosed_t@Steam@@$0A@@Steam": [
+"0xdfdbc0"
+],
+"?$CCallback@VOnlineSteam@XomPlatform@@UGameStatsSessionIssued_t@Steam@@$0A@@Steam": [
+"0xdfdbb0"
+],
+"?$CCallback@VOnlineSteam@XomPlatform@@UGSStatsUnloaded_t@Steam@@$0A@@Steam": [
+"0xdfdba0"
+],
+"?$CCallback@VOnlineSteam@XomPlatform@@UGSStatsStored_t@Steam@@$0A@@Steam": [
+"0xdfdb90"
+],
+"?$CCallback@VOnlineSteam@XomPlatform@@UGSStatsReceived_t@Steam@@$0A@@Steam": [
+"0xdfdb80"
+],
+"?$CCallback@VOnlineSteam@XomPlatform@@UGSReputation_t@Steam@@$0A@@Steam": [
+"0xdfdb70"
+],
+"?$CCallback@VOnlineSteam@XomPlatform@@UGSClientGroupStatus_t@Steam@@$0A@@Steam": [
+"0xdfdb60"
+],
+"?$CCallback@VOnlineSteam@XomPlatform@@UGSGameplayStats_t@Steam@@$0A@@Steam": [
+"0xdfdb50"
+],
+"?$CCallback@VOnlineSteam@XomPlatform@@UGSPolicyResponse_t@Steam@@$0A@@Steam": [
+"0xdfdb40"
+],
+"?$CCallback@VOnlineSteam@XomPlatform@@UGSClientAchievementStatus_t@Steam@@$0A@@Steam": [
+"0xdfdb30"
+],
+"?$CCallback@VOnlineSteam@XomPlatform@@UGSClientKick_t@Steam@@$0A@@Steam": [
+"0xdfdb20"
+],
+"?$CCallback@VOnlineSteam@XomPlatform@@UGSClientDeny_t@Steam@@$0A@@Steam": [
+"0xdfdb10"
+],
+"?$CCallback@VOnlineSteam@XomPlatform@@UGSClientApprove_t@Steam@@$0A@@Steam": [
+"0xdfdb00"
+],
+"?$CCallback@VOnlineSteam@XomPlatform@@UGCMessageFailed_t@Steam@@$0A@@Steam": [
+"0xdfdaf0"
+],
+"?$CCallback@VOnlineSteam@XomPlatform@@UGCMessageAvailable_t@Steam@@$0A@@Steam": [
+"0xdfdae0"
+],
+"?$CCallback@VOnlineSteam@XomPlatform@@UPSNGameBootInviteResult_t@Steam@@$0A@@Steam": [
+"0xdfdad0"
+],
+"?$CCallback@VOnlineSteam@XomPlatform@@ULobbyCreated_t@Steam@@$0A@@Steam": [
+"0xdfdac0"
+],
+"?$CCallback@VOnlineSteam@XomPlatform@@ULobbyKicked_t@Steam@@$0A@@Steam": [
+"0xdfdab0"
+],
+"?$CCallback@VOnlineSteam@XomPlatform@@ULobbyMatchList_t@Steam@@$0A@@Steam": [
+"0xdfdaa0"
+],
+"?$CCallback@VOnlineSteam@XomPlatform@@ULobbyGameCreated_t@Steam@@$0A@@Steam": [
+"0xdfda90"
+],
+"?$CCallback@VOnlineSteam@XomPlatform@@ULobbyChatMsg_t@Steam@@$0A@@Steam": [
+"0xdfda80"
+],
+"?$CCallback@VOnlineSteam@XomPlatform@@ULobbyChatUpdate_t@Steam@@$0A@@Steam": [
+"0xdfda70"
+],
+"?$CCallback@VOnlineSteam@XomPlatform@@ULobbyDataUpdate_t@Steam@@$0A@@Steam": [
+"0xdfda60"
+],
+"?$CCallback@VOnlineSteam@XomPlatform@@ULobbyEnter_t@Steam@@$0A@@Steam": [
+"0xdfda50"
+],
+"?$CCallback@VOnlineSteam@XomPlatform@@ULobbyInvite_t@Steam@@$0A@@Steam": [
+"0xdfda40"
+],
+"?$CCallback@VOnlineSteam@XomPlatform@@UFavoritesListChanged_t@Steam@@$0A@@Steam": [
+"0xdfda30"
+],
+"?$CCallback@VOnlineSteam@XomPlatform@@UGameRichPresenceJoinRequested_t@Steam@@$0A@@Steam": [
+"0xdfda20"
+],
+"?$CCallback@VOnlineSteam@XomPlatform@@UFriendRichPresenceUpdate_t@Steam@@$0A@@Steam": [
+"0xdfda10"
+],
+"?$CCallback@VOnlineSteam@XomPlatform@@UClanOfficerListResponse_t@Steam@@$0A@@Steam": [
+"0xdfda00"
+],
+"?$CCallback@VOnlineSteam@XomPlatform@@UAvatarImageLoaded_t@Steam@@$0A@@Steam": [
+"0xdfd9f0"
+],
+"?$CCallback@VOnlineSteam@XomPlatform@@UGameLobbyJoinRequested_t@Steam@@$0A@@Steam": [
+"0xdfd9e0"
+],
+"?$CCallback@VOnlineSteam@XomPlatform@@UGameServerChangeRequested_t@Steam@@$0A@@Steam": [
+"0xdfd9d0"
+],
+"?$CCallback@VOnlineSteam@XomPlatform@@UGameOverlayActivated_t@Steam@@$0A@@Steam": [
+"0xdfd9c0"
+],
+"?$CCallback@VOnlineSteam@XomPlatform@@UEncryptedAppTicketResponse_t@Steam@@$0A@@Steam": [
+"0xdfd9b0"
+],
+"?$CCallback@VOnlineSteam@XomPlatform@@UMicroTxnAuthorizationResponse_t@Steam@@$0A@@Steam": [
+"0xdfd9a0"
+],
+"?$CCallback@VOnlineSteam@XomPlatform@@UValidateAuthTicketResponse_t@Steam@@$0A@@Steam": [
+"0xdfd990"
+],
+"?$CCallback@VOnlineSteam@XomPlatform@@UIPCFailure_t@Steam@@$0A@@Steam": [
+"0xdfd980"
+],
+"?$CCallback@VOnlineSteam@XomPlatform@@UClientGameServerDeny_t@Steam@@$0A@@Steam": [
+"0xdfd970"
+],
+"?$CCallback@VOnlineSteam@XomPlatform@@USteamServersDisconnected_t@Steam@@$0A@@Steam": [
+"0xdfd960"
+],
+"?$CCallback@VOnlineSteam@XomPlatform@@USteamServerConnectFailure_t@Steam@@$0A@@Steam": [
+"0xdfd950"
+],
+"?$CCallback@VOnlineSteam@XomPlatform@@USteamServersConnected_t@Steam@@$0A@@Steam": [
+"0xdfd940"
+],
+"?$CCallback@VOnlineSteam@XomPlatform@@URegisterActivationCodeResponse_t@Steam@@$0A@@Steam": [
+"0xdfd930"
+],
+"?$CCallback@VOnlineSteam@XomPlatform@@UDlcInstalled_t@Steam@@$0A@@Steam": [
+"0xdfd920"
+],
+"?$CCallback@VOnlineSteam@XomPlatform@@UCheckFileSignature_t@Steam@@$0A@@Steam": [
+"0xdfd910"
+],
+"?$CCallback@VOnlineSteam@XomPlatform@@USteamShutdown_t@Steam@@$0A@@Steam": [
+"0xdfd900"
+],
+"?$CCallback@VOnlineSteam@XomPlatform@@USteamAPICallCompleted_t@Steam@@$0A@@Steam": [
+"0xdfd8f0"
+],
+"?$CCallback@VOnlineSteam@XomPlatform@@ULowBatteryPower_t@Steam@@$0A@@Steam": [
+"0xdfd8e0"
+],
+"?$CCallback@VOnlineSteam@XomPlatform@@UIPCountry_t@Steam@@$0A@@Steam": [
+"0xdfd8d0"
+],
+"OnlineSteam@XomPlatform": [
+"0xdfd8ac"
+],
+"?$CCallResult@VPersistSteam@XomPlatform@@UHTTPRequestCompleted_t@Steam@@@Steam": [
+"0xdfe060"
+],
+"PersistSteam@XomPlatform": [
+"0xdfe03c"
+],
+"?$CCallback@VSystemSteam@XomPlatform@@UGlobalStatsReceived_t@Steam@@$0A@@Steam": [
+"0xdfe8a4"
+],
+"?$CCallback@VSystemSteam@XomPlatform@@UPS3TrophiesInstalled_t@Steam@@$0A@@Steam": [
+"0xdfe894"
+],
+"?$CCallback@VSystemSteam@XomPlatform@@ULeaderboardUGCSet_t@Steam@@$0A@@Steam": [
+"0xdfe884"
+],
+"?$CCallback@VSystemSteam@XomPlatform@@UGlobalAchievementPercentagesReady_t@Steam@@$0A@@Steam": [
+"0xdfe874"
+],
+"?$CCallback@VSystemSteam@XomPlatform@@UUserAchievementIconFetched_t@Steam@@$0A@@Steam": [
+"0xdfe864"
+],
+"?$CCallback@VSystemSteam@XomPlatform@@UUserStatsUnloaded_t@Steam@@$0A@@Steam": [
+"0xdfe854"
+],
+"?$CCallback@VSystemSteam@XomPlatform@@UNumberOfCurrentPlayers_t@Steam@@$0A@@Steam": [
+"0xdfe844"
+],
+"?$CCallback@VSystemSteam@XomPlatform@@UUserAchievementStored_t@Steam@@$0A@@Steam": [
+"0xdfe834"
+],
+"?$CCallback@VSystemSteam@XomPlatform@@UUserStatsStored_t@Steam@@$0A@@Steam": [
+"0xdfe824"
+],
+"?$CCallback@VSystemSteam@XomPlatform@@UUserStatsReceived_t@Steam@@$0A@@Steam": [
+"0xdfe814"
+],
+"?$CCallback@VSystemSteam@XomPlatform@@UScreenshotRequested_t@Steam@@$0A@@Steam": [
+"0xdfe804"
+],
+"?$CCallback@VSystemSteam@XomPlatform@@UScreenshotReady_t@Steam@@$0A@@Steam": [
+"0xdfe7f4"
+],
+"?$CCallback@VSystemSteam@XomPlatform@@URemoteStorageDownloadUGCResult_t@Steam@@$0A@@Steam": [
+"0xdfe7e4"
+],
+"?$CCallback@VSystemSteam@XomPlatform@@URemoteStorageFileShareResult_t@Steam@@$0A@@Steam": [
+"0xdfe7d4"
+],
+"?$CCallback@VSystemSteam@XomPlatform@@URemoteStorageConflictResolution_t@Steam@@$0A@@Steam": [
+"0xdfe7c4"
+],
+"?$CCallback@VSystemSteam@XomPlatform@@URemoteStorageAppSyncStatusCheck_t@Steam@@$0A@@Steam": [
+"0xdfe7b4"
+],
+"?$CCallback@VSystemSteam@XomPlatform@@URemoteStorageAppSyncProgress_t@Steam@@$0A@@Steam": [
+"0xdfe7a4"
+],
+"?$CCallback@VSystemSteam@XomPlatform@@URemoteStorageAppSyncedServer_t@Steam@@$0A@@Steam": [
+"0xdfe794"
+],
+"?$CCallback@VSystemSteam@XomPlatform@@URemoteStorageAppSyncedClient_t@Steam@@$0A@@Steam": [
+"0xdfe784"
+],
+"?$CCallback@VSystemSteam@XomPlatform@@USocketStatusCallback_t@Steam@@$0A@@Steam": [
+"0xdfe774"
+],
+"?$CCallback@VSystemSteam@XomPlatform@@UP2PSessionConnectFail_t@Steam@@$0A@@Steam": [
+"0xdfe764"
+],
+"?$CCallback@VSystemSteam@XomPlatform@@UP2PSessionRequest_t@Steam@@$0A@@Steam": [
+"0xdfe754"
+],
+"?$CCallback@VSystemSteam@XomPlatform@@UGameStatsSessionClosed_t@Steam@@$0A@@Steam": [
+"0xdfe744"
+],
+"?$CCallback@VSystemSteam@XomPlatform@@UGameStatsSessionIssued_t@Steam@@$0A@@Steam": [
+"0xdfe734"
+],
+"?$CCallback@VSystemSteam@XomPlatform@@UGSStatsUnloaded_t@Steam@@$0A@@Steam": [
+"0xdfe724"
+],
+"?$CCallback@VSystemSteam@XomPlatform@@UGSStatsStored_t@Steam@@$0A@@Steam": [
+"0xdfe714"
+],
+"?$CCallback@VSystemSteam@XomPlatform@@UGSStatsReceived_t@Steam@@$0A@@Steam": [
+"0xdfe704"
+],
+"?$CCallback@VSystemSteam@XomPlatform@@UGSReputation_t@Steam@@$0A@@Steam": [
+"0xdfe6f4"
+],
+"?$CCallback@VSystemSteam@XomPlatform@@UGSClientGroupStatus_t@Steam@@$0A@@Steam": [
+"0xdfe6e4"
+],
+"?$CCallback@VSystemSteam@XomPlatform@@UGSGameplayStats_t@Steam@@$0A@@Steam": [
+"0xdfe6d4"
+],
+"?$CCallback@VSystemSteam@XomPlatform@@UGSPolicyResponse_t@Steam@@$0A@@Steam": [
+"0xdfe6c4"
+],
+"?$CCallback@VSystemSteam@XomPlatform@@UGSClientAchievementStatus_t@Steam@@$0A@@Steam": [
+"0xdfe6b4"
+],
+"?$CCallback@VSystemSteam@XomPlatform@@UGSClientKick_t@Steam@@$0A@@Steam": [
+"0xdfe6a4"
+],
+"?$CCallback@VSystemSteam@XomPlatform@@UGSClientDeny_t@Steam@@$0A@@Steam": [
+"0xdfe694"
+],
+"?$CCallback@VSystemSteam@XomPlatform@@UGSClientApprove_t@Steam@@$0A@@Steam": [
+"0xdfe684"
+],
+"?$CCallback@VSystemSteam@XomPlatform@@UGCMessageFailed_t@Steam@@$0A@@Steam": [
+"0xdfe674"
+],
+"?$CCallback@VSystemSteam@XomPlatform@@UGCMessageAvailable_t@Steam@@$0A@@Steam": [
+"0xdfe664"
+],
+"?$CCallback@VSystemSteam@XomPlatform@@UPSNGameBootInviteResult_t@Steam@@$0A@@Steam": [
+"0xdfe654"
+],
+"?$CCallback@VSystemSteam@XomPlatform@@ULobbyCreated_t@Steam@@$0A@@Steam": [
+"0xdfe644"
+],
+"?$CCallback@VSystemSteam@XomPlatform@@ULobbyKicked_t@Steam@@$0A@@Steam": [
+"0xdfe634"
+],
+"?$CCallback@VSystemSteam@XomPlatform@@ULobbyMatchList_t@Steam@@$0A@@Steam": [
+"0xdfe624"
+],
+"?$CCallback@VSystemSteam@XomPlatform@@ULobbyGameCreated_t@Steam@@$0A@@Steam": [
+"0xdfe614"
+],
+"?$CCallback@VSystemSteam@XomPlatform@@ULobbyChatMsg_t@Steam@@$0A@@Steam": [
+"0xdfe604"
+],
+"?$CCallback@VSystemSteam@XomPlatform@@ULobbyChatUpdate_t@Steam@@$0A@@Steam": [
+"0xdfe5f4"
+],
+"?$CCallback@VSystemSteam@XomPlatform@@ULobbyDataUpdate_t@Steam@@$0A@@Steam": [
+"0xdfe5e4"
+],
+"?$CCallback@VSystemSteam@XomPlatform@@ULobbyEnter_t@Steam@@$0A@@Steam": [
+"0xdfe5d4"
+],
+"?$CCallback@VSystemSteam@XomPlatform@@ULobbyInvite_t@Steam@@$0A@@Steam": [
+"0xdfe5c4"
+],
+"?$CCallback@VSystemSteam@XomPlatform@@UFavoritesListChanged_t@Steam@@$0A@@Steam": [
+"0xdfe5b4"
+],
+"?$CCallback@VSystemSteam@XomPlatform@@UGameRichPresenceJoinRequested_t@Steam@@$0A@@Steam": [
+"0xdfe5a4"
+],
+"?$CCallback@VSystemSteam@XomPlatform@@UFriendRichPresenceUpdate_t@Steam@@$0A@@Steam": [
+"0xdfe594"
+],
+"?$CCallback@VSystemSteam@XomPlatform@@UClanOfficerListResponse_t@Steam@@$0A@@Steam": [
+"0xdfe584"
+],
+"?$CCallback@VSystemSteam@XomPlatform@@UAvatarImageLoaded_t@Steam@@$0A@@Steam": [
+"0xdfe574"
+],
+"?$CCallback@VSystemSteam@XomPlatform@@UGameLobbyJoinRequested_t@Steam@@$0A@@Steam": [
+"0xdfe564"
+],
+"?$CCallback@VSystemSteam@XomPlatform@@UGameServerChangeRequested_t@Steam@@$0A@@Steam": [
+"0xdfe554"
+],
+"?$CCallback@VSystemSteam@XomPlatform@@UGameOverlayActivated_t@Steam@@$0A@@Steam": [
+"0xdfe544"
+],
+"?$CCallback@VSystemSteam@XomPlatform@@UEncryptedAppTicketResponse_t@Steam@@$0A@@Steam": [
+"0xdfe534"
+],
+"?$CCallback@VSystemSteam@XomPlatform@@UMicroTxnAuthorizationResponse_t@Steam@@$0A@@Steam": [
+"0xdfe524"
+],
+"?$CCallback@VSystemSteam@XomPlatform@@UValidateAuthTicketResponse_t@Steam@@$0A@@Steam": [
+"0xdfe514"
+],
+"?$CCallback@VSystemSteam@XomPlatform@@UIPCFailure_t@Steam@@$0A@@Steam": [
+"0xdfe504"
+],
+"?$CCallback@VSystemSteam@XomPlatform@@UClientGameServerDeny_t@Steam@@$0A@@Steam": [
+"0xdfe4f4"
+],
+"?$CCallback@VSystemSteam@XomPlatform@@USteamServersDisconnected_t@Steam@@$0A@@Steam": [
+"0xdfe4e4"
+],
+"?$CCallback@VSystemSteam@XomPlatform@@USteamServerConnectFailure_t@Steam@@$0A@@Steam": [
+"0xdfe4d4"
+],
+"?$CCallback@VSystemSteam@XomPlatform@@USteamServersConnected_t@Steam@@$0A@@Steam": [
+"0xdfe4c4"
+],
+"?$CCallback@VSystemSteam@XomPlatform@@URegisterActivationCodeResponse_t@Steam@@$0A@@Steam": [
+"0xdfe4b4"
+],
+"?$CCallback@VSystemSteam@XomPlatform@@UDlcInstalled_t@Steam@@$0A@@Steam": [
+"0xdfe4a4"
+],
+"?$CCallback@VSystemSteam@XomPlatform@@UCheckFileSignature_t@Steam@@$0A@@Steam": [
+"0xdfe494"
+],
+"?$CCallback@VSystemSteam@XomPlatform@@USteamShutdown_t@Steam@@$0A@@Steam": [
+"0xdfe484"
+],
+"?$CCallback@VSystemSteam@XomPlatform@@USteamAPICallCompleted_t@Steam@@$0A@@Steam": [
+"0xdfe474"
+],
+"?$CCallback@VSystemSteam@XomPlatform@@ULowBatteryPower_t@Steam@@$0A@@Steam": [
+"0xdfe464"
+],
+"?$CCallback@VSystemSteam@XomPlatform@@UIPCountry_t@Steam@@$0A@@Steam": [
+"0xdfe454"
+],
+"SystemSteam@XomPlatform": [
+"0xdfe430"
+],
+"SocketTarg@XomPlatform": [
+"0xdffda0"
+],
+"SocketSteam@XomPlatform": [
+"0xdffe58"
+],
+"?$CCallResult@VOnlineSteamLeaderboard@XomPlatform@@ULeaderboardScoresDownloaded_t@Steam@@@Steam": [
+"0xe005fc"
+],
+"?$CCallResult@VOnlineSteamLeaderboard@XomPlatform@@ULeaderboardScoreUploaded_t@Steam@@@Steam": [
+"0xe005ec"
+],
+"?$CCallResult@VOnlineSteamLeaderboard@XomPlatform@@ULeaderboardFindResult_t@Steam@@@Steam": [
+"0xe005dc"
+],
+"OnlineSteamLeaderboard@XomPlatform": [
+"0xe005d4"
+],
+"ConfabTarg@XomPlatform": [
+"0xe01134"
+],
+"LooperTarg@XomPlatform": [
+"0xe011b4"
+],
+"DataBuffImpl@XomPlatform": [
+"0xe01214"
+],
+"PersistImpl@XomPlatform": [
+"0xe01258"
+],
+"SystemImpl@XomPlatform": [
+"0xe01290"
+],
+"WindowTarg@XomPlatform": [
+"0xe013b0"
+],
+"RemoteTarg@XomPlatform": [
+"0xe01588"
+],
+"Writer@Json": [
+"0xe01954"
+],
+"?$basic_stringbuf@DU?$char_traits@D@std@@V?$allocator@D@2@@std": [
+"0xe01904"
+],
+"StyledWriter@Json": [
+"0xe018f8"
+],
+"FastWriter@Json": [
+"0xe018ec"
+],
+"Datum@XomScript": [
+"0xe01a2c"
+],
+"ArenaInst@XomScript": [
+"0xe01a4c"
+],
+"Arena@Chunk@XomScript": [
+"0xe01a34"
+],
+"Lexer@XomScript": [
+"0xe01a64"
+],
+"Leaf@?$XBptree@_KULandNormalEntry@BaseLandscape@@$03": [
+"0xe01ab8"
+],
+"Core@?$XBptree@_KULandNormalEntry@BaseLandscape@@$03": [
+"0xe01a9c"
+],
+"Node@?$XBptree@_KULandNormalEntry@BaseLandscape@@$03": [
+"0xe01a80"
+],
+"?$XBptree@_KULandNormalEntry@BaseLandscape@@$03": [
+"0xe01a78"
+],
+"BaseLandscape": [
+"0xe01a6c"
+],
+"XPCBitmapLandscape": [
+"0xe01c10"
+],
+"XPC3DLandscape": [
+"0xe01bec"
+],
+"XBitmapLandscape": [
+"0xe01c80"
+],
+"X3DLandscape": [
+"0xe01c5c"
+],
+"XXenonBitmapLandscape": [
+"0xe01cf0"
+],
+"XXenon3DLandscape": [
+"0xe01ccc"
+],
+"FieldInfo@XBase": [
+"0xe01f74"
+],
+"MemberInfo@XBase": [
+"0xe01f58"
+],
+"TypeInfo@XBase": [
+"0xe01f04"
+],
+"XomClass": [
+"0xe02b2c"
+],
+"?$XomObject@UIXExtendedStream@@UOnHeap@XOM@@": [
+"0xe02c74"
+],
+"XFile": [
+"0xe02c44"
+],
+"StreamReader": [
+"0xe02d44"
+],
+"?$XomObject@UIXStream@@UOnHeap@XOM@@": [
+"0xe02de8"
+],
+"XBufferedStream": [
+"0xe02dbc"
+],
+"XStaticStream": [
+"0xe02fa0"
+],
+"?$XomObject@UIXMemoryMappedStream@@UOnHeap@XOM@@": [
+"0xe02f74"
+],
+"XMemoryStream": [
+"0xe02f48"
+],
+"StreamWriter": [
+"0xe03500"
+],
+"XFakeStream": [
+"0xe03754"
+],
+"XFourCCTypeInfo@XBase": [
+"0xe041fc"
+],
+"StringTypeInfo@XBase": [
+"0xe041a4"
+],
+"Bitfield64TypeInfo@XBase": [
+"0xe0414c"
+],
+"Bitfield32TypeInfo@XBase": [
+"0xe040f4"
+],
+"InterfaceTypeInfo@XBase": [
+"0xe0409c"
+],
+"PointerTypeInfo@XBase": [
+"0xe04044"
+],
+"EnumTypeInfo@XBase": [
+"0xe03fec"
+],
+"Float64TypeInfo@XBase": [
+"0xe03f94"
+],
+"Float32TypeInfo@XBase": [
+"0xe03f3c"
+],
+"Uint64TypeInfo@XBase": [
+"0xe03ee4"
+],
+"Int64TypeInfo@XBase": [
+"0xe03e8c"
+],
+"Uint32TypeInfo@XBase": [
+"0xe03e34"
+],
+"Int32TypeInfo@XBase": [
+"0xe03ddc"
+],
+"Uint16TypeInfo@XBase": [
+"0xe03d84"
+],
+"Int16TypeInfo@XBase": [
+"0xe03d2c"
+],
+"Uint8TypeInfo@XBase": [
+"0xe03cd4"
+],
+"Int8TypeInfo@XBase": [
+"0xe03c7c"
+],
+"BooleanTypeInfo@XBase": [
+"0xe03c24"
+],
+"VoidTypeInfo@XBase": [
+"0xe03bcc"
+],
+"PrimitiveTypeInfo@XBase": [
+"0xe03b74"
+],
+"?$XomObject@UIXommo@@UOnHeap@XOM@@": [
+"0xe0444c"
+],
+"Xommo": [
+"0xe043bc"
+],
+"XDefaultFileSystemStorage": [
+"0xe0478c"
+],
+"?$XomObject@UIXStorage@@UOnHeap@XOM@@": [
+"0xe0473c"
+],
+"XFileSystemStream": [
+"0xe04710"
+],
+"XFileSystemStorage": [
+"0xe046c4"
+],
+"?$XomObject@UIXSequentialStream@@UOnHeapNoDestroy@XOM@@": [
+"0xe048d0"
+],
+"XTimeStream": [
+"0xe048b4"
+],
+"XEventLogStream": [
+"0xe04898"
+],
+"XLogStream": [
+"0xe0487c"
+],
+"XPrefixStream": [
+"0xe04860"
+],
+"?$XomObject@UIXStream@@UOnStackNoRefCnt@XOM@@": [
+"0xe049ac"
+],
+"StaticNullStream": [
+"0xe04980"
+],
+"XNullStream": [
+"0xe04954"
+],
+"XDebugOutStream": [
+"0xe04af4"
+],
+"XMultiStream": [
+"0xe04b50"
+],
+"?$XomObject@UIXDxFieldManager@@UOnHeap@XOM@@": [
+"0xe04ce0"
+],
+"XomSingletonClass": [
+"0xe04c64"
+],
+"XDxFieldManager": [
+"0xe04c2c"
+],
+"?$_signal_base@Vsingle_threaded@sigslot@@@sigslot": [
+"0xe04e28"
+],
+"?$_signal_base1@PBVXomClass@@Vsingle_threaded@sigslot@@@sigslot": [
+"0xe04e10"
+],
+"?$signal1@PBVXomClass@@Vsingle_threaded@sigslot@@@sigslot": [
+"0xe04df8"
+],
+"single_threaded@sigslot": [
+"0xe04de8"
+],
+"?$XomObject@UIXPublisher@@UOnHeap@XOM@@": [
+"0xe04ea0"
+],
+"XRootPublisher": [
+"0xe04e80"
+],
+"XValidatingObjectInputStream": [
+"0xe04f0c"
+],
+"?$XomObject@UIXBrowseManager@@UOnHeap@XOM@@": [
+"0xe0508c"
+],
+"XBrowseManager": [
+"0xe05044"
+],
+"XValidatingObjectOutputStream": [
+"0xe051b4"
+],
+"?$XomObject@UIXDataBuffer@@UOnHeap@XOM@@": [
+"0xe052ec"
+],
+"XCircularBuffer": [
+"0xe052b4"
+],
+"?$XomObject@UIXObjectOutputStream@@UOnHeap@XOM@@": [
+"0xe054bc"
+],
+"XBinaryObjectOut": [
+"0xe053fc"
+],
+"?$XomObject@UIXMultiStorage@@UOnHeap@XOM@@": [
+"0xe05634"
+],
+"XMultiStorage": [
+"0xe055cc"
+],
+"?$XomObject@UIXCallbackPublisher@@UOnHeap@XOM@@": [
+"0xe056f8"
+],
+"XCallbackPublisher": [
+"0xe056d4"
+],
+"?$XomObject@UIXTypeConverter@@UOnHeap@XOM@@": [
+"0xe05798"
+],
+"XTypeConverter": [
+"0xe0576c"
+],
+"?$XomObject@UIXObjectInputStream@@UOnHeap@XOM@@": [
+"0xe05a0c"
+],
+"XBinaryObjectIn": [
+"0xe0592c"
+],
+"?$XDxDescriptorImpl@UIXDxRefDescriptor@@PAUIXUnknown@@": [
+"0xe05fa0"
+],
+"?$XomObject@V?$XDxSetGetDescriptorImpl@UIXDxRefDescriptor@@PAUIXUnknown@@@@UOnHeap@XOM@@": [
+"0xe05f68"
+],
+"?$XDxSetGetDescriptorImpl@UIXDxRefDescriptor@@PAUIXUnknown@@": [
+"0xe05f30"
+],
+"XDxRefDescriptor": [
+"0xe05ef8"
+],
+"?$XDxDescriptorImpl@UIXDxGuidDescriptor@@U_GUID@@": [
+"0xe05ec0"
+],
+"?$XomObject@V?$XDxSetGetDescriptorImpl@UIXDxGuidDescriptor@@U_GUID@@@@UOnHeap@XOM@@": [
+"0xe05e88"
+],
+"?$XDxSetGetDescriptorImpl@UIXDxGuidDescriptor@@U_GUID@@": [
+"0xe05e50"
+],
+"XDxGuidDescriptor": [
+"0xe05e18"
+],
+"?$XDxDescriptorImpl@UIXDxUint32Descriptor@@K": [
+"0xe05de0"
+],
+"?$XomObject@V?$XDxSetGetDescriptorImpl@UIXDxUint32Descriptor@@K@@UOnHeap@XOM@@": [
+"0xe05da8"
+],
+"?$XDxSetGetDescriptorImpl@UIXDxUint32Descriptor@@K": [
+"0xe05d70"
+],
+"XDxUint32Descriptor": [
+"0xe05d38"
+],
+"?$XDxDescriptorImpl@UIXDxInt32Descriptor@@J": [
+"0xe05d00"
+],
+"?$XomObject@V?$XDxSetGetDescriptorImpl@UIXDxInt32Descriptor@@J@@UOnHeap@XOM@@": [
+"0xe05cc8"
+],
+"?$XDxSetGetDescriptorImpl@UIXDxInt32Descriptor@@J": [
+"0xe05c90"
+],
+"XDxInt32Descriptor": [
+"0xe05c58"
+],
+"?$XDxDescriptorImpl@UIXDxBoolDescriptor@@_N": [
+"0xe05c20"
+],
+"?$XomObject@V?$XDxSetGetDescriptorImpl@UIXDxBoolDescriptor@@_N@@UOnHeap@XOM@@": [
+"0xe05be8"
+],
+"?$XDxSetGetDescriptorImpl@UIXDxBoolDescriptor@@_N": [
+"0xe05bb0"
+],
+"XDxBoolDescriptor": [
+"0xe05b78"
+],
+"XLafStream": [
+"0xe0619c"
+],
+"XEntityClass": [
+"0xe061d4"
+],
+"Service": [
+"0xe06258"
+],
+"XServiceClass": [
+"0xe0629c"
+],
+"BaseTask": [
+"0xe063d4"
+],
+"TaskDeathMessage": [
+"0xe06944"
+],
+"TaskBirthMessage": [
+"0x8d0632",
+"0x8d0a02",
+"0xe06938"
+],
+"Message": [
+"0xe0692c"
+],
+"TaskManager": [
+"0xe068f8"
+],
+"?$XomObject@UIXTypedObject@@UOnHeap@XOM@@": [
+"0xe068e0"
+],
+"AccelerometerEventMessage": [
+"0xe06a14"
+],
+"PointerEventMessage": [
+"0xe06a08"
+],
+"MouseEventMessage": [
+"0xe069fc"
+],
+"JoystickPovMessage": [
+"0xe069f0"
+],
+"JoystickAxisMessage": [
+"0xe069e4"
+],
+"JoystickButtonMessage": [
+"0xe069d8"
+],
+"KeyboardMessage": [
+"0xe069cc"
+],
+"StatusMessage": [
+"0xe069c0"
+],
+"InputService": [
+"0xe06984"
+],
+"TimerService": [
+"0xe06a7c"
+],
+"Entity": [
+"0xe06ab8"
+],
+"LogicEntity": [
+"0xe06b70"
+],
+"XLogicEntityClass": [
+"0xe06bbc"
+],
+"TelnetService": [
+"0xe06c5c"
+],
+"MessageRegistrationService": [
+"0xe06f1c"
+],
+"MessageInterest": [
+"0xe06f04"
+],
+"XMessageRelayService": [
+"0xe07094"
+],
+"XomStringArray": [
+"0xe077c0"
+],
+"XomInterfaceArray": [
+"0xe0779c"
+],
+"XomContainerArray": [
+"0xe07778"
+],
+"?$XomObject@UIXUnknown@@UOnHeap@XOM@@": [
+"0xe07764"
+],
+"XomStringArrayManager": [
+"0xe07754"
+],
+"XomInterfaceArrayManager": [
+"0xe07744"
+],
+"XomContainerArrayManager": [
+"0xe07734"
+],
+"XomArrayManager": [
+"0xe07724"
+],
+"XomArray": [
+"0xe07700"
+],
+"?$_connection1@VEventHelper@?A0x8acabaea@@IVsingle_threaded@sigslot@@@sigslot": [
+"0xe07ac0"
+],
+"EventHelper@?A0x8acabaea": [
+"0xe07ab0"
+],
+"?$_connection_base1@IVsingle_threaded@sigslot@@@sigslot": [
+"0xe07a98"
+],
+"?$has_slots@Vsingle_threaded@sigslot@@@sigslot": [
+"0xe07a88"
+],
+"XActionClass": [
+"0xe07a0c"
+],
+"XAction": [
+"0xe079dc"
+],
+"?$_connection1@VEventHelper@XContainerClass@@PBVXomClass@@Vsingle_threaded@sigslot@@@sigslot": [
+"0xe07dd8"
+],
+"?$XomObject@UIXSerializable@@UOnHeapWithID@XOM@@": [
+"0xe07db8"
+],
+"EventHelper@XContainerClass": [
+"0xe07da8"
+],
+"?$_connection_base1@PBVXomClass@@Vsingle_threaded@sigslot@@@sigslot": [
+"0xe07d90"
+],
+"XContainerClass": [
+"0xe07d14"
+],
+"XContainer": [
+"0xe07cec"
+],
+"ContainerTypeInfo@XCtr": [
+"0xe07e4c"
+],
+"XSFStringDescriptor": [
+"0xe082c4"
+],
+"XSFInterfaceDescriptor": [
+"0xe08298"
+],
+"XSFCtrDescriptor": [
+"0xe0826c"
+],
+"XSFPointerDescriptor": [
+"0xe08240"
+],
+"XSFBitfield64Descriptor": [
+"0xe08214"
+],
+"XSFBitfield32Descriptor": [
+"0xe081e8"
+],
+"XSFEnumDescriptor": [
+"0xe081bc"
+],
+"XSFFloat64Descriptor": [
+"0xe08190"
+],
+"XSFFloat32Descriptor": [
+"0xe08164"
+],
+"XSFInt64Descriptor": [
+"0xe08138"
+],
+"XSFUint64Descriptor": [
+"0xe0810c"
+],
+"XSFInt32Descriptor": [
+"0xe080e0"
+],
+"XSFFourCCDescriptor": [
+"0xe080b4"
+],
+"XSFUint32Descriptor": [
+"0xe08088"
+],
+"XSFInt16Descriptor": [
+"0xe0805c"
+],
+"XSFUint16Descriptor": [
+"0xe08030"
+],
+"XSFInt8Descriptor": [
+"0xe08004"
+],
+"XSFUint8Descriptor": [
+"0xe07fd8"
+],
+"XSFBoolDescriptor": [
+"0xe07fac"
+],
+"XSFDescriptor": [
+"0xe07f80"
+],
+"XFieldDescriptor": [
+"0xe07f60"
+],
+"XMFStringDescriptor": [
+"0xe086dc"
+],
+"XMFInterfaceDescriptor": [
+"0xe086b4"
+],
+"XMFCtrDescriptor": [
+"0xe0868c"
+],
+"XMFPointerDescriptor": [
+"0xe08664"
+],
+"XMFFloat64Descriptor": [
+"0xe0863c"
+],
+"XMFFloat32Descriptor": [
+"0xe08614"
+],
+"XMFInt64Descriptor": [
+"0xe085ec"
+],
+"XMFUint64Descriptor": [
+"0xe085c4"
+],
+"XMFInt32Descriptor": [
+"0xe0859c"
+],
+"XMFUint32Descriptor": [
+"0xe08574"
+],
+"XMFInt16Descriptor": [
+"0xe0854c"
+],
+"XMFUint16Descriptor": [
+"0xe08524"
+],
+"XMFInt8Descriptor": [
+"0xe084fc"
+],
+"XMFUint8Descriptor": [
+"0xe084d4"
+],
+"XMFBoolDescriptor": [
+"0xe084ac"
+],
+"XMFDescriptor": [
+"0xe08484"
+],
+"?$XomObject@UIXActionDispatchTable@@UOnHeap@XOM@@": [
+"0xe0886c"
+],
+"XActionDispatchTable": [
+"0xe08840"
+],
+"?$_signal_base1@IVsingle_threaded@sigslot@@@sigslot": [
+"0xe088e0"
+],
+"?$signal1@IVsingle_threaded@sigslot@@@sigslot": [
+"0xe088c8"
+],
+"?$_signal_base0@Vsingle_threaded@sigslot@@@sigslot": [
+"0xe088b0"
+],
+"?$signal0@Vsingle_threaded@sigslot@@@sigslot": [
+"0xe08898"
+],
+"XPfxEffectBase": [
+"0xe0b66c"
+],
+"XPfxEmitterBase": [
+"0xe0b648"
+],
+"XPfxModuleBase": [
+"0xe0b624"
+],
+"XXomInfoNode": [
+"0xe0b600"
+],
+"XExportAttributeFloat": [
+"0xe0b5dc"
+],
+"XExportAttributeString": [
+"0xe0b5b8"
+],
+"XExportAttributeBool": [
+"0xe0b594"
+],
+"XExportAttributeInt": [
+"0xe0b570"
+],
+"XExportAttribute": [
+"0xe0b54c"
+],
+"XBloomShape": [
+"0xe0b528"
+],
+"XFocusBlurShape": [
+"0xe0b504"
+],
+"XExternalReference": [
+"0xe0b4e0"
+],
+"XContainerSelector": [
+"0xe0b4bc"
+],
+"XMultiPageSpriteSet": [
+"0xe0b494"
+],
+"XPlaneAlignedSpriteSet": [
+"0xe0b46c"
+],
+"XBillboardSpriteSet": [
+"0xe0b444"
+],
+"XDepthSpriteSet": [
+"0xe0b41c"
+],
+"XSpriteSet": [
+"0xe0b3f4"
+],
+"XSceneCamera": [
+"0xe0b3d0"
+],
+"XBlurEffect": [
+"0xe0b3ac"
+],
+"XRenderSetTarget": [
+"0xe0b388"
+],
+"XRenderCopy": [
+"0xe0b364"
+],
+"XProxy": [
+"0xe0b340"
+],
+"XPlatformSelector": [
+"0xe0b31c"
+],
+"XBinModifier": [
+"0xe0b2f8"
+],
+"XBinSelector": [
+"0xe0b2d4"
+],
+"XViewMatrixEntry": [
+"0xe0b2b0"
+],
+"XProjectionMatrixEntry": [
+"0xe0b28c"
+],
+"XMatrixEntry": [
+"0xe0b268"
+],
+"XUnfilteredDisplayList": [
+"0xe0b244"
+],
+"XDisplayList": [
+"0xe0b220"
+],
+"XDetailSwitch": [
+"0xe0b1fc"
+],
+"XDetail": [
+"0xe0b1d8"
+],
+"XTraversalMask": [
+"0xe0b1b4"
+],
+"XViewPlaneAlignTransform": [
+"0xe0b190"
+],
+"XJointTransform": [
+"0xe0b16c"
+],
+"XPivotTransform": [
+"0xe0b148"
+],
+"XQuatTransform": [
+"0xe0b124"
+],
+"XMatrix": [
+"0xe0b100"
+],
+"XChildSelector": [
+"0xe0b0dc"
+],
+"XSwitch": [
+"0xe0b0b8"
+],
+"XMultiIndexSet": [
+"0xe0b094"
+],
+"XIndexSet8": [
+"0xe0b070"
+],
+"XIndexSet": [
+"0xe0b04c"
+],
+"XIndexArray": [
+"0xe0b028"
+],
+"XTexCoord4sSet": [
+"0xe0b004"
+],
+"XTexCoord2sSet": [
+"0xe0afe0"
+],
+"XTexCoord3fSet": [
+"0xe0afbc"
+],
+"XTexCoord2fSet": [
+"0xe0af98"
+],
+"XMultiTexCoordSet": [
+"0xe0af74"
+],
+"XConstColorSet": [
+"0xe0af50"
+],
+"XColor4444Set": [
+"0xe0af2c"
+],
+"XColor4ubSet": [
+"0xe0af08"
+],
+"XColor4fSet": [
+"0xe0aee4"
+],
+"XTangent4bSet": [
+"0xe0aec0"
+],
+"XTangent4fSet": [
+"0xe0ae9c"
+],
+"XBinormal4bSet": [
+"0xe0ae78"
+],
+"XBinormal4fSet": [
+"0xe0ae54"
+],
+"XNormal4bSet": [
+"0xe0ae30"
+],
+"XNormal4fSet": [
+"0xe0ae0c"
+],
+"XTangent3bSet": [
+"0xe0ade8"
+],
+"XTangent3fSet": [
+"0xe0adc4"
+],
+"XBinormal3bSet": [
+"0xe0ada0"
+],
+"XBinormal3fSet": [
+"0xe0ad7c"
+],
+"XNormal3bSet": [
+"0xe0ad58"
+],
+"XNormal3fSet": [
+"0xe0ad34"
+],
+"XNormal3sSet_1uScale": [
+"0xe0ad10"
+],
+"XTangent3sSet": [
+"0xe0acec"
+],
+"XBinormal3sSet": [
+"0xe0acc8"
+],
+"XNormal3sSet": [
+"0xe0aca4"
+],
+"XCoord4psSet": [
+"0xe0ac80"
+],
+"XCoord4sSet": [
+"0xe0ac5c"
+],
+"XCoord4fSet": [
+"0xe0ac38"
+],
+"XCoord3sSet_1uScale": [
+"0xe0ac14"
+],
+"XCoord3sSet_4fScale": [
+"0xe0abf0"
+],
+"XCoord3psSet": [
+"0xe0abcc"
+],
+"XCoord3sSet": [
+"0xe0aba8"
+],
+"XCoord3fSet": [
+"0xe0ab84"
+],
+"XTexCoordSet": [
+"0xe0ab60"
+],
+"XColorSet": [
+"0xe0ab3c"
+],
+"XTangentSet": [
+"0xe0ab18"
+],
+"XBinormalSet": [
+"0xe0aaf4"
+],
+"XNormalSet": [
+"0xe0aad0"
+],
+"XCoordSet": [
+"0xe0aaac"
+],
+"XVertexDataSet": [
+"0xe0aa88"
+],
+"XSlGeoSet": [
+"0xe0aa60"
+],
+"XIndexedTriangleFanSet": [
+"0xe0aa38"
+],
+"XIndexedTriangleStripSet": [
+"0xe0aa10"
+],
+"XIndexedQuadSet": [
+"0xe0a9e8"
+],
+"XIndexedTriangleSet": [
+"0xe0a9c0"
+],
+"XIndexedGeoSet": [
+"0xe0a998"
+],
+"XTriangleFanSet": [
+"0xe0a970"
+],
+"XTriangleStripSet": [
+"0xe0a948"
+],
+"XQuadSet": [
+"0xe0a920"
+],
+"XTriangleSet": [
+"0xe0a8f8"
+],
+"XInterleavedGeoSet": [
+"0xe0a8d0"
+],
+"XGeoSet": [
+"0xe0a8a8"
+],
+"XScreenText": [
+"0xe0a880"
+],
+"XParticleSet": [
+"0xe0a858"
+],
+"XFullScreenQuad": [
+"0xe0a830"
+],
+"XGeometry": [
+"0xe0a808"
+],
+"XTransform": [
+"0xe0a7e4"
+],
+"XUniformProxy": [
+"0xe0dcd8"
+],
+"XUniformInstance": [
+"0xe0dcb4"
+],
+"XUniformLightData": [
+"0xe0dc90"
+],
+"XUniformTextureSize": [
+"0xe0dc6c"
+],
+"XUniformVector2f": [
+"0xe0dc48"
+],
+"XUniformVector4f": [
+"0xe0dc24"
+],
+"XUniformGameTime": [
+"0xe0dc00"
+],
+"XUniformTime": [
+"0xe0dbdc"
+],
+"XUniformFloat": [
+"0xe0dbb8"
+],
+"XUniformMatrixArray": [
+"0xe0db94"
+],
+"XUniformShadowMatrix": [
+"0xe0db70"
+],
+"XUniformMatrix4f": [
+"0xe0db4c"
+],
+"XUniformViewMatrix": [
+"0xe0db28"
+],
+"XUniformViewMatrixInverse": [
+"0xe0db04"
+],
+"XUniformWorldViewProjectionMatrix": [
+"0xe0dae0"
+],
+"XUniformWorldViewMatrix": [
+"0xe0dabc"
+],
+"XUniform": [
+"0xe0da98"
+],
+"XScreenCopy": [
+"0xe0da74"
+],
+"XSLCubeTexture": [
+"0xe0da50"
+],
+"XSlProxyTexture": [
+"0xe0da2c"
+],
+"XSlShadowMap": [
+"0xe0da08"
+],
+"XSlTextureMap": [
+"0xe0d9e4"
+],
+"XOglTextureMap": [
+"0xe0d9c0"
+],
+"XMultiTextureStage": [
+"0xe0d99c"
+],
+"XGenericTextureGen": [
+"0xe0d978"
+],
+"XTexturePlacement2DParameters": [
+"0xe0d954"
+],
+"XTexturePlacement2D": [
+"0xe0d930"
+],
+"XTextureMatrix": [
+"0xe0d90c"
+],
+"XTextureGen": [
+"0xe0d8e8"
+],
+"XPalette": [
+"0xe0d8c4"
+],
+"XBlendModeGL": [
+"0xe0d89c"
+],
+"XPolygonOffset": [
+"0xe0d874"
+],
+"XLightingEnable": [
+"0xe0d84c"
+],
+"XFillMode": [
+"0xe0d824"
+],
+"XCullFace": [
+"0xe0d7fc"
+],
+"XShadeMode": [
+"0xe0d7d4"
+],
+"XDepthTest": [
+"0xe0d7ac"
+],
+"XZBufferWriteEnable": [
+"0xe0d784"
+],
+"XStencilTest": [
+"0xe0d75c"
+],
+"XDrawMask": [
+"0xe0d734"
+],
+"XIgnoreVertexAlpha": [
+"0xe0d70c"
+],
+"XPerPixelAlphaBlend": [
+"0xe0d6e4"
+],
+"XAlphaTest": [
+"0xe0d6bc"
+],
+"XMaterial": [
+"0xe0d694"
+],
+"XStringTable": [
+"0xe0d670"
+],
+"XSlShaderInstance": [
+"0xe0d648"
+],
+"XSlShader": [
+"0xe0d624"
+],
+"XSlCgProg": [
+"0xe0d600"
+],
+"XSlGeomProg": [
+"0xe0d5dc"
+],
+"XSlFragProg": [
+"0xe0d5b8"
+],
+"XSlSkinnedVertProg": [
+"0xe0d594"
+],
+"XSlVertProg": [
+"0xe0d570"
+],
+"XSlProg": [
+"0xe0d54c"
+],
+"XMultiTexFont": [
+"0xe0d524"
+],
+"XMultiTexFontPage": [
+"0xe0d4fc"
+],
+"XMultiTexShader": [
+"0xe0d4d4"
+],
+"XMultiShader": [
+"0xe0d4ac"
+],
+"XLightmapShader": [
+"0xe0d484"
+],
+"XSimpleShader": [
+"0xe0d45c"
+],
+"XTexFont": [
+"0xe0d434"
+],
+"XTextureStage": [
+"0xe0d410"
+],
+"XAttribute": [
+"0xe0d3e8"
+],
+"XTextureMap": [
+"0xe0d3c4"
+],
+"XShader": [
+"0xe0d39c"
+],
+"XImage": [
+"0xe0d378"
+],
+"XPsMultiTexFont": [
+"0xe0eb24"
+],
+"XPsMultiTexFontPage": [
+"0xe0eafc"
+],
+"XPsTexFont": [
+"0xe0ead4"
+],
+"XShaderProgLibraryFolder": [
+"0xe0eab0"
+],
+"XShaderProgLibraryReference": [
+"0xe0ea8c"
+],
+"XPsProgReference": [
+"0xe0ea68"
+],
+"XPsMultiShape": [
+"0xe0ea44"
+],
+"XPsGeoBatch": [
+"0xe0ea20"
+],
+"XPsSkinShape": [
+"0xe0e9fc"
+],
+"XPsShape": [
+"0xe0e9d8"
+],
+"XPsMultiGeoSet": [
+"0xe0e9b0"
+],
+"XPsGeoSet": [
+"0xe0e988"
+],
+"XPsVertexDataSet": [
+"0xe0e964"
+],
+"XPsShaderInstance": [
+"0xe0e93c"
+],
+"XPsShaderPrototype": [
+"0xe0e918"
+],
+"XPsPreCompiledGeoProg": [
+"0xe0e8f4"
+],
+"XPsPreCompiledExportProg": [
+"0xe0e8d0"
+],
+"XPsPreCompiledFragProg": [
+"0xe0e8ac"
+],
+"XPsPreCompiledSkinnedVertProg": [
+"0xe0e888"
+],
+"XPsPreCompiledVertProg": [
+"0xe0e864"
+],
+"XPsPreCompiledProg": [
+"0xe0e840"
+],
+"XPsGeoProg": [
+"0xe0e81c"
+],
+"XPsExportProg": [
+"0xe0e7f8"
+],
+"XPsFragProg": [
+"0xe0e7d4"
+],
+"XPsSkinnedVertProg": [
+"0xe0e7b0"
+],
+"XPsVertProg": [
+"0xe0e78c"
+],
+"XPsProg": [
+"0xe0e768"
+],
+"XPsProxyTexture": [
+"0xe0e740"
+],
+"XPsTextureReference": [
+"0xe0e718"
+],
+"?$XomActionImpl@UIXSearchAction@@": [
+"0xe0ecec"
+],
+"XSearchAction": [
+"0xe0ecac"
+],
+"XPsLight": [
+"0xe0f2a0"
+],
+"XLightScope": [
+"0xe0f27c"
+],
+"XD3dSpotLight": [
+"0xe0f258"
+],
+"XOglSpotLight": [
+"0xe0f234"
+],
+"XSpotLight": [
+"0xe0f210"
+],
+"XPointLight": [
+"0xe0f1ec"
+],
+"XDirectionalLight": [
+"0xe0f1c8"
+],
+"XLight": [
+"0xe0f1a4"
+],
+"XOglShadowSpotLight": [
+"0xe0f17c"
+],
+"XShape": [
+"0xe0f774"
+],
+"XNamedAttribute": [
+"0xe0f750"
+],
+"XDataMatrixHandles": [
+"0xe0f72c"
+],
+"XDataVector4f": [
+"0xe0f708"
+],
+"XDataFloat": [
+"0xe0f6e4"
+],
+"XDataMatrix4f": [
+"0xe0f6c0"
+],
+"XData": [
+"0xe0f69c"
+],
+"XParameterChunk": [
+"0xe0f678"
+],
+"XCore": [
+"0xe0f654"
+],
+"XSkeletonRoot": [
+"0xe0f630"
+],
+"XGroup": [
+"0xe0f60c"
+],
+"XInteriorNode": [
+"0xe0f5e8"
+],
+"XRenderCanvas": [
+"0xe0f5c4"
+],
+"XSceneFunc": [
+"0xe0f5a0"
+],
+"XNode": [
+"0xe0f57c"
+],
+"?$XomObject@UIXCamera@@UOnHeap@XOM@@": [
+"0xe0f83c"
+],
+"XCamera": [
+"0xe0f7dc"
+],
+"?$_connection1@VEventHelper@?A0x353063d0@@IVsingle_threaded@sigslot@@@sigslot": [
+"0xe0fb6c"
+],
+"?$_connection0@VEventHelper@?A0x353063d0@@Vsingle_threaded@sigslot@@@sigslot": [
+"0xe0fb54"
+],
+"EventHelper@?A0x353063d0": [
+"0xe0fb44"
+],
+"?$_connection_base0@Vsingle_threaded@sigslot@@@sigslot": [
+"0x54b6c6",
+"0xe0fb2c"
+],
+"?$XomObject@UIXomClassObserver@@UOnHeapNoDestroy@XOM@@": [
+"0xe0fb10"
+],
+"XStateManagerSingleton": [
+"0xe0faf4"
+],
+"XStateManager": [
+"0xe0fadc"
+],
+"?$XomObject@UIXResourceManager@@UOnHeap@XOM@@": [
+"0xe0fd2c"
+],
+"XResourceManager": [
+"0xe0fcf4"
+],
+"?$XomActionImpl@UIXSetShaderAttributeAction@@": [
+"0xe10010"
+],
+"XSetShaderAttributeAction": [
+"0xe0ffdc"
+],
+"XShaderLibraryFolder": [
+"0xe103d4"
+],
+"XPsShaderLibraryRedirect": [
+"0xe103b0"
+],
+"XPsShaderLibraryShader": [
+"0xe10388"
+],
+"XShaderLibraryRedirect": [
+"0xe10364"
+],
+"XShaderLibraryShader": [
+"0xe1033c"
+],
+"XShaderLibraryNode": [
+"0xe10318"
+],
+"XPaletteWeightSet": [
+"0xe10790"
+],
+"XWeightSet": [
+"0xe1076c"
+],
+"XPS2SkinnedTriStripSet": [
+"0xe10744"
+],
+"XPS2SkinnedTriSet": [
+"0xe1071c"
+],
+"XNgcSkinCoordSet": [
+"0xe106f8"
+],
+"XSkeleton": [
+"0xe106d4"
+],
+"XBone": [
+"0xe106b0"
+],
+"XSkinShape": [
+"0xe1068c"
+],
+"XSkin": [
+"0xe10668"
+],
+"?$XomObject@UIXResourceRequestHandler@@UOnHeap@XOM@@": [
+"0xe108b0"
+],
+"XResourceRequestHandler": [
+"0xe1088c"
+],
+"?$XomActionImpl@UIXCompareGraphsAction@@": [
+"0xe10978"
+],
+"XCompareGraphsAction": [
+"0xe1093c"
+],
+"?$XomObject@UIXGraphSet@@UOnHeap@XOM@@": [
+"0xe10a74"
+],
+"XGraphSet": [
+"0xe10a34"
+],
+"?$XomActionImpl@UIXGatherSceneAction@@": [
+"0xe10b4c"
+],
+"XGatherSceneAction": [
+"0xe10b14"
+],
+"XTriggerBox": [
+"0xe1181c"
+],
+"XDetailObjectsData": [
+"0xe117f8"
+],
+"XFortsExportedData": [
+"0xe117d4"
+],
+"XSceneryEffectData": [
+"0xe117b0"
+],
+"XLightGrid": [
+"0xe1178c"
+],
+"XPositionData": [
+"0xe11768"
+],
+"XVisibilityData": [
+"0xe11744"
+],
+"XVisibilityDataItem": [
+"0xe11720"
+],
+"XRegionData": [
+"0xe116fc"
+],
+"XBoundBoxGroup": [
+"0xe116d8"
+],
+"XCollisionData": [
+"0xe116b4"
+],
+"XCollisionGeometry": [
+"0xe11690"
+],
+"XPathFinderData": [
+"0xe1166c"
+],
+"XTreeCullNode": [
+"0xe11648"
+],
+"XLineStipple": [
+"0xe119c8"
+],
+"XLineWidth": [
+"0xe119a0"
+],
+"XIndexedLineStripSet": [
+"0xe11978"
+],
+"XIndexedLineSet": [
+"0xe11950"
+],
+"XLineStripSet": [
+"0xe11928"
+],
+"XLineSet": [
+"0xe11900"
+],
+"?$XomObject@UIXImageReader@@UOnHeap@XOM@@": [
+"0xe11b3c"
+],
+"XTgaLoader": [
+"0xe11b18"
+],
+"?$XomActionImpl@UIXOptimizeTexturesAction@@": [
+"0xe11c08"
+],
+"XOptimizeTexturesAction": [
+"0xe11bcc"
+],
+"?$XomActionImpl@UIXConservativeCloneAction@@": [
+"0xe11d2c"
+],
+"XConservativeCloneAction": [
+"0xe11cdc"
+],
+"?$XomActionImpl@UIXDrawAction@@": [
+"0xe12294"
+],
+"?$IXDrawActionImpl@UIXDrawAction@@UIXRenderContext@@$1?IID_IXRenderContext@@3U_GUID@@B": [
+"0xe121fc"
+],
+"XDrawAction": [
+"0xe12164"
+],
+"?$XomActionImpl@UIXUpdateTransparencyAction@@": [
+"0xe1241c"
+],
+"XUpdateTransparencyAction": [
+"0xe123dc"
+],
+"?$XomActionImpl@UIXOptimizeAttributesAction@@": [
+"0xe1256c"
+],
+"XOptimizeAttributesAction": [
+"0xe12524"
+],
+"?$XomActionImpl@UIXUpdateDetailCenters@@": [
+"0xe12654"
+],
+"XUpdateDetailCentersAction": [
+"0xe12624"
+],
+"?$XomActionImpl@UIXCustomizeTexturesAction@@": [
+"0xe12abc"
+],
+"XCustomizeTexturesAction": [
+"0xe129bc"
+],
+"?$XomActionImpl@UIXCalculateMipMapsAction@@": [
+"0xe12c6c"
+],
+"XCalculateMipMapsAction": [
+"0xe12c2c"
+],
+"XImage3D": [
+"0xe12f80"
+],
+"XTextureSpherical": [
+"0xe12f5c"
+],
+"XEnvironmentMapShader": [
+"0xe12f34"
+],
+"XCubeTextureMap": [
+"0xe12f10"
+],
+"XFog": [
+"0xe12ee8"
+],
+"XCloudShader": [
+"0xe12ec0"
+],
+"XWaterShader": [
+"0xe12e98"
+],
+"?$_connection1@VEventHelper@?A0xc38ee7d0@@IVsingle_threaded@sigslot@@@sigslot": [
+"0xe132c8"
+],
+"EventHelper@?A0xc38ee7d0": [
+"0xe132b8"
+],
+"?$XomActionImpl@UIXCullSortAction@@": [
+"0xe13224"
+],
+"XCullSortAction": [
+"0xe1318c"
+],
+"?$XomActionImpl@UIXBoundAction@@": [
+"0xe135b4"
+],
+"XBoundAction": [
+"0xe13554"
+],
+"?$XomActionImpl@UIXVerifyAction@@": [
+"0xe138e4"
+],
+"XVerifyAction": [
+"0xe138a4"
+],
+"?$XomActionImpl@UIXMultiIndexSetAction@@": [
+"0xe13a44"
+],
+"XMultiIndexSetAction": [
+"0xe139f4"
+],
+"?$XomObject@UIXGraphFilterContext@@UOnHeap@XOM@@": [
+"0xe13adc"
+],
+"XGraphFilterContext": [
+"0xe13ab0"
+],
+"?$XomActionImpl@UIXUpdateAction@@": [
+"0xe13b8c"
+],
+"XUpdateAction": [
+"0xe13b5c"
+],
+"?$XomObject@UIXScene@@UOnHeap@XOM@@": [
+"0xe13c8c"
+],
+"XScene": [
+"0xe13c34"
+],
+"XGraphFilter": [
+"0xe13d7c"
+],
+"?$XomActionImpl@UIXInitTransparencyAction@@": [
+"0xe13e78"
+],
+"XInitTransparencyAction": [
+"0xe13e40"
+],
+"?$XomActionImpl@UIXCloneAction@@": [
+"0x9e706b",
+"0xe13f64"
+],
+"XCloneAction": [
+"0xe13f14"
+],
+"?$XomActionImpl@UIXFlattenAction@@": [
+"0xe14084"
+],
+"XFlattenAction": [
+"0xe14044"
+],
+"?$XTrie@VXBaseResourceDescriptor@@$1??$GetName@VXBaseResourceDescriptor@@@xtl@@YAPBDPAV1@@Z@xtl": [
+"0xe15064"
+],
+"?$XResourceTrie@VXBaseResourceDescriptor@@": [
+"0xe15054"
+],
+"?$XomObject@UIXGraphicalResourceManager@@UOnHeap@XOM@@": [
+"0xe14f34"
+],
+"XGraphicalResourceManager": [
+"0xe14df4"
+],
+"XTextInstance": [
+"0x549634",
+"0xe1524c"
+],
+"XMeshInstance": [
+"0xe15c94"
+],
+"XMeshDescriptor": [
+"0xe15fec"
+],
+"XSpriteSetInstance": [
+"0xe160e4"
+],
+"XBitmapDescriptor": [
+"0xe16454"
+],
+"XCustomDescriptor": [
+"0xe165ac"
+],
+"XCustomInstance": [
+"0xe16674"
+],
+"ScenePass": [
+"0xe173c4"
+],
+"SceneLayer": [
+"0xe1735c"
+],
+"SceneScript": [
+"0xe172b4"
+],
+"XTextDescriptor": [
+"0xe177a4"
+],
+"XSpriteSetDescriptor": [
+"0xe178ec"
+],
+"XBundleStringTables": [
+"0xe17a10"
+],
+"XBundleShaderLibResource": [
+"0xe184ec"
+],
+"XBundleGeometrySetResource": [
+"0xe184bc"
+],
+"XBundleNullResource": [
+"0xe1848c"
+],
+"XBundleTextResource": [
+"0xe1845c"
+],
+"XBundleCustomResource": [
+"0xe1842c"
+],
+"XBundleMeshResource": [
+"0xe183fc"
+],
+"XBundleBitmapResource": [
+"0xe183cc"
+],
+"XBundleProcessInfos": [
+"0xe183a8"
+],
+"XBundleProcessInfo": [
+"0xe18384"
+],
+"XBundlerProjectSettings": [
+"0xe18360"
+],
+"XBundleNode": [
+"0xe18330"
+],
+"?$XomObject@UIXBaseResourceDescriptor@@UOnHeap@XOM@@": [
+"0xe185fc"
+],
+"XBaseResourceDescriptor": [
+"0xe1859c"
+],
+"XNullDescriptor": [
+"0xe186cc"
+],
+"?$XomActionImpl@UIXCollectBundleNodesAction@@": [
+"0xe18824"
+],
+"XCollectBundleNodesAction": [
+"0xe187e4"
+],
+"XrmObjectIdGenerator": [
+"0xe1938c"
+],
+"XXmlObjectIdGenerator": [
+"0xe19380"
+],
+"?$XomObject@UIXDataResourceManager@@UOnHeap@XOM@@": [
+"0xe192b4"
+],
+"ErrorHookFieldResolver": [
+"0xe1929c"
+],
+"ErrorHookClassResolver": [
+"0xe19280"
+],
+"XDataResourceManager": [
+"0xe1919c"
+],
+"XResourceInstance": [
+"0xe1948c"
+],
+"XGraphBasedInstance": [
+"0xe196cc"
+],
+"XBitmapInstance": [
+"0xe19a2c"
+],
+"XDataBank": [
+"0xe19e04"
+],
+"XColorResourceDetails": [
+"0xe19de0"
+],
+"XContainerResourceDetails": [
+"0xe19dbc"
+],
+"XVectorResourceDetails": [
+"0xe19d98"
+],
+"XFloatResourceDetails": [
+"0xe19d74"
+],
+"XStringResourceDetails": [
+"0xe19d50"
+],
+"XUintResourceDetails": [
+"0xe19d2c"
+],
+"XIntResourceDetails": [
+"0xe19d08"
+],
+"XResourceDetails": [
+"0xe19ce4"
+],
+"?$XomActionImpl@UIXTextureReplaceAction@@": [
+"0xe19ed4"
+],
+"XTextureReplaceAction": [
+"0xe19e94"
+],
+"XNullInstance": [
+"0x6a36ee",
+"0x6a4d20",
+"0x6a4d42",
+"0x6a4d9a",
+"0xe19f6c"
+],
+"XColorResource": [
+"0xe1a3d4"
+],
+"XStringTableResource": [
+"0xe1a38c"
+],
+"XContainerResource": [
+"0xe1a344"
+],
+"XStringResource": [
+"0xe1a2fc"
+],
+"XVectorResource": [
+"0xe1a2b4"
+],
+"XFloatResource": [
+"0xe1a26c"
+],
+"XUintResource": [
+"0xe1a224"
+],
+"XIntResource": [
+"0xe1a1dc"
+],
+"XDataResourceDescriptor": [
+"0xe1a194"
+],
+"?$XomObject@UIXAudioManager@@UOnHeap@XOM@@": [
+"0xe1ab6c"
+],
+"XAudioManager": [
+"0xe1aa84"
+],
+"?$XomObject@UIXListener@@UOnHeap@XOM@@": [
+"0xe1acd0"
+],
+"XListener": [
+"0xe1ac94"
+],
+"?$XomObject@UIXMusicInstance@@UOnHeap@XOM@@": [
+"0xe1ad64"
+],
+"XMusicInstance": [
+"0xe1ad34"
+],
+"?$XomObject@UIXSoundInstance@@UOnHeap@XOM@@": [
+"0xe1af1c"
+],
+"XSoundInstance": [
+"0xe1ae9c"
+],
+"?$XomObject@UIXPaperClipInstance@@UOnHeap@XOM@@": [
+"0xe1b634"
+],
+"XPaperClipInstance": [
+"0xe1b5cc"
+],
+"?$XomObject@UIXAnimInstance@@UOnHeap@XOM@@": [
+"0xe1b9fc"
+],
+"XAnimInstance": [
+"0xe1b9ac"
+],
+"?$XomObject@UIXAnimScheduler@@UOnHeap@XOM@@": [
+"0xe1bd0c"
+],
+"XAnimScheduler": [
+"0xe1bcc4"
+],
+"XPaperNode": [
+"0xe1c398"
+],
+"XPaperClip": [
+"0xe1c374"
+],
+"XPaperClipLibrary": [
+"0xe1c350"
+],
+"XExpandedAnimInfo": [
+"0xe1c32c"
+],
+"XAnimInfo": [
+"0xe1c308"
+],
+"XAttributeMap": [
+"0xe1c2e4"
+],
+"XAnimChannel": [
+"0xe1c2c0"
+],
+"XAnimClip": [
+"0xe1c29c"
+],
+"XAnimClipLibraryData": [
+"0xe1c278"
+],
+"?$XomObject@UIXAnimClipLibrary@@UOnHeap@XOM@@": [
+"0xe1c5f4"
+],
+"XAnimClipLibrary": [
+"0xe1c5a4"
+],
+"XPfxParticleEffect": [
+"0xe1dc6c"
+],
+"XPfxEffect": [
+"0xe1dc3c"
+],
+"XPfxEmissionEmitterGeom": [
+"0xe1dc00"
+],
+"XPfxEmissionEmitter": [
+"0xe1dbcc"
+],
+"XPfxEmitterGeom": [
+"0xe1db90"
+],
+"XPfxRotationEmission": [
+"0xe1db3c"
+],
+"XPfxCubeEmission": [
+"0xe1dae4"
+],
+"XPfxRingEmission": [
+"0xe1da8c"
+],
+"XPfxSphereEmission": [
+"0xe1da34"
+],
+"XPfxTrailsEmission": [
+"0xe1d9dc"
+],
+"XPfxBasicEmission": [
+"0xe1d984"
+],
+"XPfxVelocityAlignModule": [
+"0xe1d92c"
+],
+"XPfxFireModule": [
+"0xe1d8d4"
+],
+"XPfxWindModule": [
+"0xe1d87c"
+],
+"XPfxSizeLifeModule": [
+"0xe1d824"
+],
+"XPfxFollowEmitterModule": [
+"0xe1d7cc"
+],
+"XPfxDragModule": [
+"0xe1d774"
+],
+"XPfxGravityModule": [
+"0xe1d71c"
+],
+"XPfxModule": [
+"0xe1d6c4"
+],
+"XPfxEmitter": [
+"0xe1d68c"
+],
+"?$XomObject@UIXApplication@@UOnStackNoRefCnt@XOM@@": [
+"0xe1dd5c"
+],
+"XomAppBase@XomHelp": [
+"0xe1dd14"
+],
+"XomTaskAppBase@XomHelp": [
+"0xe1df34"
+],
+"Xom3dAppBase@XomHelp": [
+"0xe1e21c"
+],
+"XomTaskAppBaseRenderEventHandler": [
+"0xe1e2b8"
+],
+"?$XomObject@UIXOpenGLRenderManager@@UOnHeap@XOM@@": [
+"0xe1ea4c"
+],
+"?$XRenderManagerImpl@UOpenGLImpl@@": [
+"0xe1e924"
+],
+"XOpenGLRenderManager": [
+"0xe1e7fc"
+],
+"XCryptSymKeyFile": [
+"0xe1eca4"
+],
+"?$XomObject@UIXCryptSymKey@@UOnHeap@XOM@@": [
+"0xe1ed30"
+],
+"XCryptSymKey": [
+"0xe1ecf8"
+],
+"?$XomObject@UIXCryptRandom@@UOnHeap@XOM@@": [
+"0xe1edac"
+],
+"XCryptRandom": [
+"0xe1ed8c"
+],
+"?$XomObject@UIXCryptPubKey@@UOnHeap@XOM@@": [
+"0xe1ee24"
+],
+"XCryptPubKey": [
+"0xe1edf0"
+],
+"?$XomObject@UIXCryptHasher@@UOnHeap@XOM@@": [
+"0xe1eea8"
+],
+"XCryptHasher": [
+"0xe1ee80"
+],
+"?$XomObject@UIXCryptPriKey@@UOnHeap@XOM@@": [
+"0xe1ef28"
+],
+"XCryptPriKey": [
+"0xe1eef4"
+],
+"?$XomObject@UIXomInputDeviceManager@@UOnHeap@XOM@@": [
+"0xe1fb6c"
+],
+"?$XomObject@UIXomInputDevice@@UOnHeap@XOM@@": [
+"0xe1fae4"
+],
+"XDeviceState": [
+"0xe1fac8"
+],
+"XomInputDeviceManagerDx": [
+"0xe1fa6c"
+],
+"XXInputDevice": [
+"0xe1f9c4"
+],
+"XJoystickDeviceDx": [
+"0xe1f91c"
+],
+"XMouseDeviceDx": [
+"0xe1f874"
+],
+"XKeyboardDeviceDx": [
+"0xe1f7cc"
+],
+"XomInputDeviceManager": [
+"0xe1fcec"
+],
+"XomInputDevice": [
+"0xe1fc5c"
+],
+"?$XomObject@UIXHttpLogin@@UOnHeap@XOM@@": [
+"0xe2012c"
+],
+"XHttpLoginTeam17": [
+"0xe200ec"
+],
+"?$XomObject@UIXConnection@@UOnHeap@XOM@@": [
+"0xe2048c"
+],
+"XTcpConnection": [
+"0xe2043c"
+],
+"?$XomObject@UIXNetAddress@@UOnHeap@XOM@@": [
+"0xe20590"
+],
+"XIp4Address": [
+"0xe2056c"
+],
+"?$XomObject@UIXHttpManager@@UOnHeap@XOM@@": [
+"0xe206e4"
+],
+"XHttpManager": [
+"0xe20694"
+],
+"?$CCallResult@VXHttpRequestSteam@@UHTTPRequestCompleted_t@Steam@@@Steam": [
+"0xe20a10"
+],
+"?$XomObject@UIXHttpRequest@@UOnHeap@XOM@@": [
+"0xe209cc"
+],
+"XHttpRequestSteam": [
+"0xe20984"
+],
+"XHttpRequestWinHttp": [
+"0xe2116c"
+],
+"?$XomObject@UIXHttpManagerCore@@UOnHeap@XOM@@": [
+"0xe21260"
+],
+"XHttpManagerCoreSteam": [
+"0xe21224"
+],
+"?$XomObject@UIXAnalyticsManager@@UOnHeap@XOM@@": [
+"0xe217f4"
+],
+"XTeam17AnalyticsManager": [
+"0xe21784"
+],
+"XAnalyticsManager": [
+"0xe218ac"
+],
+"?$XomObject@UIXZipManager@@UOnHeap@XOM@@": [
+"0xe21998"
+],
+"XZipManager": [
+"0xe21974"
+],
+"XZipArchive": [
+"0xe21a74"
+],
+"XZipMaker": [
+"0xe21bbc"
+],
+"XZipMakerStream": [
+"0xe21c68"
+],
+"XZipStream": [
+"0xe21ce0"
+],
+"?$XomObject@UIXStorageEnum@@UOnHeap@XOM@@": [
+"0xe21d40"
+],
+"XZipStorageEnum": [
+"0xe21d20"
+],
+"?$XomObject@UIXOglApiResourceManager@@UOnHeap@XOM@@": [
+"0xe21f94"
+],
+"?$XomObject@UIXUnknown@@UOnStack@XOM@@": [
+"0xe21f7c"
+],
+"XOglApiResource": [
+"0xe21f68"
+],
+"XOglApiResourceManager": [
+"0xe21ef4"
+],
+"XOglCompileAction": [
+"0xe2210c"
+],
+"?$XomObject@UIXOglScreen@@UOnHeap@XOM@@": [
+"0xe2226c"
+],
+"XOglScreen": [
+"0xe2222c"
+],
+"?$XomObject@UIXOglRenderContext@@UOnHeap@XOM@@": [
+"0xe22c54"
+],
+"?$XContextImpl@UOpenGlContextImpl@@": [
+"0xe22b6c"
+],
+"XOglContext": [
+"0xe22a1c"
+],
+"?$XomObject@UIXOglWindow@@UOnHeap@XOM@@": [
+"0xe22f0c"
+],
+"XOglWindow": [
+"0xe22ebc"
+],
+"?$XomActionImpl@UIXOglDrawAction@@": [
+"0xe2433c"
+],
+"?$IXDrawActionImpl@UIXOglDrawAction@@UIXOglRenderContext@@$1?IID_IXOglRenderContext@@3U_GUID@@B": [
+"0xe24264"
+],
+"XOglDrawAction": [
+"0xe2418c"
+],
+"?$XomObject@UIXOglRenderSurface@@UOnHeap@XOM@@": [
+"0xe27ea0"
+],
+"XOglRenderSurface": [
+"0xe27e70"
+],
+"?$XomObject@UIXOglDisplayMode@@UOnHeap@XOM@@": [
+"0xe27f78"
+],
+"XOglDisplayMode": [
+"0xe27f50"
+],
+"?$XomObject@UIXOglPixelFormat@@UOnHeap@XOM@@": [
+"0xe28004"
+],
+"XOglPixelFormat": [
+"0xe27fc4"
+],
+"?$XomObject@UIXMovieManager@@UOnHeap@XOM@@": [
+"0xe293d4"
+],
+"XMovieManager": [
+"0xe29398"
+],
+"?$XomObject@UIXMovieBlackBox@@UOnHeap@XOM@@": [
+"0xe2c308"
+],
+"XMovieBlackBoxPC": [
+"0xe2c2d4"
+],
+"?$XomObject@UIXMoviePlayer@@UOnHeap@XOM@@": [
+"0xe2c368"
+],
+"XMoviePlayer": [
+"0xe2c350"
+],
+"MovieRenderEventHandler": [
+"0xe2c37c"
+],
+"?$XomActionImpl@UIXConvertSkeletonAction@@": [
+"0xe2c490"
+],
+"XConvertSkeletonAction": [
+"0xe2c458"
+],
+"?$XomActionImpl@UIXExternalizeAction@@": [
+"0xe2c570"
+],
+"XExternalizeAction": [
+"0xe2c534"
+],
+"?$XomActionImpl@UIXCountAction@@": [
+"0xe2c63c"
+],
+"XCountAction": [
+"0xe2c604"
+],
+"?$XomActionImpl@UIXDeindexAction@@": [
+"0xe2c75c"
+],
+"XDeindexAction": [
+"0xe2c724"
+],
+"?$XomActionImpl@UIXReplacePsShaderAction@@": [
+"0xe2c9e4"
+],
+"XReplacePsShaderAction": [
+"0xe2c994"
+],
+"?$XomActionImpl@UIXCompressImagesAction@@": [
+"0xe2cc24"
+],
+"XCompressImagesAction": [
+"0xe2cbd4"
+],
+"?$XomActionImpl@UIXPruneAction@@": [
+"0xe2cd3c"
+],
+"XPruneAction": [
+"0xe2ccf4"
+],
+"?$XomObject@UIXRtgLoader@@UOnHeap@XOM@@": [
+"0xe2d3e4"
+],
+"XRtgLoader": [
+"0xe2d3c0"
+],
+"?$XomActionImpl@UIXRayTraceAction@@": [
+"0xe2d4c8"
+],
+"XRayTraceAction": [
+"0xe2d47c"
+],
+"?$XomActionImpl@UIXToTriangleSetAction@@": [
+"0xe2d5a0"
+],
+"XToTriangleSetAction": [
+"0xe2d568"
+],
+"?$XomActionImpl@UIXInterleaveGeometryAction@@": [
+"0xe2d7cc"
+],
+"XInterleaveGeometryAction": [
+"0xe2d77c"
+],
+"?$XomActionImpl@UIXPalettizeImagesAction@@": [
+"0xe2d90c"
+],
+"XPalettizeImagesAction": [
+"0xe2d8b4"
+],
+"?$XomObject@UIXPVSGenerator@@UOnHeap@XOM@@": [
+"0xe2da40"
+],
+"XPVSGenerator": [
+"0xe2da0c"
+],
+"?$XomObject@UIXMeshBuilder@@UOnHeap@XOM@@": [
+"0xe2dc4c"
+],
+"XMeshBuilder": [
+"0xe2db8c"
+],
+"?$XomActionImpl@UIXGeoquantAction@@": [
+"0xe2de34"
+],
+"XGeoquantAction": [
+"0xe2ddf4"
+],
+"?$XomActionImpl@UIXToPalettedSkinningAction@@": [
+"0xe2df5c"
+],
+"XToPalettedSkinningAction": [
+"0xe2df14"
+],
+"?$XomActionImpl@UIXTreeCullAction@@": [
+"0xe2e22c"
+],
+"XTreeCullAction": [
+"0xe2e1b4"
+],
+"?$XomActionImpl@UIXConvertToPaperAnimAction@@": [
+"0xe2e9c4"
+],
+"XConvertToPaperAnimAction": [
+"0xe2e984"
+],
+"?$XomObject@UIXHttpServer@@UOnHeap@XOM@@": [
+"0xe2f0f4"
+],
+"XHttpServer": [
+"0xe2f0c8"
+],
+"?$XomObject@UIXEventLogPipeConnection@@UOnHeap@XOM@@": [
+"0xe2f22c"
+],
+"XEventLogPipeConnection": [
+"0xe2f1f4"
+],
+"?$XomObject@UIXSequentialStream@@UOnHeap@XOM@@": [
+"0xe2f330"
+],
+"XTelnetConsole": [
+"0xe2f310"
+],
+"XXmlObjectIn": [
+"0xe2f814"
+],
+"?$XomObject@UIXXmlObjectOutputStream@@UOnHeap@XOM@@": [
+"0xe2fbdc"
+],
+"XXmlObjectOut": [
+"0xe2fb2c"
+],
+"StdOutputStream@nv": [
+"0xe30880"
+],
+"StdStream@nv": [
+"0xe30850"
+],
+"Stream@nv": [
+"0xe30820"
+],
+"runtime_error@std": [
+"0xe30a00"
+],
+"KaiserFilter@nv": [
+"0xe30df0"
+],
+"SincFilter@nv": [
+"0xe30de4"
+],
+"LanczosFilter@nv": [
+"0xe30dd8"
+],
+"MitchellFilter@nv": [
+"0xe30dcc"
+],
+"BSplineFilter@nv": [
+"0xe30dc0"
+],
+"CubicFilter@nv": [
+"0xe30db4"
+],
+"QuadraticFilter@nv": [
+"0xe30da8"
+],
+"TriangleFilter@nv": [
+"0xe30d9c"
+],
+"BoxFilter@nv": [
+"0xe30d90"
+],
+"Filter@nv": [
+"0xe30d84"
+],
+"FloatImage@nv": [
+"0xe30f70"
+],
+"StdInputStream@nv": [
+"0xe31a2c"
+],
+"WeightedClusterFit@squish": [
+"0xe31c58"
+],
+"ColourFit@squish": [
+"0xe31c64"
+],
+"XStringStream": [
+"0xe322bc"
+],
+"Win32MouseEvent": [
+"0xe32360"
+],
+"WindowSystemEvent": [
+"0xe32354"
+],
+"XQuatTypeInfo@XMath": [
+"0xe33634"
+],
+"XRayTypeInfo@XMath": [
+"0xe335dc"
+],
+"XFrustumTypeInfo@XMath": [
+"0xe33584"
+],
+"XBoundBoxTypeInfo@XMath": [
+"0xe3352c"
+],
+"XBoundSphereTypeInfo@XMath": [
+"0xe334d4"
+],
+"XMatrix4fTypeInfo@XMath": [
+"0xe3347c"
+],
+"XMatrix43fTypeInfo@XMath": [
+"0xe33424"
+],
+"XMatrix3fTypeInfo@XMath": [
+"0xe333cc"
+],
+"XVector4bTypeInfo@XMath": [
+"0xe33374"
+],
+"XVector3bTypeInfo@XMath": [
+"0xe3331c"
+],
+"XVector2bTypeInfo@XMath": [
+"0xe332c4"
+],
+"XVector4sTypeInfo@XMath": [
+"0xe3326c"
+],
+"XVector3sTypeInfo@XMath": [
+"0xe33214"
+],
+"XVector2sTypeInfo@XMath": [
+"0xe331bc"
+],
+"XVector4fTypeInfo@XMath": [
+"0xe33164"
+],
+"XVector3fTypeInfo@XMath": [
+"0xe3310c"
+],
+"XVector2fTypeInfo@XMath": [
+"0xe330b4"
+],
+"XColor1555TypeInfo@XMath": [
+"0xe3305c"
+],
+"XColor4444TypeInfo@XMath": [
+"0xe33004"
+],
+"XColor4ubTypeInfo@XMath": [
+"0xe32fac"
+],
+"XColor3ubTypeInfo@XMath": [
+"0xe32f54"
+],
+"XColor2ubTypeInfo@XMath": [
+"0xe32efc"
+],
+"XColor1ubTypeInfo@XMath": [
+"0xe32ea4"
+],
+"XNormal4bTypeInfo@XMath": [
+"0xe32e4c"
+],
+"XNormal3bTypeInfo@XMath": [
+"0xe32df4"
+],
+"XNormal2bTypeInfo@XMath": [
+"0xe32d9c"
+],
+"XNormal4sTypeInfo@XMath": [
+"0xe32d44"
+],
+"XNormal3sTypeInfo@XMath": [
+"0xe32cec"
+],
+"XNormal2sTypeInfo@XMath": [
+"0xe32c94"
+],
+"XNormal4fTypeInfo@XMath": [
+"0xe32c3c"
+],
+"XNormal3fTypeInfo@XMath": [
+"0xe32be4"
+],
+"XNormal2fTypeInfo@XMath": [
+"0xe32b8c"
+],
+"XColor4fTypeInfo@XMath": [
+"0xe32b34"
+],
+"XColor3fTypeInfo@XMath": [
+"0xe32adc"
+],
+"XColor2fTypeInfo@XMath": [
+"0xe32a84"
+],
+"XColor1fTypeInfo@XMath": [
+"0xe32a2c"
+],
+"XCoord4bTypeInfo@XMath": [
+"0xe329d4"
+],
+"XCoord3bTypeInfo@XMath": [
+"0xe3297c"
+],
+"XCoord2bTypeInfo@XMath": [
+"0xe32924"
+],
+"XCoord1bTypeInfo@XMath": [
+"0xe328cc"
+],
+"XCoord4sTypeInfo@XMath": [
+"0xe32874"
+],
+"XCoord3sTypeInfo@XMath": [
+"0xe3281c"
+],
+"XCoord2sTypeInfo@XMath": [
+"0xe327c4"
+],
+"XCoord1sTypeInfo@XMath": [
+"0xe3276c"
+],
+"XCoord4fTypeInfo@XMath": [
+"0xe32714"
+],
+"XCoord3fTypeInfo@XMath": [
+"0xe326bc"
+],
+"XCoord2fTypeInfo@XMath": [
+"0xe32664"
+],
+"XCoord1fTypeInfo@XMath": [
+"0xe3260c"
+],
+"XMFQuatDescriptor": [
+"0xe3429c"
+],
+"XMFRayDescriptor": [
+"0xe34274"
+],
+"XMFFrustumDescriptor": [
+"0xe3424c"
+],
+"XMFBoundBoxDescriptor": [
+"0xe34224"
+],
+"XMFBoundSphereDescriptor": [
+"0xe341fc"
+],
+"XMFMatrix43fDescriptor": [
+"0xe341d4"
+],
+"XMFMatrix4fDescriptor": [
+"0xe341ac"
+],
+"XMFMatrix3fDescriptor": [
+"0xe34184"
+],
+"XMFColor1555Descriptor": [
+"0xe3415c"
+],
+"XMFColor4444Descriptor": [
+"0xe34134"
+],
+"XMFColor4ubDescriptor": [
+"0xe3410c"
+],
+"XMFColor3ubDescriptor": [
+"0xe340e4"
+],
+"XMFColor2ubDescriptor": [
+"0xe340bc"
+],
+"XMFColor1ubDescriptor": [
+"0xe34094"
+],
+"XMFColor4fDescriptor": [
+"0xe3406c"
+],
+"XMFColor3fDescriptor": [
+"0xe34044"
+],
+"XMFColor2fDescriptor": [
+"0xe3401c"
+],
+"XMFColor1fDescriptor": [
+"0xe33ff4"
+],
+"XMFNormal4bDescriptor": [
+"0xe33fcc"
+],
+"XMFNormal3bDescriptor": [
+"0xe33fa4"
+],
+"XMFNormal2bDescriptor": [
+"0xe33f7c"
+],
+"XMFNormal4sDescriptor": [
+"0xe33f54"
+],
+"XMFNormal3sDescriptor": [
+"0xe33f2c"
+],
+"XMFNormal2sDescriptor": [
+"0xe33f04"
+],
+"XMFNormal4fDescriptor": [
+"0xe33edc"
+],
+"XMFNormal3fDescriptor": [
+"0xe33eb4"
+],
+"XMFNormal2fDescriptor": [
+"0xe33e8c"
+],
+"XMFCoord4bDescriptor": [
+"0xe33e64"
+],
+"XMFCoord3bDescriptor": [
+"0xe33e3c"
+],
+"XMFCoord2bDescriptor": [
+"0xe33e14"
+],
+"XMFCoord1bDescriptor": [
+"0xe33dec"
+],
+"XMFCoord4sDescriptor": [
+"0xe33dc4"
+],
+"XMFCoord3sDescriptor": [
+"0xe33d9c"
+],
+"XMFCoord2sDescriptor": [
+"0xe33d74"
+],
+"XMFCoord1sDescriptor": [
+"0xe33d4c"
+],
+"XMFCoord4fDescriptor": [
+"0xe33d24"
+],
+"XMFCoord3fDescriptor": [
+"0xe33cfc"
+],
+"XMFCoord2fDescriptor": [
+"0xe33cd4"
+],
+"XMFCoord1fDescriptor": [
+"0xe33cac"
+],
+"XMFVector3bDescriptor": [
+"0xe33c84"
+],
+"XMFVector2bDescriptor": [
+"0xe33c5c"
+],
+"XMFVector3sDescriptor": [
+"0xe33c34"
+],
+"XMFVector2sDescriptor": [
+"0xe33c0c"
+],
+"XMFVector4fDescriptor": [
+"0xe33be4"
+],
+"XMFVector3fDescriptor": [
+"0xe33bbc"
+],
+"XMFVector2fDescriptor": [
+"0xe33b94"
+],
+"XSFQuatDescriptor": [
+"0xe33b68"
+],
+"XSFRayDescriptor": [
+"0xe33b3c"
+],
+"XSFFrustumDescriptor": [
+"0xe33b10"
+],
+"XSFBoundBoxDescriptor": [
+"0xe33ae4"
+],
+"XSFBoundSphereDescriptor": [
+"0xe33ab8"
+],
+"XSFMatrix43fDescriptor": [
+"0xe33a8c"
+],
+"XSFMatrix4fDescriptor": [
+"0xe33a60"
+],
+"XSFMatrix3fDescriptor": [
+"0xe33a34"
+],
+"XSFColor1555Descriptor": [
+"0xe33a08"
+],
+"XSFColor4444Descriptor": [
+"0xe339dc"
+],
+"XSFColor4ubDescriptor": [
+"0xe339b0"
+],
+"XSFColor3ubDescriptor": [
+"0xe33984"
+],
+"XSFColor2ubDescriptor": [
+"0xe33958"
+],
+"XSFColor1ubDescriptor": [
+"0xe3392c"
+],
+"XSFColor4fDescriptor": [
+"0xe33900"
+],
+"XSFColor3fDescriptor": [
+"0xe338d4"
+],
+"XSFColor2fDescriptor": [
+"0xe338a8"
+],
+"XSFColor1fDescriptor": [
+"0xe3387c"
+],
+"XSFNormal4fDescriptor": [
+"0xe33850"
+],
+"XSFNormal3fDescriptor": [
+"0xe33824"
+],
+"XSFNormal2fDescriptor": [
+"0xe337f8"
+],
+"XSFCoord4fDescriptor": [
+"0xe337cc"
+],
+"XSFCoord3fDescriptor": [
+"0xe337a0"
+],
+"XSFCoord2fDescriptor": [
+"0xe33774"
+],
+"XSFCoord1fDescriptor": [
+"0xe33748"
+],
+"XSFVector4fDescriptor": [
+"0xe3371c"
+],
+"XSFVector3fDescriptor": [
+"0xe336f0"
+],
+"XSFVector2fDescriptor": [
+"0xe336c4"
+],
+"?$XomActionImpl@UIXExtractGeometryAction@@": [
+"0xe344cc"
+],
+"XExtractGeometryAction": [
+"0xe34484"
+],
+"State@lodepng": [
+"0xe35534"
+],
+"?$basic_filebuf@DU?$char_traits@D@std@@@std": [
+"0xe354cc"
+],
+"ValueTypeInfo@XBase": [
+"0xe3558c"
+],
+"ValueTypeFieldInfo@XBase": [
+"0xe35570"
+]
+}

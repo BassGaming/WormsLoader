@@ -3,6 +3,7 @@
 // input (window messages + DirectInput) while the overlay has focus.
 #include "loader.h"
 #include <MinHook.h>
+#include <GL/gl.h>
 #define IMGUI_DEFINE_MATH_OPERATORS
 #include <imgui.h>
 #include <backends/imgui_impl_opengl2.h>
@@ -20,15 +21,18 @@ static int s_selected = -1;  // -1 = WormsLoader page
 static Hotkey* s_rebinding;
 static Mod* s_rebinding_mod;
 static unsigned s_screen;
+static int s_key_up_vk; // pending WM_KEYUP of WL_Api.press_key
+static double s_key_up_at;
+static void release_key();
 static std::string s_block_dismissed;
 static char s_relay_buf[128];
 static const unsigned kScreenMain = djb2x("ScreenMain");
 
 static unsigned read_screen_hash() {
     __try {
-        int depth = *(int*)kScreenDepth;
+        int depth = *(int*)g_game->screen_depth;
         if (depth <= 0 || depth > 64) return 0;
-        BYTE* obj = *(BYTE**)(kScreenStack + 8 * depth);
+        BYTE* obj = *(BYTE**)(g_game->screen_stack + 8 * depth);
         return obj ? *(unsigned*)(obj + 8) : 0;
     } __except (EXCEPTION_EXECUTE_HANDLER) {
         return 0;
@@ -111,7 +115,8 @@ static void draw_loader_page() {
     ImGui::TextWrapped("WormsLoader loads the mods in <game>\\Mods. Online, everyone in a lobby must run the same "
                        "game build and the same mods (client-only mods excepted); other lobbies are refused.");
     ImGui::Separator();
-    ImGui::Text("Game build: %s", g_known_build ? "01.83.31.37 (supported)" : "UNKNOWN - mods disabled");
+    if (g_game) ImGui::Text("Game: %s %s (supported)", g_game->id, g_game->build);
+    else ImGui::Text("Game: unsupported game or build - mods disabled");
     ImGui::Text("Network: %s", g_net_status.c_str());
     ImGui::Text("Mod set: %08x  %s", g_modset_hash, g_modset.empty() ? "(none)" : g_modset.c_str());
     ImGui::Separator();
@@ -259,13 +264,13 @@ static volatile bool s_di_lmb;
 // differs between launches, so the overlay follows the slot that moved last. GUI bounds sit after the slots.
 static bool game_cursor(ImVec2 display, float* x, float* y) {
     if (!g_known_build) return false;
-    const float* bd = (const float*)kCursorBounds; // min x, min y, max x, max y
+    const float* bd = (const float*)g_game->cursor_bounds; // min x, min y, max x, max y
     float w = bd[2] - bd[0], h = bd[3] - bd[1];
     if (!(w > 1 && h > 1)) return false;
-    static float last[kCursorSlots][2];
+    static float last[kCursorSlotsMax][2];
     static int active = -1;
-    for (int k = 0; k < kCursorSlots; k++) {
-        const float* c = (const float*)(kCursorSlot0 + k * kCursorStride);
+    for (int k = 0; k < g_game->cursor_slots && k < kCursorSlotsMax; k++) {
+        const float* c = (const float*)(g_game->cursor_slot0 + k * g_game->cursor_stride);
         if (c[0] == last[k][0] && c[1] == last[k][1]) continue;
         bool inside = c[0] >= bd[0] && c[0] <= bd[2] && c[1] >= bd[1] && c[1] <= bd[3];
         if (inside && (last[k][0] != 0 || last[k][1] != 0)) active = k; // a move, not the first read
@@ -279,37 +284,114 @@ static bool game_cursor(ImVec2 display, float* x, float* y) {
 
 static bool s_lmb_sent;
 
+// Frame-time stats for the perf log: 0.1 ms buckets up to 100 ms.
+static unsigned s_hist[1001];
+static void perf_frame(double now, double overlay) {
+    static double prev, spent, since;
+    static int frames;
+    if (prev) { int b = (int)((now - prev) * 1e4); s_hist[b > 1000 ? 1000 : b]++; }
+    else since = now;
+    prev = now;
+    spent += overlay;
+    frames++;
+    if (now - since < 60) return;
+    double p99 = 0, worst = 0;
+    unsigned n = 0, need = frames / 100;
+    for (int b = 1000; b >= 0; b--) {
+        if (s_hist[b] && !worst) worst = b / 10.0;
+        n += s_hist[b];
+        if (n > need) { p99 = b / 10.0; break; }
+    }
+    wl_log("perf: %.1f fps, 1%% low %.1f fps (frame %.1f ms), worst %.1f ms, overlay %.3f ms/frame", frames / (now - since),
+           p99 ? 1000 / p99 : 0, p99, worst, spent * 1000 / frames);
+    memset(s_hist, 0, sizeof s_hist);
+    spent = 0; frames = 0; since = now;
+}
+
+// The ImGui GL2 backend draws with whatever program/FBO/VBO/texture unit is bound. The game leaves its own
+// bound at swap time (ReShade happens to reset them, so without ReShade the overlay was invisible): unbind them
+// around our draw, then restore.
+typedef void(APIENTRY* GlBind_t)(GLenum, GLuint);
+typedef void(APIENTRY* GlUse_t)(GLuint);
+typedef void(APIENTRY* GlUnit_t)(GLenum);
+static void render_overlay() {
+    static HGLRC loaded;
+    static GlBind_t bind_fbo, bind_buf;
+    static GlUse_t use_prog;
+    static GlUnit_t active_tex, client_tex, disable_attrib;
+    if (loaded != s_glrc) { // extension pointers are per context
+        bind_fbo = (GlBind_t)wglGetProcAddress("glBindFramebufferEXT");
+        bind_buf = (GlBind_t)wglGetProcAddress("glBindBufferARB");
+        use_prog = (GlUse_t)wglGetProcAddress("glUseProgramObjectARB");
+        active_tex = (GlUnit_t)wglGetProcAddress("glActiveTextureARB");
+        client_tex = (GlUnit_t)wglGetProcAddress("glClientActiveTextureARB");
+        disable_attrib = (GlUnit_t)wglGetProcAddress("glDisableVertexAttribArrayARB");
+        loaded = s_glrc;
+    }
+    GLint fbo = 0, prog = 0, vbo = 0, ibo = 0, unit = 0x84C0 /*TEXTURE0*/, cunit = 0x84C0 /*TEXTURE0*/;
+    glGetIntegerv(0x8CA6 /*FRAMEBUFFER_BINDING*/, &fbo);
+    glGetIntegerv(0x8B8D /*CURRENT_PROGRAM*/, &prog);
+    glGetIntegerv(0x8894 /*ARRAY_BUFFER_BINDING*/, &vbo);
+    glGetIntegerv(0x8895 /*ELEMENT_ARRAY_BUFFER_BINDING*/, &ibo);
+    glGetIntegerv(0x84E0 /*ACTIVE_TEXTURE*/, &unit);
+    glGetIntegerv(0x84E1 /*CLIENT_ACTIVE_TEXTURE*/, &cunit);
+    if (bind_fbo) bind_fbo(0x8D40 /*FRAMEBUFFER*/, 0);
+    if (use_prog) use_prog(0);
+    if (bind_buf) { bind_buf(0x8892 /*ARRAY_BUFFER*/, 0); bind_buf(0x8893 /*ELEMENT_ARRAY_BUFFER*/, 0); }
+    if (active_tex) active_tex(0x84C0 /*TEXTURE0*/);
+    if (client_tex) client_tex(0x84C0 /*TEXTURE0*/);
+    // Everything else the game may leave set that the GL2 backend doesn't touch. Push/pop restores it for the game.
+    glPushAttrib(GL_ALL_ATTRIB_BITS);
+    glPushClientAttrib(GL_CLIENT_ALL_ATTRIB_BITS);
+    glColorMask(1, 1, 1, 1);
+    glDrawBuffer(GL_BACK);
+    glDisable(GL_ALPHA_TEST);
+    glDisable(GL_FOG);
+    glDisable(GL_TEXTURE_GEN_S); glDisable(GL_TEXTURE_GEN_T);
+    if (active_tex)
+        for (int u = 1; u < 4; u++) { active_tex(0x84C0 + u); glDisable(GL_TEXTURE_2D); glDisable(GL_TEXTURE_1D); }
+    if (active_tex) active_tex(0x84C0);
+    if (disable_attrib) for (unsigned a = 0; a < 16; a++) disable_attrib(a);
+    glMatrixMode(GL_TEXTURE); glPushMatrix(); glLoadIdentity();
+    ImGui_ImplOpenGL2_RenderDrawData(ImGui::GetDrawData());
+    glMatrixMode(GL_TEXTURE); glPopMatrix();
+    glPopClientAttrib();
+    glPopAttrib();
+    if (client_tex) client_tex(cunit);
+    if (active_tex) active_tex(unit);
+    if (bind_buf) { bind_buf(0x8892, vbo); bind_buf(0x8893, ibo); }
+    if (use_prog) use_prog(prog);
+    if (bind_fbo) bind_fbo(0x8D40, fbo);
+}
+
 static BOOL WINAPI h_Swap(HDC dc) {
     HWND hwnd = WindowFromDC(dc);
     HGLRC glrc = wglGetCurrentContext();
     if (hwnd && glrc && (hwnd != s_hwnd || glrc != s_glrc)) attach(hwnd, glrc);
-    if (hwnd && hwnd == s_hwnd) {
-        api_run_frame(); // before t0: mods like FpsCap wait in here, which is not overlay cost
-        double t0 = wl_time();
-        ImGui_ImplOpenGL2_NewFrame();
-        ImGui_ImplWin32_NewFrame();
-        ImGuiIO& io = ImGui::GetIO();
-        POINT p;
-        float gx, gy;
-        if (game_cursor(io.DisplaySize, &gx, &gy)) io.AddMousePosEvent(gx, gy);
-        else if (GetForegroundWindow() == hwnd && GetCursorPos(&p) && ScreenToClient(hwnd, &p)) io.AddMousePosEvent((float)p.x, (float)p.y);
-        if (s_di_lmb != s_lmb_sent) { io.AddMouseButtonEvent(0, s_di_lmb); s_lmb_sent = s_di_lmb; }
-        ImGui::NewFrame();
-        draw();
-        ImGui::Render();
-        ImGui_ImplOpenGL2_RenderDrawData(ImGui::GetDrawData());
-
-        // Cost report every 60 s, to tell overlay cost apart from other slowdowns.
-        static double spent, since = t0;
-        static int frames;
-        spent += wl_time() - t0;
-        frames++;
-        if (t0 - since > 60) {
-            wl_log("perf: %.1f fps, overlay %.3f ms/frame", frames / (t0 - since), spent * 1000 / frames);
-            spent = 0; frames = 0; since = t0;
-        }
-    }
-    return o_Swap(dc);
+    if (!hwnd || hwnd != s_hwnd) return o_Swap(dc);
+    double t0 = wl_time();
+    ImGui_ImplOpenGL2_NewFrame();
+    ImGui_ImplWin32_NewFrame();
+    ImGuiIO& io = ImGui::GetIO();
+    POINT p;
+    float gx, gy;
+    if (game_cursor(io.DisplaySize, &gx, &gy)) io.AddMousePosEvent(gx, gy);
+    else if (GetForegroundWindow() == hwnd && GetCursorPos(&p) && ScreenToClient(hwnd, &p)) io.AddMousePosEvent((float)p.x, (float)p.y);
+    if (s_di_lmb != s_lmb_sent) { io.AddMouseButtonEvent(0, s_di_lmb); s_lmb_sent = s_di_lmb; }
+    ImGui::NewFrame();
+    draw();
+    ImGui::Render();
+    // Nothing visible (e.g. in a match): skip the GL state save/restore, whose glGet calls can stall the driver.
+    if (ImGui::GetDrawData()->TotalVtxCount) render_overlay();
+    double overlay = wl_time() - t0;
+    BOOL r = o_Swap(dc);
+    // Mod frame callbacks run AFTER the present: a frame limiter (FpsCap) then waits before the game reads
+    // input for the next frame, not between reading input and showing it (which adds a frame of lag).
+    release_key();
+    assets_frame();
+    api_run_frame();
+    perf_frame(wl_time(), overlay);
+    return r;
 }
 
 void ui_install() {
@@ -330,6 +412,21 @@ static GetDeviceState_t o_GetDeviceState;
 static GetDeviceData_t o_GetDeviceData;
 static void* s_mouse;
 static const GUID kSysMouse = {0x6F1D2B60, 0xD5A0, 0x11CF, {0xBF, 0xC7, 0x44, 0x45, 0x53, 0x54, 0x00, 0x00}};
+
+bool ui_on_screen(const char* name) { return g_known_build && read_screen_hash() == djb2x(name); }
+// The game's GUI screens (e.g. ScreenTitle) take keys from window messages; DirectInput is for gameplay.
+// The key is released 0.1 s later (in h_Swap): a down and up in the same frame is usually missed.
+void ui_press_key(int vk) {
+    if (!s_hwnd || vk <= 0 || vk > 255) return;
+    PostMessageW(s_hwnd, WM_KEYDOWN, vk, (MapVirtualKeyW(vk, MAPVK_VK_TO_VSC) << 16) | 1);
+    s_key_up_vk = vk;
+    s_key_up_at = wl_time() + 0.1;
+}
+static void release_key() {
+    if (!s_key_up_vk || wl_time() < s_key_up_at) return;
+    PostMessageW(s_hwnd, WM_KEYUP, s_key_up_vk, (MapVirtualKeyW(s_key_up_vk, MAPVK_VK_TO_VSC) << 16) | 0xC0000001);
+    s_key_up_vk = 0;
+}
 
 // While the overlay has input, the game sees no keys, buttons or wheel. Mouse MOVEMENT still reaches the game,
 // because the game's own cursor (which the overlay follows, see game_cursor) only moves on DirectInput deltas.
@@ -371,3 +468,4 @@ static HRESULT WINAPI h_CreateDevice(void* self, REFGUID g, void** dev, void* ou
 void dinput_wrap(void* di) {
     if (!o_CreateDevice) g_api.hook((*(void***)di)[3], (void*)h_CreateDevice, (void**)&o_CreateDevice);
 }
+

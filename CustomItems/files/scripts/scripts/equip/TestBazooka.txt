@@ -1,0 +1,106 @@
+Equip =
+{
+	CanHoldInCave = true;
+	CanHoldOnPack = true;
+	CanHoldOnRope = true;
+	CanHoldOnPara = true;
+	
+	RequiresAim		= true;
+	RequiresPowerBar = true;
+
+	Poser =
+	{
+		DrawAnim				= "DrawBazooka";
+		HoldAnim				= "HoldBazooka";
+		AimAnim					= "AimBazooka";
+		PreFire					= "PrefireBazooka";
+		FireAnim				= "FireBazooka";
+		EquipSound				= "WormsNext/Weapons/BazookaEquip";
+		ResourceMesh				= "3DBazooka";
+		AttachmentPoint				= "WeaponLocator";
+		WormZOffset						= -5.0;
+	}
+	
+	Gadget =
+	{
+		StoryName				= "Bazooka";
+		SuggestedReplayCam		= "kReplayCamera_ZoomIn"; // "kReplayCamera_Tracking", "kReplayCamera_Landscape", "kReplayCamera_ZoomIn", "kReplayCamera_ZoomOut", "kReplayCamera_Vertigo", "kReplayCamera_StaticPos",
+		ResourceMesh			= "3DBazooka";
+		AttachmentPoint			= "WeaponLocator";
+		DrawAnim				= "DrawBazooka";
+		HoldAnim				= "HoldBazooka";
+		AimAnim					= "AimBazooka";
+		PreFire					= "PrefireBazooka";
+		FireAnim				= "FireBazooka";
+		DeploymentTime			= 0.0;
+		EquipSound				= "WormsNext/Weapons/BazookaEquip";
+		OnNoDamageWormSays		= "BazookaMiss";
+
+		MinShotPower = 10.000000;
+		MaxShotPower = 415.000000;
+		WeaponResetDelay = 1;
+		PowerUpTime = 1.500000;
+		
+		SecondaryDropVelocityScale = 1.0;
+
+		AimAngleHelper =
+		{
+			AllowBandSwitch		= false;
+			Style				= "Press"; // "Click" or "Press"
+			Speed				= 2.0;
+			UseFacing			= true;
+			ShowReticle			= true;
+			
+			Wedges =
+			{
+				Wedge0 =
+				{	
+					Dir = "MaxToMin";
+					Min = 0.0;
+					Max = 180.0;
+				}
+			}
+		}
+		ParticleRotation                        = 0;
+
+		FireFX				= "BazookaBackFireFX";
+		FireFXLocator			= "FXLocator1";
+	}
+	
+	Payload =
+	{
+		PayloadID			= "kPayload_Bazooka";
+		StoryName			= "BazookaRound";
+
+		PayloadMesh			= "PayloadBazooka";
+
+		TrailEffect			= "BazookaShellTrailFX";
+		TrailLocator			= "FXLocator1";
+		BlastEffect			= "";
+		ExplosionEffect			= "BlastMediumFX";
+
+		LaunchSound			= "WormsNext/Weapons/BazookaFire";
+		
+		FlightBehaviour		= "Facing";	// "Fixed", "Facing" or "Tumbling"
+		ImpactBehaviour		= "Explode"; // "Bounce" or "Explode"
+		StaticAspects		= "<Bazooka> <Magnetic> <NotBlastable> <Payload>";
+        
+		CollisionShape		= "Box"; // "Circle", "Box", or "SpanArray"
+		CollisionRadius		= 2.5;
+        
+        OnDeploymentWormSays = "FireWeapon";
+			
+		Mass				= 1.8; 
+		Restitution			= 0.5;
+		WindFactor			= 0.6;
+		AirResistance		= 0.0001;
+		GravityFactor		= 0.80;
+		Friction			= 0.02;
+		AffectedByMagnets	= 1.0;
+		BounceAttenuation	= 0.0;
+
+		WaterSkimAngle		= 1.5;
+		TravelTimeReplay	= true;
+		WaterPushForceCap	= 0.05;	
+	}
+}

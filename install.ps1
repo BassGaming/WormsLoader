@@ -25,7 +25,7 @@ Copy-Item (Join-Path $out 'dinput8.dll') $dll -Force
 Get-ChildItem (Join-Path $out 'Mods') -Directory | ForEach-Object {
     $dst = Join-Path $GameDir "Mods\$($_.Name)"
     New-Item -ItemType Directory -Force $dst | Out-Null
-    Copy-Item (Join-Path $_.FullName '*.dll') $dst -Force # settings.ini in $dst is left alone
+    Copy-Item (Join-Path $_.FullName '*') $dst -Recurse -Force # the build has no settings.ini, so the user's is kept
     "Installed mod $($_.Name)"
 }
 "Installed WormsLoader to $GameDir"

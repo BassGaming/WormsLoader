@@ -17,18 +17,37 @@ static bool* s_diagnose;
 static std::map<WL_SteamID, double> s_peer_recv; // last packet time per peer
 
 static const WL_ModInfo kInfo = {
-    "Reconnect", "0.1.0", "WormsLoader",
+    "Reconnect", "0.2.0", "WormsLoader",
     "Keeps an online match running through a short connection loss instead of dropping you to the menu.\n\n"
     "While packets from the match arrived within the last 'Max outage' seconds, Steam's "
     "'connection lost' notifications are hidden from the game; the game's own netcode resends what was "
     "lost once the link returns.\n\n"
     "All players in the lobby need this mod (same version).",
-    false,
+    false, "WormsClanWars",
 };
 
-static bool on_steam_callback(int id, void*, void*) {
+// LobbyChatUpdate_t (callback 506)
+#pragma pack(push, 8)
+struct LobbyChatUpdate { WL_SteamID lobby, changed, making_change; unsigned state; };
+#pragma pack(pop)
+enum { kMemberDisconnected = 4 };
+
+static bool on_steam_callback(int id, void* data, void*) {
+    if (!*s_enabled) return true;
+    if (id == 506) {
+        // When a player's Steam connection drops, Steam removes them from the lobby as
+        // "disconnected" once they come back, and the host's game then destroys their peer link
+        // although match packets are flowing again. Hide that while the player is still sending.
+        auto* u = (LobbyChatUpdate*)data;
+        auto it = s_peer_recv.find(u->changed);
+        double since = it == s_peer_recv.end() ? -1 : api->time() - it->second;
+        api->log("[Reconnect] lobby member %llx state change 0x%x, last packet %.1fs ago", u->changed, u->state, since);
+        if (!(u->state & kMemberDisconnected) || since < 0 || since > *s_max_outage) return true;
+        api->log("[Reconnect] hid the lobby disconnect of %llx from the game", u->changed);
+        return false;
+    }
     // 102 SteamServerConnectFailure, 103 SteamServersDisconnected, 1203 P2PSessionConnectFail
-    if (!*s_enabled || (id != 102 && id != 103 && id != 1203)) return true;
+    if (id != 102 && id != 103 && id != 1203) return true;
     double since = api->seconds_since_net_recv();
     if (since > *s_max_outage) return true; // not in a match, or outage too long: let the game handle it
     api->log("[Reconnect] hid Steam callback %d from the game (last match packet %.1fs ago)", id, since);

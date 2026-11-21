@@ -9,7 +9,7 @@
 #pragma once
 #include <stdbool.h>
 
-#define WL_API_VERSION 1
+#define WL_API_VERSION 2 // 2: WL_ModInfo.game, game(), on_screen(), press_key()
 
 typedef unsigned long long WL_SteamID;
 
@@ -19,6 +19,7 @@ typedef struct WL_ModInfo {
     const char* author;
     const char* description; // shown in the Mods menu
     bool client_only;        // true = cannot affect other players (UI only); excluded from the mod-set hash
+    const char* game;        // game id the mod is made for (see WL_Api.game), "*" = any game. Other games skip it.
 } WL_ModInfo;
 
 typedef void (*WL_HotkeyFn)(void* user);
@@ -54,7 +55,7 @@ typedef struct WL_Api {
     void   (*hotkey)(const char* id, const char* label, int default_vk, WL_HotkeyFn fn, void* user);
 
     // --- runtime ---------------------------------------------------------------
-    void (*on_frame)(WL_FrameFn fn, void* user); // every rendered frame, game thread
+    void (*on_frame)(WL_FrameFn fn, void* user); // every rendered frame, right after it is presented, game thread
     // Game network traffic (Steam P2P or relay, mods don't see the difference).
     void (*on_send)(WL_SendFilter fn, void* user);
     void (*on_recv)(WL_RecvFilter fn, void* user);
@@ -62,4 +63,9 @@ typedef struct WL_Api {
     void (*on_steam_callback)(WL_SteamCallbackFilter fn, void* user);
     // Seconds since the last game packet was received from anyone (huge if never).
     double (*seconds_since_net_recv)(void);
+
+    // --- since version 2 ---------------------------------------------------------
+    const char* (*game)(void);             // detected game id, e.g. "WormsClanWars"
+    bool (*on_screen)(const char* name);   // true while the top GUI screen is `name`, e.g. "ScreenTitle"
+    void (*press_key)(int vk);             // posts a key press (Windows VK code) to the game window; menus react
 } WL_Api;

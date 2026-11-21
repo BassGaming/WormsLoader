@@ -11,18 +11,21 @@ Private repo: GitHub `WormsLoader`.
 | `Example/` | Mod template: every setting type + one hotkey | `Example/CLAUDE.md` |
 | `Borderless/` | Mod: borderless fullscreen window, no display mode switch | `Borderless/CLAUDE.md` |
 | `FpsCap/` | Mod: frame-rate cap (slider + input box) | `FpsCap/CLAUDE.md` |
-| `SkipIntro/` | Mod: skip the Team17 legal screen and intro movies | `SkipIntro/CLAUDE.md` |
+| `SkipIntro/` | Mod: skip the Team17 legal screen, intro movies and title screen | `SkipIntro/CLAUDE.md` |
+| `CustomItems/` | Mod: new weapons (stock-crash bazooka; so far the chart model + asset pipeline) | `CustomItems/CLAUDE.md` |
+| `tools/` | `xom.py`: read/write the game's XOM bundles (.bdl/.xom) | docstring in the file |
+| `Trace/` | Dev tool: call counter over every exe function, for RE | `Trace/CLAUDE.md` |
 
 ## How the loader works (summary)
 - The game imports `DINPUT8.dll`; our `dinput8.dll` in the game folder is loaded instead and forwards `DirectInput8Create` to the system DLL. (`opengl32.dll` in the game folder is ReShade — don't touch it.)
-- It checks the exe build (PE timestamp + image size). Unknown build → no mods load, game runs vanilla.
+- It detects the game from the exe name and the build from PE timestamp + image size (`kGames` table in `WormsLoader/src/loader.h`; only Worms Clan Wars so far). Each mod names its game in `WL_ModInfo.game` (`"WormsClanWars"`, or `"*"` for a mod that uses no exe addresses); mods for another game are skipped. Unknown game or build → no mods load, game runs vanilla.
 - It loads `<game>\Mods\<Name>\<Name>.dll` for every folder, sorted by name. Each mod exports `WL_GetModInfo` and `WL_ModInit(const WL_Api*)`, and optionally `WL_ModEarlyInit` (runs at the exe entry point, before the game reads its options). The whole API is `WormsLoader/include/wormsloader.h`.
 - A **Mods** button (ImGui overlay) shows on the main menu. The Mods screen lists the mods; a mod's page shows its description, settings and rebindable hotkeys. Settings are saved to `Mods\<Name>\settings.ini`.
 - Online: the lobby host publishes its mod-set hash in Steam lobby data. Joiners with a different set are refused, because the game is deterministic lockstep and different mods would desync. Mods flagged `client_only` don't count.
 - Log: `<game>\WormsLoader.log`.
 
 ## Adding a mod
-1. Copy `Example/` to `<Name>/`, set `name` in `WL_ModInfo` to `<Name>`, and decide `client_only`.
+1. Copy `Example/` to `<Name>/`, set `name` in `WL_ModInfo` to `<Name>`, and decide `client_only` and `game`.
 2. Add `wl_mod(<Name>)` to the root `CMakeLists.txt`.
 3. Write `<Name>/CLAUDE.md` (what it hooks, exe addresses, how to test) and add a row to the table above.
 4. Bump `version` whenever behaviour that other players see changes; the version is part of the mod-set hash.

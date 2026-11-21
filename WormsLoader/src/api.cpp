@@ -69,11 +69,13 @@ static void api_on_send(WL_SendFilter f, void* u) { s_send.push_back({f, u}); }
 static void api_on_recv(WL_RecvFilter f, void* u) { s_recv.push_back({f, u}); }
 static void api_on_steam_callback(WL_SteamCallbackFilter f, void* u) { s_steamcb.push_back({f, u}); }
 static double api_since_recv() { return wl_time() - net_last_recv(); }
+static const char* api_game() { return g_game ? g_game->id : ""; }
 
 const WL_Api g_api = {
     WL_API_VERSION, api_hook, api_patch, api_exe, api_log, wl_time,
     api_setting_bool, api_setting_int, api_setting_float, api_setting_enum, api_hotkey,
     api_on_frame, api_on_send, api_on_recv, api_on_steam_callback, api_since_recv,
+    api_game, ui_on_screen, ui_press_key,
 };
 
 void api_run_frame() { for (auto& c : s_frame) c.fn(c.user); }
