@@ -6,7 +6,7 @@ It works only with the current Steam version of the game (build 01.83.31.37). Wi
 
 ## Install
 
-1. Download `WormsLoader-<version>.zip` from the [Releases](https://github.com/BassGaming/WormsLoader/releases) page.
+1. Download `WormsLoader-<version>.zip` from the [Releases](https://github.com/BassGaming/WormsLoader/releases) page or [Nexus Mods](https://www.nexusmods.com/wormsclanwars/mods/1).
 2. Open the game folder: in Steam, right-click **Worms Clan Wars** → **Manage** → **Browse local files**. This is the folder with `WormsClanWars.exe`.
 3. Close the game, then extract the zip into that folder. Afterwards `dinput8.dll` and the `Mods` folder sit next to `WormsClanWars.exe`.
 4. Start the game. The main menu now has a **Mods** button.
